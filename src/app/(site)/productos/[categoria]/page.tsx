@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 import { getAllCategoriaSlugs, getCategorias, getCategoriaBySlug, getLineas } from "@/lib/data";
+import { getSubcategorias } from "@/lib/subcategorias";
 import { urlForImage } from "@/sanity/image";
 
 type Params = { categoria: string };
@@ -39,6 +40,7 @@ export default async function CategoriaPage({ params }: { params: Promise<Params
   const isQuimicos = cat.slug === "quimicos";
   const otras = categorias.filter((c) => c.slug !== cat.slug).slice(0, 4);
   const productos = catData?.productos ?? [];
+  const subcats = getSubcategorias(cat.slug);
 
   return (
     <>
@@ -92,6 +94,25 @@ export default async function CategoriaPage({ params }: { params: Promise<Params
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+      )}
+
+      {subcats.length > 0 && (
+        <section className={styles.subcatFilters}>
+          <div className="container container-wide">
+            <div className={styles.chipsRow}>
+              <span className={`${styles.chip} ${styles.chipActive}`}>Ver todo</span>
+              {subcats.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/productos/${cat.slug}/${s.slug}`}
+                  className={styles.chip}
+                >
+                  {s.nombre}
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       )}

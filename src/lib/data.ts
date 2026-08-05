@@ -19,6 +19,7 @@ import {
   productoBySlugQuery,
   productosDestacadosQuery,
   marcaBySlugQuery,
+  productosByCategoriaYSubcatQuery,
 } from "@/sanity/queries";
 import type { SanityImageSource } from "@sanity/image-url";
 import * as fallback from "./content";
@@ -196,6 +197,20 @@ export async function getMarcaBySlug(slug: string) {
       categoria?: { nombre: string; slug: string };
     }[];
   } | null>(marcaBySlugQuery, { slug });
+}
+
+// -------- productos por categoría + subcategoría (aplicación tag)
+export async function getProductosBySubcategoria(categoriaSlug: string, subcatNombre: string) {
+  return cachedFetch<{
+    _id: string;
+    nombre: string;
+    slug: string;
+    sku?: string;
+    descripcionCorta?: string;
+    linkExterno?: string;
+    imagenPrincipal?: SanityImageSource;
+    marca?: { nombre: string; slug: string };
+  }[]>(productosByCategoriaYSubcatQuery, { categoriaSlug, subcatNombre });
 }
 
 // -------- productos destacados (para slider en home)
