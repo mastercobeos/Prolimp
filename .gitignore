@@ -2,18 +2,27 @@
 node_modules/
 .pnp
 .pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# Next.js build
+# Testing
+/coverage
+
+# Next.js
 .next/
 out/
 build/
 dist/
+next-env.d.ts
+*.tsbuildinfo
 
 # Env / secrets
 .env
 .env.local
 .env.*.local
-*.env
 
 # Logs
 *.log
@@ -30,23 +39,11 @@ Thumbs.db
 .idea/
 .claude/
 
-# Assets pesados scrapeados (regenerar con scripts si se necesitan)
-_research/product-scrape/images/
-_research/product-scrape/images-webp/
-_research/product-scrape/pdfs/
-_research/sistemas-dilucion-scrape/images/
-_research/sistemas-dilucion-scrape/images-webp/
-_research/node_modules/
-
-# Screenshots temporales
-_research/*.png
-
-# Turbopack / build cache
-.turbo/
-
-# Sanity local
+# Sanity
 .sanity/
 
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
+# Turbopack
+.turbo/
+
+# Folder legado que quedó bloqueado en el rename
+web/
