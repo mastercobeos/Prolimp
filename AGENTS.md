@@ -45,6 +45,10 @@ Estos son bugs reales que ocurrieron en este proyecto. Léelos antes de tocar c�
 
 - **TypeScript strict en Vercel** — `npx tsc --noEmit` local debe pasar cero errores antes de push. Turbopack dev es más permisivo que el build de producción.
 
+- **Vercel image optimizer devuelve HTTP 402 en plan Hobby** cuando pasas el límite mensual (~1000 imágenes optimizadas).
+  Síntoma: imágenes rotas en producción, `/_next/image?url=...` devuelve 402 Payment Required.
+  Fix: setear `images.unoptimized: true` en `next.config.ts`. Si tus imágenes ya vienen optimizadas de la fuente (Sanity CDN, Unsplash, WebP locales), el optimizer de Vercel es redundante y solo quema quota.
+
 ## CSS / positioning
 
 - **`position: fixed` dentro de un padre con `transform` NO es fijo al viewport.**
