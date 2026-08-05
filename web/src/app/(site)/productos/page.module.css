@@ -1,0 +1,114 @@
+.hero {
+  padding-block: clamp(6.5rem, 10vw, 8rem) clamp(2rem, 4vw, 3rem);
+  background: linear-gradient(180deg, #f4f9ff 0%, #ffffff 100%);
+  text-align: center;
+}
+.hero h1 { margin-block: 1rem; }
+.hero p { font-size: 1.05rem; max-width: 620px; margin: 0 auto; }
+.eyebrow {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  background: rgba(2, 116, 197, 0.08);
+  color: var(--azul-700);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sectionHead { text-align: center; max-width: 720px; margin: 0 auto 2.5rem; }
+.sectionHead h2 { margin-bottom: 0.5rem; }
+
+.catsSection { background: var(--bg); }
+.catGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  list-style: none;
+}
+.catCard {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  color: var(--fg) !important;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.catCard:hover { transform: translateX(4px); box-shadow: var(--shadow); border-color: var(--azul-500); }
+.catImg {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--gris-50), var(--gris-100));
+  padding: 12px;
+  display: grid;
+  place-items: center;
+}
+.catImg img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.catCard h3 { color: var(--azul-900); margin-bottom: 0.25rem; }
+.catCard p { font-size: 0.9rem; }
+.arrow { font-size: 1.5rem; color: var(--azul-500); font-weight: 700; }
+
+.lineasSection { background: var(--bg-alt); }
+.lineasGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  list-style: none;
+}
+.lineaChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.5rem;
+  background: white;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-weight: 700;
+  color: var(--azul-900) !important;
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.lineaChip:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: var(--azul-500); }
+.dot { width: 8px; height: 8px; background: var(--cyan-400); border-radius: 50%; }
+
+.marcasSection { background: var(--bg); }
+.marcasGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  list-style: none;
+}
+.marcaCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--fg) !important;
+  text-align: center;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.marcaCard:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.marcaCard img {
+  width: 100%;
+  max-width: 100px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  filter: grayscale(0.3);
+  transition: filter var(--dur) var(--ease);
+}
+.marcaCard:hover img { filter: none; }
+.marcaCard strong { color: var(--azul-900); }
+.marcaCard span { font-size: 0.75rem; color: var(--fg-muted); }
+
+@media (max-width: 720px) { .catGrid { grid-template-columns: 1fr; } .catCard { grid-template-columns: 80px 1fr; } .catCard .arrow { display: none; } }

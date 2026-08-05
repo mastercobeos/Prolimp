@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Next.js build
+.next/
+out/
+build/
+dist/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / Claude workspace
+.vscode/
+.idea/
+.claude/
+
+# Assets pesados scrapeados (regenerar con scripts si se necesitan)
+_research/product-scrape/images/
+_research/product-scrape/images-webp/
+_research/product-scrape/pdfs/
+_research/sistemas-dilucion-scrape/images/
+_research/sistemas-dilucion-scrape/images-webp/
+_research/node_modules/
+
+# Screenshots temporales
+_research/*.png
+
+# Turbopack / build cache
+.turbo/
+
+# Sanity local
+.sanity/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts

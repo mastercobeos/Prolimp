@@ -1,0 +1,468 @@
+.page {
+  min-height: 100vh;
+  padding: 3rem 1.5rem 6rem;
+  background: linear-gradient(180deg, #eaf3fb 0%, #f8fbff 100%);
+}
+.header {
+  max-width: 1400px;
+  margin: 0 auto 2.5rem;
+}
+.title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: #0c1f6e;
+  margin-bottom: 0.5rem;
+}
+.subtitle { color: #506172; font-size: 0.95rem; }
+.grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+.card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid rgba(12, 31, 110, 0.08);
+  box-shadow: 0 8px 24px -12px rgba(12, 31, 110, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.stage {
+  flex: 1;
+  position: relative;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(0, 174, 239, 0.12), transparent 50%),
+    linear-gradient(180deg, #f4f9ff, #ffffff);
+  overflow: hidden;
+}
+.burgerSlot {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+}
+.label {
+  padding: 0.85rem 1rem;
+  border-top: 1px solid rgba(12, 31, 110, 0.06);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0c1f6e;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+}
+.labelNum { color: #0274c5; margin-right: 0.4rem; }
+
+/* Shared burger base */
+.burger {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid rgba(12, 31, 110, 0.1);
+  box-shadow: 0 4px 12px -4px rgba(12, 31, 110, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #0c1f6e;
+  transition: background 200ms, transform 200ms;
+}
+.burger:hover { background: #f4f9ff; }
+.burger:active { transform: scale(0.94); }
+
+/* Panel sample */
+.samplePanel {
+  position: absolute;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid rgba(12, 31, 110, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px -8px rgba(12, 31, 110, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: #0c1f6e;
+  font-weight: 600;
+}
+.samplePanel a { padding: 0.35rem 0.6rem; border-radius: 8px; }
+.samplePanel a:hover { background: #f4f9ff; }
+
+/* =============== 01 Classic 3 → X =============== */
+.b01 { position: relative; }
+.b01 span { position: absolute; left: 12px; right: 12px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 260ms, opacity 200ms, top 260ms; }
+.b01 span:nth-child(1) { top: 14px; }
+.b01 span:nth-child(2) { top: 21px; }
+.b01 span:nth-child(3) { top: 28px; }
+.b01.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b01.open span:nth-child(2) { opacity: 0; }
+.b01.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 02 Dots → X =============== */
+.b02 { position: relative; }
+.b02 span { position: absolute; left: 50%; width: 6px; height: 6px; background: currentColor; border-radius: 50%; transform: translateX(-50%); transition: all 320ms cubic-bezier(.68,-.55,.27,1.55); }
+.b02 span:nth-child(1) { top: 12px; }
+.b02 span:nth-child(2) { top: 19px; }
+.b02 span:nth-child(3) { top: 26px; }
+.b02.open span { width: 20px; height: 2px; border-radius: 2px; top: 21px; }
+.b02.open span:nth-child(1) { transform: translateX(-50%) rotate(45deg); }
+.b02.open span:nth-child(2) { opacity: 0; }
+.b02.open span:nth-child(3) { transform: translateX(-50%) rotate(-45deg); }
+
+/* =============== 03 Squares → X =============== */
+.b03 { position: relative; }
+.b03 span { position: absolute; left: 12px; right: 12px; height: 5px; background: currentColor; border-radius: 1.5px; transition: all 280ms; }
+.b03 span:nth-child(1) { top: 10px; }
+.b03 span:nth-child(2) { top: 19.5px; }
+.b03 span:nth-child(3) { top: 29px; }
+.b03.open span { height: 2px; }
+.b03.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b03.open span:nth-child(2) { opacity: 0; }
+.b03.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 04 Plus → X (rotate) =============== */
+.b04 { transition: transform 300ms cubic-bezier(.68,-.55,.27,1.55); }
+.b04.open { transform: rotate(45deg); }
+.b04 svg { width: 22px; height: 22px; }
+
+/* =============== 05 Lines → Arrow =============== */
+.b05 { position: relative; }
+.b05 span { position: absolute; height: 2px; background: currentColor; border-radius: 2px; transition: all 320ms; left: 12px; right: 12px; }
+.b05 span:nth-child(1) { top: 14px; }
+.b05 span:nth-child(2) { top: 21px; }
+.b05 span:nth-child(3) { top: 28px; }
+.b05.open span:nth-child(1) { top: 15px; right: 20px; transform: rotate(-45deg); transform-origin: right center; }
+.b05.open span:nth-child(2) { width: 60%; }
+.b05.open span:nth-child(3) { top: 27px; right: 20px; transform: rotate(45deg); transform-origin: right center; }
+
+/* =============== 06 Morph merge =============== */
+.b06 { position: relative; }
+.b06 span { position: absolute; left: 50%; height: 2px; background: currentColor; border-radius: 2px; transition: all 380ms cubic-bezier(.7,0,.3,1); }
+.b06 span:nth-child(1) { top: 14px; width: 20px; margin-left: -10px; }
+.b06 span:nth-child(2) { top: 21px; width: 20px; margin-left: -10px; }
+.b06 span:nth-child(3) { top: 28px; width: 20px; margin-left: -10px; }
+.b06.open span { top: 21px; }
+.b06.open span:nth-child(1) { transform: rotate(45deg); }
+.b06.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.b06.open span:nth-child(3) { transform: rotate(-45deg); }
+
+/* =============== 07 Elastic bounce =============== */
+.b07 { position: relative; }
+.b07 span { position: absolute; left: 12px; right: 12px; height: 2px; background: currentColor; transition: transform 500ms cubic-bezier(.34,1.56,.64,1), opacity 200ms; }
+.b07 span:nth-child(1) { top: 14px; }
+.b07 span:nth-child(2) { top: 21px; }
+.b07 span:nth-child(3) { top: 28px; }
+.b07.open span:nth-child(1) { transform: translateY(7px) rotate(135deg); }
+.b07.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.b07.open span:nth-child(3) { transform: translateY(-7px) rotate(-135deg); }
+
+/* =============== 08 Bento grid (9 dots) → X =============== */
+.b08 { position: relative; }
+.b08 span { position: absolute; width: 5px; height: 5px; background: currentColor; border-radius: 2px; transition: all 380ms cubic-bezier(.7,0,.3,1); }
+.b08 span:nth-child(1) { top: 11px; left: 11px; }
+.b08 span:nth-child(2) { top: 11px; left: 19.5px; }
+.b08 span:nth-child(3) { top: 11px; left: 28px; }
+.b08 span:nth-child(4) { top: 19.5px; left: 11px; }
+.b08 span:nth-child(5) { top: 19.5px; left: 19.5px; }
+.b08 span:nth-child(6) { top: 19.5px; left: 28px; }
+.b08 span:nth-child(7) { top: 28px; left: 11px; }
+.b08 span:nth-child(8) { top: 28px; left: 19.5px; }
+.b08 span:nth-child(9) { top: 28px; left: 28px; }
+.b08.open span:nth-child(1) { transform: translate(8px, 8px); }
+.b08.open span:nth-child(3) { transform: translate(-8px, 8px); }
+.b08.open span:nth-child(5) { opacity: 0; }
+.b08.open span:nth-child(7) { transform: translate(8px, -8px); }
+.b08.open span:nth-child(9) { transform: translate(-8px, -8px); }
+.b08.open span:nth-child(2), .b08.open span:nth-child(4), .b08.open span:nth-child(6), .b08.open span:nth-child(8) { opacity: 0; }
+
+/* =============== 09 Vertical dots =============== */
+.b09 { position: relative; }
+.b09 span { position: absolute; left: 50%; width: 5px; height: 5px; background: currentColor; border-radius: 50%; transform: translateX(-50%); transition: transform 260ms; }
+.b09 span:nth-child(1) { top: 12px; }
+.b09 span:nth-child(2) { top: 19.5px; }
+.b09 span:nth-child(3) { top: 27px; }
+.b09.open span:nth-child(1) { transform: translate(-50%, 7.5px) rotate(45deg); width: 20px; height: 2px; border-radius: 2px; }
+.b09.open span:nth-child(2) { opacity: 0; }
+.b09.open span:nth-child(3) { transform: translate(-50%, -7.5px) rotate(-45deg); width: 20px; height: 2px; border-radius: 2px; }
+
+/* =============== 10 Hexagon lines =============== */
+.b10 { clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%); background: white; }
+.b10 span { position: absolute; left: 12px; right: 12px; height: 2px; background: currentColor; border-radius: 2px; transition: all 260ms; }
+.b10 span:nth-child(1) { top: 15px; }
+.b10 span:nth-child(2) { top: 21px; }
+.b10 span:nth-child(3) { top: 27px; }
+.b10.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b10.open span:nth-child(2) { opacity: 0; }
+.b10.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 11 Circle burger =============== */
+.b11 { border-radius: 50%; position: relative; }
+.b11 span { position: absolute; left: 12px; right: 12px; height: 2px; background: currentColor; border-radius: 2px; transition: all 260ms; }
+.b11 span:nth-child(1) { top: 15px; }
+.b11 span:nth-child(2) { top: 21px; }
+.b11 span:nth-child(3) { top: 27px; }
+.b11.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b11.open span:nth-child(2) { opacity: 0; }
+.b11.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 12 Pill stack =============== */
+.b12 { border-radius: 999px; padding: 0 8px; }
+.b12 span { position: absolute; left: 10px; right: 10px; height: 4px; background: currentColor; border-radius: 999px; transition: all 320ms; }
+.b12 span:nth-child(1) { top: 11px; }
+.b12 span:nth-child(2) { top: 20px; }
+.b12 span:nth-child(3) { top: 29px; }
+.b12.open span { height: 2px; }
+.b12.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b12.open span:nth-child(2) { opacity: 0; }
+.b12.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 13 Uneven lines =============== */
+.b13 { position: relative; }
+.b13 span { position: absolute; height: 2px; background: currentColor; border-radius: 2px; transition: all 260ms; }
+.b13 span:nth-child(1) { top: 14px; left: 12px; width: 18px; }
+.b13 span:nth-child(2) { top: 21px; left: 12px; width: 20px; }
+.b13 span:nth-child(3) { top: 28px; left: 20px; width: 12px; }
+.b13.open span { width: 20px; left: 12px; }
+.b13.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b13.open span:nth-child(2) { opacity: 0; }
+.b13.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 14 Waffle (6 dots) =============== */
+.b14 { position: relative; }
+.b14 span { position: absolute; width: 6px; height: 6px; background: currentColor; border-radius: 2px; transition: all 320ms; }
+.b14 span:nth-child(1) { top: 12px; left: 12px; }
+.b14 span:nth-child(2) { top: 12px; left: 26px; }
+.b14 span:nth-child(3) { top: 19px; left: 12px; }
+.b14 span:nth-child(4) { top: 19px; left: 26px; }
+.b14 span:nth-child(5) { top: 26px; left: 12px; }
+.b14 span:nth-child(6) { top: 26px; left: 26px; }
+.b14.open span { top: 19px; left: 19px; }
+.b14.open span:nth-child(2), .b14.open span:nth-child(3), .b14.open span:nth-child(4), .b14.open span:nth-child(5) { opacity: 0; }
+.b14.open span:nth-child(1) { transform: translate(-2px, -2px) rotate(45deg); width: 18px; height: 2px; border-radius: 2px; }
+.b14.open span:nth-child(6) { transform: translate(-2px, -2px) rotate(-45deg); width: 18px; height: 2px; border-radius: 2px; }
+
+/* =============== 15 Envelope fold — arrow up =============== */
+.b15 svg { width: 22px; height: 22px; transition: transform 320ms; }
+.b15.open svg { transform: rotate(180deg); }
+
+/* =============== 16 Rotating cube =============== */
+.b16 { perspective: 200px; }
+.b16 .inner { position: relative; width: 22px; height: 22px; transform-style: preserve-3d; transition: transform 460ms cubic-bezier(.65,0,.35,1); }
+.b16.open .inner { transform: rotateY(180deg); }
+.b16 .face { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; backface-visibility: hidden; color: currentColor; }
+.b16 .back { transform: rotateY(180deg); }
+.b16 .face svg { width: 20px; height: 20px; }
+
+/* =============== 17 Split screen icon =============== */
+.b17 { position: relative; }
+.b17 .top, .b17 .bot { position: absolute; left: 12px; right: 12px; height: 8px; background: currentColor; border-radius: 3px; transition: all 320ms; }
+.b17 .top { top: 12px; }
+.b17 .bot { bottom: 12px; }
+.b17.open .top { transform: translateY(4px) rotate(45deg); height: 2px; }
+.b17.open .bot { transform: translateY(-4px) rotate(-45deg); height: 2px; }
+
+/* =============== 18 Curtain (rectangle grows) =============== */
+.b18 { position: relative; }
+.b18 span { position: absolute; left: 12px; right: 12px; height: 2px; background: currentColor; border-radius: 2px; transition: all 260ms; }
+.b18 span:nth-child(1) { top: 14px; }
+.b18 span:nth-child(2) { top: 21px; }
+.b18 span:nth-child(3) { top: 28px; }
+.b18.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b18.open span:nth-child(2) { opacity: 0; }
+.b18.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 19 Fullscreen expand =============== */
+.b19 { position: relative; overflow: visible; }
+.b19 span { position: absolute; left: 12px; right: 12px; height: 2px; background: currentColor; border-radius: 2px; transition: all 260ms; }
+.b19 span:nth-child(1) { top: 14px; }
+.b19 span:nth-child(2) { top: 21px; }
+.b19 span:nth-child(3) { top: 28px; }
+.b19.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b19.open span:nth-child(2) { opacity: 0; }
+.b19.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 20 Radial pop =============== */
+.b20 { position: relative; }
+.b20 span { position: absolute; left: 12px; right: 12px; height: 2px; background: currentColor; border-radius: 2px; transition: all 260ms; }
+.b20 span:nth-child(1) { top: 14px; }
+.b20 span:nth-child(2) { top: 21px; }
+.b20 span:nth-child(3) { top: 28px; }
+.b20.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b20.open span:nth-child(2) { opacity: 0; }
+.b20.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 21 Drawer right =============== */
+.b21 span { position: absolute; height: 2px; background: currentColor; border-radius: 2px; transition: all 260ms; right: 12px; }
+.b21 span:nth-child(1) { top: 14px; width: 20px; }
+.b21 span:nth-child(2) { top: 21px; width: 14px; }
+.b21 span:nth-child(3) { top: 28px; width: 20px; }
+.b21.open span { width: 20px; }
+.b21.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b21.open span:nth-child(2) { opacity: 0; }
+.b21.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 22 Bottom sheet =============== */
+.b22 { position: relative; }
+.b22 span { position: absolute; left: 12px; right: 12px; height: 2px; background: currentColor; border-radius: 2px; transition: all 260ms; }
+.b22 span:nth-child(1) { top: 14px; }
+.b22 span:nth-child(2) { top: 21px; }
+.b22 span:nth-child(3) { top: 28px; }
+.b22.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.b22.open span:nth-child(2) { opacity: 0; }
+.b22.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* =============== 23 Diagonal split =============== */
+.b23 { position: relative; }
+.b23 span { position: absolute; left: 12px; right: 12px; height: 2px; background: currentColor; border-radius: 2px; transition: all 320ms; }
+.b23 span:nth-child(1) { top: 14px; transform-origin: left; }
+.b23 span:nth-child(2) { top: 21px; }
+.b23 span:nth-child(3) { top: 28px; transform-origin: right; }
+.b23.open span:nth-child(1) { transform: rotate(20deg); }
+.b23.open span:nth-child(2) { opacity: 0; }
+.b23.open span:nth-child(3) { transform: rotate(20deg); }
+
+/* =============== 24 Peel corner (icon rotates) =============== */
+.b24 svg { width: 22px; height: 22px; transition: transform 400ms cubic-bezier(.65,0,.35,1); }
+.b24.open svg { transform: rotate(90deg); }
+
+/* =============== 25 Blob morph =============== */
+.b25 svg { width: 24px; height: 24px; transition: transform 400ms; }
+.b25.open svg { transform: rotate(45deg) scale(0.9); }
+
+/* =============== Panels =============== */
+
+/* Drawer right */
+.pDrawer {
+  position: absolute; top: 0; bottom: 0; right: 0; width: 60%;
+  padding: 3rem 0.75rem 0.75rem;
+  background: white; border-left: 1px solid rgba(12,31,110,0.08);
+  transform: translateX(100%); transition: transform 320ms cubic-bezier(.65,0,.35,1);
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.pDrawer.on { transform: translateX(0); }
+
+/* Drawer left */
+.pDrawerLeft {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 60%;
+  padding: 3rem 0.75rem 0.75rem;
+  background: white; border-right: 1px solid rgba(12,31,110,0.08);
+  transform: translateX(-100%); transition: transform 320ms cubic-bezier(.65,0,.35,1);
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.pDrawerLeft.on { transform: translateX(0); }
+
+/* Fullscreen */
+.pFull {
+  position: absolute; inset: 0; padding: 3rem 1rem 1rem;
+  background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
+  opacity: 0; visibility: hidden; transition: opacity 260ms;
+  display: flex; flex-direction: column; gap: 0.35rem; align-items: center; justify-content: center;
+}
+.pFull.on { opacity: 1; visibility: visible; }
+
+/* Curtain (top) */
+.pCurtain {
+  position: absolute; left: 0; right: 0; top: 0; height: 0;
+  background: white; overflow: hidden;
+  transition: height 340ms cubic-bezier(.7,0,.3,1);
+  padding: 0 0.75rem;
+  display: flex; flex-direction: column; gap: 0.3rem; align-items: center; justify-content: center;
+}
+.pCurtain.on { height: 100%; padding: 3rem 0.75rem 0.75rem; }
+
+/* Bottom sheet */
+.pBottom {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 1rem 0.75rem;
+  background: white; border-top-left-radius: 20px; border-top-right-radius: 20px;
+  transform: translateY(100%); transition: transform 320ms cubic-bezier(.65,0,.35,1);
+  display: flex; flex-direction: column; gap: 0.3rem;
+  box-shadow: 0 -6px 20px rgba(12,31,110,0.1);
+}
+.pBottom.on { transform: translateY(0); }
+
+/* Popover top-right */
+.pPop {
+  position: absolute; top: 66px; right: 14px;
+  padding: 0.75rem; background: white; border-radius: 14px;
+  border: 1px solid rgba(12,31,110,0.08);
+  box-shadow: 0 12px 30px -8px rgba(12,31,110,0.25);
+  transform: translateY(-8px) scale(0.95); opacity: 0; visibility: hidden;
+  transform-origin: top right;
+  transition: transform 220ms, opacity 220ms, visibility 220ms;
+  display: flex; flex-direction: column; gap: 0.3rem; min-width: 140px;
+}
+.pPop.on { transform: translateY(0) scale(1); opacity: 1; visibility: visible; }
+
+/* Radial clip */
+.pRadial {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(2,116,197,0.95), rgba(0,174,239,0.95)); color: white;
+  clip-path: circle(0% at calc(100% - 36px) 36px);
+  transition: clip-path 500ms cubic-bezier(.7,0,.3,1);
+  padding: 3rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.35rem; align-items: center; justify-content: center;
+}
+.pRadial.on { clip-path: circle(150% at calc(100% - 36px) 36px); }
+.pRadial a { color: white; }
+.pRadial a:hover { background: rgba(255,255,255,0.15); }
+
+/* Split top+bottom */
+.pSplitTop, .pSplitBot {
+  position: absolute; left: 0; right: 0; height: 50%; background: white;
+  transition: transform 320ms cubic-bezier(.7,0,.3,1);
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.5rem; padding: 0.5rem;
+}
+.pSplitTop { top: 0; transform: translateY(-100%); border-bottom: 1px solid rgba(12,31,110,0.08); }
+.pSplitBot { bottom: 0; transform: translateY(100%); }
+.pSplitTop.on, .pSplitBot.on { transform: translateY(0); }
+
+/* Diagonal */
+.pDiagonal {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(12,31,110,0.95), rgba(2,116,197,0.95)); color: white;
+  clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
+  transition: clip-path 500ms cubic-bezier(.7,0,.3,1);
+  padding: 3rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.35rem; align-items: flex-end; justify-content: center;
+}
+.pDiagonal.on { clip-path: polygon(100% 0, 0 100%, 100% 100%, 100% 0); }
+.pDiagonal a { color: white; }
+.pDiagonal a:hover { background: rgba(255,255,255,0.15); }
+
+/* Glass panel */
+.pGlass {
+  position: absolute; top: 66px; left: 14px; right: 14px; bottom: 14px;
+  padding: 0.85rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.15));
+  backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255,255,255,0.4); border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(12,31,110,0.15);
+  transform: translateY(-8px); opacity: 0; visibility: hidden;
+  transition: transform 260ms, opacity 260ms, visibility 260ms;
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.pGlass.on { transform: translateY(0); opacity: 1; visibility: visible; }
+
+/* Blob morph */
+.pBlob {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at calc(100% - 36px) 36px, rgba(0,174,239,0.98), rgba(2,116,197,0.98) 60%, rgba(12,31,110,0.98));
+  color: white;
+  clip-path: circle(0% at calc(100% - 36px) 36px);
+  transition: clip-path 550ms cubic-bezier(.34,1.56,.64,1);
+  padding: 3rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.3rem; align-items: center; justify-content: center;
+}
+.pBlob.on { clip-path: circle(180% at calc(100% - 36px) 36px); }
+.pBlob a { color: white; }
+.pBlob a:hover { background: rgba(255,255,255,0.15); }
+
+/* Backdrop */
+.backdrop {
+  position: absolute; inset: 0; background: rgba(12,31,110,0.15);
+  opacity: 0; visibility: hidden; transition: opacity 240ms, visibility 240ms; z-index: 3;
+}
+.backdrop.on { opacity: 1; visibility: visible; }

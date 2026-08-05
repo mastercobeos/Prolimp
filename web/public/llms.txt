@@ -1,0 +1,15 @@
+# Prolimp
+
+> Prolimp del Centro es una empresa mexicana fabricante de químicos y productos de limpieza profesional desde 1971. Distribuye marcas líderes globales y provee soluciones para industria, hoteles, hospitales, restaurantes y hogar en todo México.
+
+## Empresa
+
+- [Nosotros](https://www.prolimp.com/nosotros): fabricantes ISO 9001, capacitación STPS registrada, empresa ESR
+- [Contacto](https://www.prolimp.com/contacto): WhatsApp, email y formulario
+- [Sucursales](https://www.prolimp.com/sucursales): cobertura nacional
+
+## Catálogo
+
+- [Productos](https://www.prolimp.com/productos): catálogo completo por categoría, línea y marca
+- [Químicos](https://www.prolimp.com/productos/quimicos): 11 líneas de fabricación propia
+- [Blog](https://www.prolimp.com/blog): guías y buenas prácticas de limpieza profesional

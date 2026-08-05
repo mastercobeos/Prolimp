@@ -1,0 +1,304 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gris-900);
+  border: none;
+  cursor: pointer;
+  transition: background 200ms;
+}
+.trigger:hover { background: rgba(2, 116, 197, 0.08); color: var(--azul-500); }
+
+/* ===== Overlay: transparente, solo captura clicks-fuera ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 100;
+  animation: fadeIn 180ms ease-out;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===== Container: ocupa el interior del navbar pill (que se vacía cuando search está abierto) ===== */
+.container {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem - 3rem);
+  max-width: calc(1240px - 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  animation: fadeIn 200ms ease-out;
+}
+.container.closing {
+  animation: fadeOut 180ms ease-out forwards;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+/* ===== Barra liquid glass — textura de cristal real (iPhone/iOS 26 style) ===== */
+.bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 46px;
+  padding: 0 6px 0 20px;
+  border-radius: 999px;
+  overflow: hidden;
+  isolation: isolate;
+  /* Muy poca opacidad blanca — deja que el contenido detrás se filtre como cristal */
+  background:
+    radial-gradient(120% 200% at 50% -30%, rgba(255,255,255,0.28) 0%, transparent 55%),
+    radial-gradient(100% 150% at 50% 130%, rgba(2, 116, 197, 0.10) 0%, transparent 55%);
+  /* SVG distortion (definido en Header.tsx) + fuerte saturación (colores vibrantes detrás) */
+  backdrop-filter: url(#liquid-glass-distort) blur(14px) saturate(260%) contrast(1.08);
+  -webkit-backdrop-filter: blur(14px) saturate(260%) contrast(1.08);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    /* Rim highlights sutiles (curvatura de lente) */
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.65),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.15),
+    inset 1.5px 0 2px -1px rgba(255, 255, 255, 0.2),
+    inset -1.5px 0 2px -1px rgba(255, 255, 255, 0.2),
+    /* Sombra suave para flotación */
+    0 6px 20px -6px rgba(12, 31, 110, 0.22);
+}
+/* Specular streak — franja brillante superior, cristal húmedo */
+.bar::before {
+  content: "";
+  position: absolute;
+  inset: 1px 8% auto 8%;
+  height: 50%;
+  border-radius: 999px 999px 200px 200px / 999px 999px 60px 60px;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.15) 60%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+  opacity: 0.75;
+}
+/* Chromatic edge sutil (aberración de lente en el borde) */
+.bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from 220deg at 50% 50%,
+    rgba(255,255,255,0.55) 0deg,
+    rgba(0, 174, 239, 0.30) 90deg,
+    rgba(255,255,255,0.10) 180deg,
+    rgba(2, 116, 197, 0.35) 270deg,
+    rgba(255,255,255,0.55) 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+.bar > * { position: relative; z-index: 2; }
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.82rem;
+  font-family: inherit;
+  color: var(--gris-900);
+  background: transparent;
+  min-width: 0;
+  padding: 0;
+  letter-spacing: 0.01em;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.input::placeholder {
+  color: var(--gris-500);
+  font-weight: 400;
+}
+/* Ocultar botón × nativo de type=search (Chrome/Safari) */
+.input::-webkit-search-cancel-button,
+.input::-webkit-search-decoration,
+.input::-webkit-search-results-button,
+.input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+.closeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(2, 116, 197, 0.08);
+  border: none;
+  color: var(--gris-700);
+  cursor: pointer;
+  transition: all 180ms;
+  flex-shrink: 0;
+}
+.closeBtn:hover {
+  background: rgba(2, 116, 197, 0.16);
+  color: var(--azul-500);
+}
+
+/* ===== Panel de resultados / hint / status (separado abajo) ===== */
+.dropdown {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid rgba(2, 116, 197, 0.08);
+  box-shadow: 0 12px 32px -12px rgba(12, 31, 110, 0.2);
+  overflow: hidden;
+  max-height: 55vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.results {
+  overflow-y: auto;
+  padding: 0.35rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gris-300) transparent;
+}
+.results::-webkit-scrollbar { width: 4px; }
+.results::-webkit-scrollbar-thumb { background: var(--gris-300); border-radius: 999px; }
+.results ul { list-style: none; padding: 0; margin: 0; }
+
+.status {
+  padding: 1rem 1.15rem;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+.hint {
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: center;
+}
+.hintChip {
+  padding: 0.28rem 0.75rem;
+  background: var(--gris-100);
+  border: 1px solid var(--border);
+  color: var(--gris-700);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms;
+  font-family: inherit;
+}
+.hintChip:hover {
+  background: rgba(2, 116, 197, 0.08);
+  border-color: rgba(2, 116, 197, 0.25);
+  color: var(--azul-500);
+}
+
+.spinnerWrap {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+}
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(2, 116, 197, 0.15);
+  border-top-color: var(--azul-500);
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.resultsHeader {
+  padding: 0.5rem 0.85rem 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--gris-400);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.resultRow {
+  display: flex;
+  gap: 0.65rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 10px;
+  color: inherit;
+  align-items: center;
+  transition: background 150ms;
+}
+.resultRow:hover { background: var(--gris-100); }
+.thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--gris-100);
+  padding: 3px;
+  flex-shrink: 0;
+}
+.thumbPh {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--gris-100);
+  flex-shrink: 0;
+}
+.resultBody { flex: 1; min-width: 0; }
+.resultTitle {
+  color: var(--azul-900);
+  font-weight: 600;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.resultMeta {
+  color: var(--fg-muted);
+  font-size: 0.72rem;
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.resultMeta > span:not(:first-child)::before {
+  content: "·";
+  margin-right: 0.3rem;
+  color: var(--gris-400);
+}
+.resultSku {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 0.65rem;
+  padding: 0.08rem 0.35rem;
+  background: var(--gris-100);
+  border-radius: 4px;
+  color: var(--gris-700);
+}
+.resultMeta > span:not(:first-child).resultSku::before { content: ""; margin: 0; }
+.resultArrow {
+  color: var(--gris-300);
+  flex-shrink: 0;
+}
+
+/* Deshabilitados en esta versión slim */
+.kbdHint, .panelFooter, .footerKeys, .footerKey, .footerKbd, .hintTitle { display: none; }

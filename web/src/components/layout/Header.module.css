@@ -1,0 +1,449 @@
+/* Pill flotante estilo growflow — una sola barra, glass claro (fondo claro del sitio) */
+.header {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 1240px;
+  z-index: 50;
+  transition:
+    transform 520ms cubic-bezier(.22, 1, .36, 1),
+    opacity 480ms cubic-bezier(.22, 1, .36, 1);
+  will-change: transform, opacity;
+}
+.header.hidden {
+  transform: translateX(-50%) translateY(calc(-100% - 2rem));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.svgFilter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0 1.25rem 0 1rem;
+  border-radius: 999px;
+  isolation: isolate;
+  /* Convex 3D lens body */
+  background:
+    radial-gradient(140% 220% at 50% -20%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 35%, transparent 60%),
+    radial-gradient(120% 180% at 50% 120%, rgba(2, 116, 197, 0.12) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 45%, rgba(255,255,255,0.10) 100%);
+  backdrop-filter: url(#liquid-glass-distort) blur(18px) saturate(240%) brightness(1.10) contrast(1.05);
+  -webkit-backdrop-filter: blur(18px) saturate(240%) brightness(1.10) contrast(1.05);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    /* Inner top rim (bright highlight) */
+    inset 0 2px 1px rgba(255, 255, 255, 0.95),
+    inset 0 4px 6px -2px rgba(255, 255, 255, 0.55),
+    /* Inner bottom rim (soft reflected light) */
+    inset 0 -2px 2px rgba(255, 255, 255, 0.35),
+    inset 0 -8px 14px -6px rgba(2, 116, 197, 0.18),
+    /* Side rims for lens curvature */
+    inset 2px 0 2px -1px rgba(255, 255, 255, 0.35),
+    inset -2px 0 2px -1px rgba(255, 255, 255, 0.35),
+    /* Micro shadow just under the pill */
+    0 1px 2px rgba(255, 255, 255, 0.5),
+    0 2px 4px rgba(12, 31, 110, 0.06),
+    /* Depth stack: 3 layered shadows for floating 3D pill */
+    0 8px 16px -4px rgba(12, 31, 110, 0.15),
+    0 20px 36px -10px rgba(12, 31, 110, 0.20),
+    0 40px 64px -16px rgba(12, 31, 110, 0.14);
+  transition: background 260ms var(--ease), border-color 260ms var(--ease), box-shadow 260ms var(--ease);
+}
+/* Big specular highlight — the "wet" top gloss */
+.inner::before {
+  content: "";
+  position: absolute;
+  inset: 2px 4% auto 4%;
+  height: 55%;
+  border-radius: 999px 999px 300px 300px / 999px 999px 100px 100px;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.75) 0%,
+      rgba(255, 255, 255, 0.35) 40%,
+      rgba(255, 255, 255, 0.05) 80%,
+      transparent 100%);
+  filter: blur(0.5px);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+}
+/* Chromatic refractive edge (rainbow rim like real glass) */
+.inner::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from 210deg at 50% 50%,
+    rgba(255,255,255,0.8) 0deg,
+    rgba(0, 174, 239, 0.45) 60deg,
+    rgba(255,255,255,0.15) 130deg,
+    rgba(2, 116, 197, 0.5) 200deg,
+    rgba(255,255,255,0.6) 280deg,
+    rgba(0, 174, 239, 0.4) 340deg,
+    rgba(255,255,255,0.8) 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+  filter: blur(0.5px);
+}
+.inner > *:not(svg) {
+  position: relative;
+  z-index: 2;
+}
+.scrolled .inner {
+  background:
+    radial-gradient(140% 220% at 50% -20%, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.12) 35%, transparent 60%),
+    radial-gradient(120% 180% at 50% 120%, rgba(2, 116, 197, 0.16) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.15) 100%);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow:
+    inset 0 2px 1px rgba(255, 255, 255, 1),
+    inset 0 4px 6px -2px rgba(255, 255, 255, 0.65),
+    inset 0 -2px 2px rgba(255, 255, 255, 0.45),
+    inset 0 -8px 14px -6px rgba(2, 116, 197, 0.22),
+    inset 2px 0 2px -1px rgba(255, 255, 255, 0.45),
+    inset -2px 0 2px -1px rgba(255, 255, 255, 0.45),
+    0 1px 2px rgba(255, 255, 255, 0.6),
+    0 2px 4px rgba(12, 31, 110, 0.08),
+    0 10px 20px -4px rgba(12, 31, 110, 0.20),
+    0 24px 44px -10px rgba(12, 31, 110, 0.24),
+    0 48px 72px -16px rgba(12, 31, 110, 0.18);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 0.5rem;
+}
+.logo img {
+  width: auto;
+  height: 34px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(23%) sepia(92%) saturate(2100%) hue-rotate(190deg) brightness(94%) contrast(100%);
+}
+
+.nav {
+  flex: 1;
+}
+.nav > ul {
+  display: flex;
+  gap: 0.15rem;
+  justify-content: center;
+  list-style: none;
+}
+.nav > ul > li {
+  position: relative;
+}
+.nav > ul > li > a {
+  display: block;
+  padding: 0.5rem 0.85rem;
+  color: var(--gris-800);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 999px;
+  transition: background 160ms var(--ease), color 160ms var(--ease);
+  white-space: nowrap;
+}
+.nav > ul > li > a:hover {
+  background: rgba(2, 116, 197, 0.08);
+  color: var(--primary);
+}
+
+.hasMega:hover .mega,
+.hasMega:focus-within .mega {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Megamenu también glass */
+.mega {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translate(-50%, -8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  min-width: 680px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.7) 100%),
+    rgba(244, 249, 255, 0.6);
+  backdrop-filter: saturate(180%) blur(22px);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 20px 50px rgba(12, 31, 110, 0.18);
+  padding: 1.75rem;
+  transition: opacity 260ms var(--ease), transform 260ms var(--ease), visibility 260ms;
+}
+.megaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.megaTitle {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+.megaGrid ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.megaGrid a {
+  color: var(--fg);
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: block;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  transition: color 160ms var(--ease), background 160ms var(--ease);
+}
+.megaGrid a:hover {
+  color: var(--primary);
+  background: rgba(2, 116, 197, 0.08);
+}
+
+/* CTA con glass sobre gradiente azul */
+.cta {
+  position: relative;
+  padding: 0.55rem 1.15rem;
+  color: white !important;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 60%),
+    linear-gradient(135deg, var(--azul-500), var(--azul-700));
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+    0 6px 18px rgba(2, 116, 197, 0.35);
+  backdrop-filter: blur(6px);
+  transition: transform 160ms var(--ease), box-shadow 160ms var(--ease);
+}
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+    0 10px 24px rgba(2, 116, 197, 0.5);
+  color: white !important;
+}
+
+/* Variante 02 — 3 puntos → X (todos centrados, transform-only) */
+.burger {
+  display: none;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.burger:hover { background: rgba(2, 116, 197, 0.08); }
+.burger span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  border-radius: 50%;
+  transition:
+    width 280ms cubic-bezier(.4, 0, .2, 1),
+    height 280ms cubic-bezier(.4, 0, .2, 1),
+    border-radius 280ms cubic-bezier(.4, 0, .2, 1),
+    transform 320ms cubic-bezier(.4, 0, .2, 1),
+    opacity 200ms;
+}
+.burger span:nth-child(1) { transform: translate(-50%, calc(-50% - 7px)); }
+.burger span:nth-child(2) { transform: translate(-50%, -50%); }
+.burger span:nth-child(3) { transform: translate(-50%, calc(-50% + 7px)); }
+.burgerOpen span {
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+}
+.burgerOpen span:nth-child(1) { transform: translate(-50%, -50%) rotate(45deg); }
+.burgerOpen span:nth-child(2) { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+.burgerOpen span:nth-child(3) { transform: translate(-50%, -50%) rotate(-45deg); }
+
+/* Mobile menu — popover glass anchored top-right (variante 02) */
+.mobile {
+  position: fixed;
+  top: calc(1.25rem + 68px + 8px);
+  right: 1.5rem;
+  min-width: 260px;
+  max-width: calc(100% - 3rem);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding: 1rem;
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.86) 0%, rgba(255,255,255,0.7) 100%),
+    rgba(244, 249, 255, 0.6);
+  backdrop-filter: saturate(180%) blur(22px);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 20px 50px rgba(12, 31, 110, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.95);
+  transform-origin: top right;
+  transition: opacity 240ms var(--ease), transform 260ms cubic-bezier(.34,1.56,.64,1), visibility 260ms;
+  z-index: 40;
+}
+.mobileOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.mobile ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 1rem;
+}
+.mobile ul a {
+  display: block;
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--gris-900);
+  border-radius: 12px;
+}
+.mobile ul a:hover { background: rgba(2, 116, 197, 0.08); color: var(--primary); }
+.mobileCta {
+  display: block;
+  text-align: center;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, var(--azul-500), var(--azul-700));
+  color: white !important;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+@media (max-width: 960px) {
+  .nav, .cta { display: none; }
+  .burger { display: flex; margin-left: auto; }
+}
+
+/* Menú mobile con secciones expandibles (details/summary) */
+.mobileNav { padding: 0; margin: 0; list-style: none; }
+.mobileNav > li { border-bottom: 1px solid rgba(2, 116, 197, 0.06); }
+.mobileNav > li:last-child { border-bottom: none; }
+.mobileNav > li > a {
+  display: block;
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--gris-900);
+  border-radius: 10px;
+  transition: background 160ms;
+}
+.mobileNav > li > a:hover { background: rgba(2, 116, 197, 0.06); color: var(--primary); }
+
+.mobileGroup details { padding: 0; }
+.mobileGroup summary {
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--gris-900);
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 160ms;
+  border-radius: 10px;
+}
+.mobileGroup summary::-webkit-details-marker { display: none; }
+.mobileGroup summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--gris-500);
+  border-bottom: 2px solid var(--gris-500);
+  transform: rotate(45deg);
+  transition: transform 220ms cubic-bezier(.22, 1, .36, 1);
+  margin-right: 6px;
+}
+.mobileGroup details[open] summary::after { transform: rotate(-135deg); }
+.mobileGroup summary:hover { background: rgba(2, 116, 197, 0.06); color: var(--primary); }
+
+.mobileSub {
+  padding: 0.35rem 0.5rem 0.85rem;
+  animation: mobileSubIn 260ms cubic-bezier(.22, 1, .36, 1);
+}
+@keyframes mobileSubIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mobileSubTitle {
+  display: block;
+  padding: 0.75rem 0.75rem 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.mobileSub ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mobileSub ul a {
+  display: block;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--gris-800);
+  border-radius: 8px;
+  transition: background 160ms;
+}
+.mobileSub ul a:hover { background: rgba(2, 116, 197, 0.06); color: var(--primary); }
