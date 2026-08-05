@@ -20,7 +20,7 @@ import {
   productosDestacadosQuery,
   marcaBySlugQuery,
 } from "@/sanity/queries";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { SanityImageSource } from "@sanity/image-url";
 import * as fallback from "./content";
 import { allPosts as fallbackPosts } from "./blog";
 
