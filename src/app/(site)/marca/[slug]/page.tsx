@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { urlForImage } from "@/sanity/image";
-import { getMarcaBySlug, getMarcas } from "@/lib/data";
+import { getMarcaBySlug, getAllMarcaSlugs } from "@/lib/data";
 import styles from "./page.module.css";
 
 type Params = Promise<{ slug: string }>;
@@ -11,8 +11,8 @@ type Params = Promise<{ slug: string }>;
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const marcas = await getMarcas();
-  return marcas.map((m) => ({ slug: m.slug }));
+  const slugs = await getAllMarcaSlugs();
+  return slugs.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
