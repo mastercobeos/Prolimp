@@ -122,7 +122,7 @@ export function Footer({ categorias, lineas, empresa }: Props) {
             rel="noopener noreferrer"
             className={styles.madeBy}
           >
-            Sitio hecho por
+            Made by
             <span>Grow Flow Automation</span>
             <Image
               src="/img/logo/growflow-icon.png"

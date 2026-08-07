@@ -144,7 +144,7 @@ export function Header({ categorias, lineas }: Props) {
                 <span className={styles.mobileSubTitle}>Categorías</span>
                 <ul>
                   <li><Link href="/productos" onClick={() => setOpen(false)}>Ver todo</Link></li>
-                  {categorias.slice(0, 8).map((c) => (
+                  {categorias.map((c) => (
                     <li key={c.slug}><Link href={`/productos/${c.slug}`} onClick={() => setOpen(false)}>{c.nombre}</Link></li>
                   ))}
                 </ul>

@@ -15,7 +15,6 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagen, stats }: Pr
   return (
     <section className={styles.hero}>
       <div className={styles.heroBg} aria-hidden />
-      <div className={styles.bgOrbs} aria-hidden />
       <div className={`container container-wide ${styles.inner}`}>
         <div className={styles.content}>
           <span className={styles.eyebrow}>
@@ -38,14 +37,6 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagen, stats }: Pr
               Solicitar cotización
             </Link>
           </div>
-          <a href="/pdf/catalogo-prolimp.pdf" download className={styles.catalogLink}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            Descargar catálogo PDF
-          </a>
           <ul className={styles.stats}>
             {stats.map((s) => (
               <li key={s.valor + s.etiqueta}>
@@ -69,11 +60,11 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagen, stats }: Pr
           </div>
           <div className={styles.badge}>
             <span>Certificados</span>
-            <strong>ISO 9001</strong>
+            <strong>ISO 9000</strong>
           </div>
           <div className={styles.badge2}>
             <span>Registrados en</span>
-            <strong>STPS · Sec. Salud</strong>
+            <strong>STPS y Sec. de Salud</strong>
           </div>
         </div>
       </div>

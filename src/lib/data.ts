@@ -58,18 +58,18 @@ export async function getHomeContent() {
     ctaCierreLede?: string;
   }>(homeQuery);
   return {
-    heroEyebrow: data?.heroEyebrow ?? "Fabricantes desde 1971 · ISO 9001",
-    heroTituloParte1: data?.heroTituloParte1 ?? "Un mundo más limpio es un lugar",
-    heroTituloAcento: data?.heroTituloAcento ?? "más seguro y saludable.",
-    heroLede: data?.heroLede ?? "Fabricamos 11 líneas de químicos de limpieza profesional...",
+    heroEyebrow: data?.heroEyebrow ?? "Fabricantes desde 1997",
+    heroTituloParte1: data?.heroTituloParte1 ?? "Creamos espacios limpios,",
+    heroTituloAcento: data?.heroTituloAcento ?? "seguros y saludables",
+    heroLede: data?.heroLede ?? "Todo para la limpieza de tu empresa: limpiadores profesionales, herramientas resistentes, insumos especializados y asesoría para elegir mejor.",
     heroImagen: imgUrl(data?.heroImagen, 1600)
       ?? "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=1200&q=85&auto=format&fit=crop",
     stats: data?.stats?.length
       ? data.stats
       : [
-          { valor: "11", etiqueta: "Líneas químicos propios" },
-          { valor: "200+", etiqueta: "Productos en catálogo" },
-          { valor: "50+", etiqueta: "Años de experiencia" },
+          { valor: "11", etiqueta: "Líneas de limpiadores propios" },
+          { valor: "+2000", etiqueta: "Productos en catálogo" },
+          { valor: "+35", etiqueta: "Años de experiencia" },
         ],
     diferenciadores: data?.diferenciadores?.length
       ? data.diferenciadores.map((d) => ({
