@@ -4,7 +4,8 @@ import { Lineas } from "@/components/home/Lineas";
 import { Categorias } from "@/components/home/Categorias";
 import { Marcas } from "@/components/home/Marcas";
 import { BlogPreview } from "@/components/home/BlogPreview";
-import { CtaCierre } from "@/components/home/CtaCierre";
+import { HechoEnMexico } from "@/components/home/HechoEnMexico";
+import { CtaBand } from "@/components/shared/CtaBand";
 import { getHomeContent, getLineas, getCategorias, getMarcas, getPosts } from "@/lib/data";
 
 export default async function Home() {
@@ -26,12 +27,25 @@ export default async function Home() {
         imagen={home.heroImagen}
         stats={home.stats}
       />
-      <Diferenciadores items={home.diferenciadores} />
       <Lineas lineas={lineas} />
+      <Diferenciadores items={home.diferenciadores} />
+      <CtaBand
+        titulo="Los baños de tu empresa sin mal olor"
+        href="https://controldeolores-siba.com"
+        external
+        variant="azul"
+        logo={{ src: "/img/redesign/siba-logo.png", alt: "SIBA · Sistema para baños Prolimp", width: 149, height: 69 }}
+      />
       <Categorias categorias={categorias} />
       <Marcas marcas={marcas} />
+      <CtaBand
+        titulo="Protegemos tu empresa y hogar de la invasión de plagas"
+        href="/contacto"
+        variant="proxter"
+        logo={{ src: "/img/redesign/proxter-logo-blanco.png", alt: "Proxter · Ecoservicio de control de plagas", width: 149, height: 115 }}
+      />
       <BlogPreview posts={posts} />
-      <CtaCierre titulo={home.ctaCierreTitulo} lede={home.ctaCierreLede} />
+      <HechoEnMexico />
     </>
   );
 }

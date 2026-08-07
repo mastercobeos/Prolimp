@@ -42,28 +42,25 @@
   list-style: none;
 }
 
+/* Tarjeta mockup 2026: foto arriba + barra de color con nombre y flecha */
 .card {
-  display: block;
-  position: relative;
-  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 4 / 5;
-  color: white !important;
-  isolation: isolate;
-  background: var(--gris-800);
-  transition: transform var(--dur) var(--ease);
+  background: white;
+  border: 1px solid var(--border);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 .card:hover {
   transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 .card:hover .arrow { transform: translateX(4px); }
-.card:hover .overlay { opacity: 0.9; }
-.card:hover .content h3 { color: white; }
 
 .imgWrap {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
 }
 .imgWrap img {
   width: 100%;
@@ -74,55 +71,32 @@
 .card:hover .imgWrap img {
   transform: scale(1.06);
 }
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(12, 31, 110, 0.85) 100%);
-  transition: opacity var(--dur) var(--ease);
-  opacity: 0.75;
-}
 
-.content {
-  position: relative;
-  z-index: 1;
-  height: 100%;
+.label {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
 }
-.content h3 {
+.label h3 {
   color: white;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  transition: color var(--dur-fast) var(--ease);
-}
-.content p {
-  color: rgba(255, 255, 255, 0.85);
   font-size: 0.85rem;
-  line-height: 1.5;
-  max-height: 0;
-  overflow: hidden;
-  transform: translateY(6px);
-  transition: max-height var(--dur) var(--ease), transform var(--dur) var(--ease), margin var(--dur) var(--ease);
-}
-.card:hover .content p {
-  max-height: 100px;
-  transform: translateY(0);
-  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 .arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
   transition: transform var(--dur-fast) var(--ease);
-  align-self: flex-start;
-  margin-top: 0.5rem;
 }
 
 @media (max-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }

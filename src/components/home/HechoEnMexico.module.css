@@ -1,0 +1,63 @@
+.band {
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(238, 244, 251, 0.92) 0%, rgba(238, 244, 251, 0.75) 100%),
+    url("/img/redesign/mexico-industrial-bg.jpg") center / cover no-repeat;
+  overflow: hidden;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+.visual {
+  position: relative;
+  flex-shrink: 0;
+}
+.productos {
+  width: clamp(180px, 26vw, 320px);
+  height: auto;
+}
+.badge {
+  position: absolute;
+  right: -0.75rem;
+  top: 38%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.6rem 0.9rem;
+  background: #7a2e21;
+  color: white;
+  border: 2px solid white;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  box-shadow: var(--shadow);
+  rotate: -3deg;
+}
+.badge strong {
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+}
+
+.text p {
+  color: var(--azul-500);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.text h2 {
+  color: var(--azul-marino);
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+}
+
+@media (max-width: 600px) {
+  .inner { flex-direction: column; text-align: center; }
+  .badge { right: 0; }
+}

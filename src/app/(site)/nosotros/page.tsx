@@ -1,8 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import styles from "./page.module.css";
+import { CtaBand } from "@/components/shared/CtaBand";
 import { CtaCierre } from "@/components/home/CtaCierre";
+import { Diferenciadores } from "@/components/home/Diferenciadores";
 import { getEmpresa, getHomeContent } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -11,121 +12,205 @@ export const metadata: Metadata = {
     "Fabricantes mexicanos de químicos y productos de limpieza profesional desde 1971. Certificación ISO 9001, registros sanitarios y capacitación STPS.",
 };
 
+const confianza = [
+  {
+    titulo: "Certificación ISO 9001",
+    descripcion: "Sistema de gestión de calidad certificado.",
+    imgs: [{ src: "/img/redesign/sello-iso-9001.png", alt: "Sello ISO 9001-2015", width: 149, height: 107 }],
+  },
+  {
+    titulo: "Empresa ESR",
+    descripcion: "Reconocidos por nuestra responsabilidad social empresarial.",
+    imgs: [{ src: "/img/redesign/sello-esr.png", alt: "Distintivo Empresa Socialmente Responsable", width: 200, height: 79 }],
+  },
+  {
+    titulo: "Registros Sanitarios",
+    descripcion: "Regulados por la Secretaría de Salud de México.",
+    imgs: [
+      { src: "/img/redesign/sello-salud.png", alt: "Secretaría de Salud", width: 149, height: 48 },
+      { src: "/img/redesign/sello-cofepris.png", alt: "COFEPRIS", width: 150, height: 75 },
+    ],
+  },
+  {
+    titulo: "Miembros ISSA",
+    descripcion: "Asociación mundial de la industria de la limpieza.",
+    imgs: [{ src: "/img/redesign/sello-issa.png", alt: "ISSA", width: 148, height: 65 }],
+  },
+];
+
+const marcas = [
+  { src: "/img/redesign/marca-wiese.png", alt: "Wiese", width: 150, height: 109 },
+  { src: "/img/redesign/marca-kimberly.png", alt: "Kimberly-Clark Professional", width: 150, height: 66 },
+  { src: "/img/redesign/marca-castor.png", alt: "El Castor", width: 150, height: 114 },
+  { src: "/img/redesign/marca-rubbermaid.png", alt: "Rubbermaid", width: 148, height: 44 },
+  { src: "/img/redesign/marca-scf.png", alt: "SCF", width: 148, height: 80 },
+  { src: "/img/redesign/marca-jvd.png", alt: "JVD", width: 149, height: 94 },
+  { src: "/img/redesign/marca-cuplasa.png", alt: "Cuplasa", width: 150, height: 85 },
+  { src: "/img/redesign/marca-libra.png", alt: "Libra", width: 150, height: 150 },
+  { src: "/img/redesign/marca-sanchez.png", alt: "Sánchez y Martín", width: 198, height: 57 },
+  { src: "/img/redesign/marca-corona.png", alt: "La Corona", width: 149, height: 110 },
+  { src: "/img/redesign/marca-rml.png", alt: "RML", width: 150, height: 150 },
+];
+
+const materiales = ["Manual de Procesos", "Fichas Técnicas", "Hojas de Seguridad", "Ayudas Visuales"];
+
+function DocIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="8" y1="13" x2="16" y2="13" />
+      <line x1="8" y1="17" x2="13" y2="17" />
+    </svg>
+  );
+}
+
 export default async function NosotrosPage() {
   const [empresa, home] = await Promise.all([getEmpresa(), getHomeContent()]);
-  const diferenciadores = home.diferenciadores;
   return (
     <>
+      {/* 1. Hero */}
       <section className={styles.hero}>
         <div className="container container-wide">
           <div className={styles.heroInner}>
-            <div>
+            <div className={styles.heroText}>
               <span className={styles.eyebrow}>Acerca de nosotros</span>
-              <h1>Somos fabricantes de limpiadores y desinfectantes</h1>
+              <h1>
+                Somos fabricantes <span className={styles.acento}>de limpiadores y desinfectantes</span>
+              </h1>
               <p>{empresa.descripcion}</p>
-              <div className={styles.metrics}>
-                <div><strong>50+</strong><span>Años de experiencia</span></div>
-                <div><strong>11</strong><span>Limpiadores Prolimp®</span></div>
-                <div><strong>ISO</strong><span>9001 certificados</span></div>
+              <div className={styles.stats}>
+                <div>
+                  <strong>11</strong>
+                  <span>Líneas de limpiadores propios</span>
+                </div>
+                <div>
+                  <strong>+35</strong>
+                  <span>Años de experiencia</span>
+                </div>
+                <div>
+                  <strong>ISO</strong>
+                  <span>9001 certificados</span>
+                </div>
               </div>
             </div>
-            <div className={styles.heroImg}>
-              <Image src="/img/nosotros/banner-fabricantes.webp" alt="Fabricantes Prolimp" width={720} height={400} priority />
+            <div className={styles.heroCard}>
+              <Image
+                src="/img/redesign/familia-productos.png"
+                alt="Familia de productos Prolimp"
+                width={800}
+                height={800}
+                priority
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <section className={`section ${styles.diferenciasSection}`}>
+      {/* 2. Tarjetas de confianza */}
+      <section className={`section ${styles.confianzaSection}`}>
         <div className="container">
-          <div className={styles.sectionHead}>
-            <span className={styles.eyebrowSm}>Nuestra fórmula</span>
-            <h2>Qué hace diferentes a nuestros químicos</h2>
-            <p>
-              Nuestros desinfectantes cuentan con retos microbianos y virucidas. Los limpiadores tienen
-              registro NSF: pueden usarse en industria alimentaria garantizando alimentos inocuos, libres
-              de contaminación química.
-            </p>
-          </div>
-          <div className={styles.difs}>
-            {diferenciadores.map((d) => (
-              <article key={d.titulo}>
-                <div className={styles.difIcon}>
-                  <Image src={d.icon} alt="" width={48} height={48} />
+          <ul className={styles.confianzaGrid}>
+            {confianza.map((c) => (
+              <li key={c.titulo} className={styles.confianzaCard}>
+                <div className={styles.confianzaImgs}>
+                  {c.imgs.map((img) => (
+                    <Image key={img.src} src={img.src} alt={img.alt} width={img.width} height={img.height} />
+                  ))}
                 </div>
-                <h3>{d.titulo}</h3>
-                <p>{d.descripcion}</p>
-              </article>
+                <h2>{c.titulo}</h2>
+                <p>{c.descripcion}</p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
+      {/* 3. Nuestra Fórmula (compartida con home) */}
+      <Diferenciadores items={home.diferenciadores} />
+
+      {/* 4. Banda CTA */}
+      <CtaBand
+        titulo="Pero más allá de todo esto…"
+        lede="Estamos seguros de la eficacia de nuestros productos, testados constantemente en el campo."
+        href="/productos"
+        cta="Ver más"
+        variant="marino"
+      />
+
+      {/* 5. Portafolio completo — muro de marcas */}
+      <section className={`section ${styles.portafolioSection}`}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <span className={styles.eyebrow}>Portafolio completo</span>
+            <h2>Distribuidores de marcas reconocidas</h2>
+            <p>
+              Además, proveemos todas las herramientas necesarias para llevar a cabo todos los
+              procesos de limpieza.
+            </p>
+          </div>
+          <ul className={styles.marcasCard}>
+            {marcas.map((m) => (
+              <li key={m.alt}>
+                <Image src={m.src} alt={m.alt} width={m.width} height={m.height} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 6. Capacitación */}
       <section className={`section ${styles.capacitacionSection}`}>
         <div className="container container-wide">
           <div className={styles.capGrid}>
-            <div className={styles.capImg}>
-              <Image src="/img/nosotros/chica-limpieza.webp" alt="Capacitación profesional" width={520} height={620} />
+            <div className={styles.capFotos}>
+              <div className={styles.capFoto}>
+                <Image
+                  src="/img/redesign/capacitacion-dosificador.png"
+                  alt="Técnica operando un dosificador de limpiadores"
+                  width={799}
+                  height={574}
+                />
+              </div>
+              <div className={styles.capFoto}>
+                <Image
+                  src="/img/redesign/capacitacion-sala.jpg"
+                  alt="Sala de capacitación con personal de limpieza"
+                  width={799}
+                  height={529}
+                />
+              </div>
             </div>
-            <div>
-              <span className={styles.eyebrowSm}>Capacitación</span>
+            <div className={styles.capContent}>
+              <span className={styles.eyebrow}>Capacitación</span>
               <h2>Fortalecemos el oficio de la limpieza</h2>
+              <p className={styles.capSubtitulo}>
+                Entregamos constancia DC3 válida ante cualquier auditoría de la STPS
+              </p>
               <p>
                 Capacitamos al personal y trabajadores con nuestro curso <em>Manejo y uso seguro de
                 productos de limpieza y desinfección</em>, registrado ante la STPS con folio
-                <strong> PCE-910401-4L7-0013</strong> que nos acredita como agentes capacitadores externos.
+                <strong> PCE-910401-4L7-0013</strong> que nos acredita como agentes capacitadores
+                externos.
               </p>
+              <h3 className={styles.capBrindamos}>Brindamos a nuestros clientes:</h3>
               <ul className={styles.materiales}>
-                <li>
-                  <Image src="/img/nosotros/manuales.webp" alt="" width={48} height={48} />
-                  <div><strong>Manuales de procesos</strong><span>Guías paso a paso</span></div>
-                </li>
-                <li>
-                  <Image src="/img/nosotros/hoja-seguridad.webp" alt="" width={48} height={48} />
-                  <div><strong>Hojas de seguridad</strong><span>Todas nuestras fórmulas</span></div>
-                </li>
-                <li>
-                  <Image src="/img/nosotros/ficha-tecnica.webp" alt="" width={48} height={48} />
-                  <div><strong>Fichas técnicas</strong><span>Especificaciones completas</span></div>
-                </li>
-                <li>
-                  <Image src="/img/nosotros/ayuda-visual.webp" alt="" width={48} height={48} />
-                  <div><strong>Ayudas visuales</strong><span>Para el correcto manejo</span></div>
-                </li>
+                {materiales.map((m) => (
+                  <li key={m}>
+                    <span className={styles.docIcon}>
+                      <DocIcon />
+                    </span>
+                    <strong>{m}</strong>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section className={`section ${styles.certSection}`}>
-        <div className="container">
-          <div className={styles.certGrid}>
-            <div className={styles.certCard}>
-              <Image src="/img/logo/iso-9001.webp" alt="ISO 9001" width={80} height={80} />
-              <h3>Certificación ISO 9001</h3>
-              <p>Sistema de gestión de calidad certificado.</p>
-            </div>
-            <div className={styles.certCard}>
-              <div className={styles.emoji}>🏛️</div>
-              <h3>Registros sanitarios</h3>
-              <p>Regulados por la Secretaría de Salud de México.</p>
-            </div>
-            <div className={styles.certCard}>
-              <div className={styles.emoji}>🌎</div>
-              <h3>Empresa ESR</h3>
-              <p>Reconocidos por nuestra responsabilidad social empresarial.</p>
-            </div>
-            <div className={styles.certCard}>
-              <div className={styles.emoji}>🧴</div>
-              <h3>Miembros ISSA</h3>
-              <p>Asociación mundial de la industria de la limpieza.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <CtaCierre />
+      {/* 7. CTA final */}
+      <CtaCierre titulo="¿Listo para mejorar el estándar de limpieza de tu empresa?" />
     </>
   );
 }

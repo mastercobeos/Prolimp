@@ -1,6 +1,7 @@
+/* ---------- Hero ---------- */
 .hero {
-  padding: clamp(6.5rem, 10vw, 8rem) 0 clamp(2rem, 5vw, 4rem);
-  background: linear-gradient(180deg, #f4f9ff 0%, #ffffff 100%);
+  padding: clamp(6.5rem, 10vw, 8.5rem) 0 clamp(2.5rem, 5vw, 4.5rem);
+  background: linear-gradient(180deg, var(--bg-tint-strong) 0%, #ffffff 100%);
   position: relative;
   overflow: hidden;
 }
@@ -9,19 +10,29 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 10% 20%, rgba(0, 174, 239, 0.15), transparent 45%),
-    radial-gradient(circle at 90% 60%, rgba(2, 116, 197, 0.12), transparent 45%);
+    radial-gradient(circle at 12% 18%, rgba(0, 174, 239, 0.12), transparent 45%),
+    radial-gradient(circle at 88% 70%, rgba(2, 116, 197, 0.1), transparent 45%);
   pointer-events: none;
 }
 .heroInner {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
   align-items: center;
 }
-.heroInner h1 { margin-block: 1rem; }
-.heroInner p { font-size: 1.05rem; max-width: 520px; margin-bottom: 2rem; }
+.heroText h1 {
+  margin-block: 1rem;
+  color: var(--azul-marino);
+}
+.acento {
+  color: var(--azul-500);
+}
+.heroText > p {
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin-bottom: 2rem;
+}
 .eyebrow {
   display: inline-block;
   padding: 0.35rem 0.9rem;
@@ -33,109 +44,243 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-.metrics {
+.stats {
   display: flex;
-  gap: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border);
 }
-.metrics div { display: flex; flex-direction: column; }
-.metrics strong { font-size: 2rem; font-weight: 800; color: var(--azul-700); line-height: 1; }
-.metrics span { font-size: 0.8rem; color: var(--fg-muted); font-weight: 600; margin-top: 0.4rem; }
-
-.heroImg {
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
-  background: linear-gradient(135deg, var(--azul-500), var(--cyan-400));
-  box-shadow: 0 30px 60px -20px rgba(12, 31, 110, 0.35);
+.stats div {
+  display: flex;
+  flex-direction: column;
 }
-.heroImg img { width: 100%; height: 100%; object-fit: cover; }
-
-.diferenciasSection { background: var(--bg-alt); }
-.sectionHead { text-align: center; max-width: 720px; margin: 0 auto 3rem; }
-.sectionHead h2 { margin-block: 0.75rem 1rem; }
-.eyebrowSm {
-  display: inline-block;
-  padding: 0.35rem 0.9rem;
-  background: rgba(2, 116, 197, 0.08);
-  color: var(--azul-700);
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.stats strong {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--azul-500);
+  line-height: 1;
 }
-
-.difs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.difs article {
+.stats span {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  font-weight: 600;
+  margin-top: 0.4rem;
+}
+.heroCard {
   background: white;
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  border: 1px solid var(--border);
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  border-radius: var(--radius-xl);
+  padding: clamp(1rem, 3vw, 2rem);
+  box-shadow: 0 30px 60px -20px rgba(12, 31, 110, 0.25);
 }
-.difs article:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.difIcon {
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius);
-  background: linear-gradient(135deg, rgba(0, 174, 239, 0.12), rgba(2, 116, 197, 0.15));
-  display: grid;
-  place-items: center;
-  margin-bottom: 1rem;
+.heroCard img {
+  width: 100%;
+  height: auto;
 }
-.difs h3 { color: var(--azul-900); margin-bottom: 0.5rem; }
-.difs p { font-size: 0.95rem; }
 
-.capacitacionSection { background: var(--bg); }
-.capGrid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 3rem; align-items: center; }
-.capImg { border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 4 / 5; background: linear-gradient(135deg, var(--azul-500), var(--cyan-400)); }
-.capImg img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-.capacitacionSection h2 { margin-block: 0.75rem 1rem; }
-.capacitacionSection > div > div > p { margin-bottom: 1.5rem; }
-
-.materiales {
+/* ---------- Tarjetas de confianza ---------- */
+.confianzaSection {
+  background: var(--bg-tint);
+}
+.confianzaGrid {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
 }
-.materiales li {
-  display: flex;
-  gap: 0.85rem;
-  align-items: center;
-  padding: 1rem;
-  background: var(--bg-alt);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-}
-.materiales img { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; }
-.materiales div { display: flex; flex-direction: column; }
-.materiales strong { color: var(--azul-900); font-size: 0.9rem; }
-.materiales span { font-size: 0.75rem; color: var(--fg-muted); }
-
-.certSection { background: var(--bg-alt); }
-.certGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-.certCard {
+.confianzaCard {
   background: white;
-  padding: 2rem 1.5rem;
-  border-radius: var(--radius-lg);
   border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
   text-align: center;
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
-.certCard:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.certCard img { margin: 0 auto 1rem; }
-.emoji { font-size: 3rem; margin-bottom: 0.5rem; }
-.certCard h3 { color: var(--azul-900); font-size: 1.05rem; margin-bottom: 0.5rem; }
-.certCard p { font-size: 0.85rem; }
+.confianzaCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.confianzaImgs {
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.confianzaImgs img {
+  max-height: 62px;
+  width: auto;
+  object-fit: contain;
+}
+.confianzaCard h2 {
+  font-size: 1.1rem;
+  color: var(--azul-marino);
+  margin-bottom: 0.5rem;
+}
+.confianzaCard p {
+  font-size: 0.875rem;
+}
 
-@media (max-width: 900px) {
-  .heroInner, .capGrid { grid-template-columns: 1fr; }
-  .difs, .materiales { grid-template-columns: 1fr; }
-  .certGrid { grid-template-columns: 1fr 1fr; }
-  .metrics { gap: 1.5rem; }
-  .metrics strong { font-size: 1.5rem; }
+/* ---------- Portafolio (muro de marcas) ---------- */
+.portafolioSection {
+  background: linear-gradient(180deg, var(--bg-tint) 0%, #ffffff 100%);
+}
+.sectionHead {
+  margin-bottom: 2.5rem;
+}
+.sectionHead h2 {
+  color: var(--azul-marino);
+  margin-block: 0.85rem 0.75rem;
+}
+.sectionHead p {
+  max-width: 620px;
+}
+.marcasCard {
+  list-style: none;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: center;
+}
+.marcasCard li {
+  display: grid;
+  place-items: center;
+}
+.marcasCard img {
+  max-height: 64px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.marcasCard li:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* ---------- Capacitación ---------- */
+.capacitacionSection {
+  background: var(--bg);
+}
+.capGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+.capFotos {
+  display: grid;
+  gap: 1.25rem;
+}
+.capFoto {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.capFoto img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.capContent h2 {
+  color: var(--azul-marino);
+  margin-block: 0.85rem 0.75rem;
+}
+.capSubtitulo {
+  color: var(--azul-500);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+.capContent > p:not(.capSubtitulo) {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+.capBrindamos {
+  color: var(--azul-500);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.materiales {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.materiales li {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.materiales li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+.docIcon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+  color: var(--azul-500);
+  background: rgba(2, 116, 197, 0.08);
+}
+.materiales strong {
+  color: var(--azul-marino);
+  font-size: 0.95rem;
+}
+
+/* ---------- Breakpoints ---------- */
+@media (min-width: 640px) {
+  .confianzaGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .marcasCard {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .materiales {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .heroInner {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3.5rem;
+  }
+  .stats strong {
+    font-size: 2rem;
+  }
+  .marcasCard {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .capGrid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3.5rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .confianzaGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .marcasCard {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }

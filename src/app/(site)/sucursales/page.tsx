@@ -1,17 +1,217 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import type { ReactNode } from "react";
 import styles from "./page.module.css";
+import { CtaBand } from "@/components/shared/CtaBand";
 import { getSucursales, type SucursalItem } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Sucursales y distribuidores",
   description:
-    "12 sucursales propias en Veracruz, CDMX, Guanajuato, Querétaro, Tabasco y Yucatán, más distribuidores autorizados en Colima, Coahuila y Estado de México. Encuentra tu Prolimp más cercano.",
+    "Encuentra tu sucursal Prolimp más cercana: presencia de bodega y/o Tienda Prolimp en Veracruz, CDMX, Guanajuato, Querétaro, Tabasco y Yucatán, más distribuidores autorizados.",
 };
 
 function normalizePhone(tel: string) {
   return tel.replace(/[^\d+]/g, "");
 }
+
+function slugify(text: string) {
+  return text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+/* ---------- Inline icons ---------- */
+
+function IconPin({ size = 22 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
+function IconPhone() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function IconMail() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+      <polyline points="22,6 12,13 2,6" />
+    </svg>
+  );
+}
+
+function IconClock() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  );
+}
+
+function IconBodega() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M3 21V9l9-5 9 5v12" />
+      <path d="M7 21v-8h10v8" />
+      <path d="M7 17h10" />
+      <path d="M21 21H3" />
+    </svg>
+  );
+}
+
+function IconMedalla() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <circle cx="12" cy="9" r="5.5" />
+      <path d="M9.5 13.8 7.5 22l4.5-2.7L16.5 22l-2-8.2" />
+    </svg>
+  );
+}
+
+function IconEquipo() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  );
+}
+
+function IconCamion() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect x="1" y="4" width="14" height="12" rx="1" />
+      <path d="M15 9h4l4 4v3h-8V9z" />
+      <circle cx="5.5" cy="18.5" r="2" />
+      <circle cx="18.5" cy="18.5" r="2" />
+    </svg>
+  );
+}
+
+function IconEtiqueta() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M20.59 13.41 12 22l-9-9V4a1 1 0 0 1 1-1h9l8.59 8.59a2 2 0 0 1 0 2.82Z" />
+      <circle cx="7.5" cy="7.5" r="1.5" />
+    </svg>
+  );
+}
+
+function IconLibro() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+    </svg>
+  );
+}
+
+function IconEscudo() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <polyline points="9 12 11 14 15 10" />
+    </svg>
+  );
+}
+
+function IconPaquete() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+      <line x1="12" y1="22.08" x2="12" y2="12" />
+    </svg>
+  );
+}
+
+/* ---------- Static content (mockup lámina 4) ---------- */
+
+const distribuidores = [
+  {
+    nombre: "Quimicosas",
+    ubicacion: "Colima, Col.",
+    telefono: "312 314 20 22",
+    email: "quimicosasdecolima@gmail.com",
+  },
+  {
+    nombre: "Hielo Seco",
+    ubicacion: "Piedras Negras, Coahuila",
+    telefono: "878 688 20 25",
+    email: "erodriguez@hielosecoproveedoraindustrial.com",
+  },
+  {
+    nombre: "Rich Trade and Services Group",
+    ubicacion: "Naucalpan, Edo. de México",
+    telefono: "5553 57 24 41",
+    email: "ventas@richtrade.com.mx",
+  },
+];
+
+type InfoCard = { titulo: string; texto: string; icon: ReactNode };
+
+const requisitos: InfoCard[] = [
+  {
+    titulo: "Estructura Comercial",
+    texto: "Tener bodegas, oficinas y demás instalaciones que permitan distribuir y tener solvencia económica.",
+    icon: <IconBodega />,
+  },
+  {
+    titulo: "Experiencia",
+    texto: "Contar con experiencia en distribución de productos para la industria y el comercio.",
+    icon: <IconMedalla />,
+  },
+  {
+    titulo: "Equipo y Solvencia",
+    texto: "Contar con equipo de trabajo o personal para ventas, además de solvencia económica.",
+    icon: <IconEquipo />,
+  },
+  {
+    titulo: "Unidades",
+    texto: "Tener unidades de transporte y reparto de productos.",
+    icon: <IconCamion />,
+  },
+];
+
+// NOTE: proposed copy — the mockup leaves these four cards empty; replace when the final content is defined.
+const beneficios: InfoCard[] = [
+  {
+    titulo: "Precios de mayorista",
+    texto: "Esquema de precios preferenciales que te da un margen competitivo desde el primer pedido.",
+    icon: <IconEtiqueta />,
+  },
+  {
+    titulo: "Capacitación y soporte técnico",
+    texto: "Te capacitamos en el uso y venta de nuestros productos, con asesoría técnica permanente.",
+    icon: <IconLibro />,
+  },
+  {
+    titulo: "Marca reconocida con registro sanitario",
+    texto: "Más de 35 años en el mercado y fórmulas con registros ante la Secretaría de Salud.",
+    icon: <IconEscudo />,
+  },
+  {
+    titulo: "Surtido consolidado a todo el país",
+    texto: "Enviamos tu pedido completo a cualquier punto de la república con logística propia.",
+    icon: <IconPaquete />,
+  },
+];
+
+/* ---------- Cards ---------- */
 
 function SucursalCard({ s }: { s: SucursalItem }) {
   const telefonos = [s.telefono, s.telefonoAlt].filter(Boolean) as string[];
@@ -24,10 +224,7 @@ function SucursalCard({ s }: { s: SucursalItem }) {
     <article className={styles.card}>
       <header className={styles.cardHead}>
         <div className={styles.pin}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
+          <IconPin />
         </div>
         <div>
           <h3>{s.ciudad}</h3>
@@ -39,10 +236,7 @@ function SucursalCard({ s }: { s: SucursalItem }) {
         {s.direccion && (
           <li>
             <span className={styles.icon} aria-hidden>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
+              <IconPin size={16} />
             </span>
             <span>
               {s.direccion}
@@ -53,9 +247,7 @@ function SucursalCard({ s }: { s: SucursalItem }) {
         {telefonos.length > 0 && (
           <li>
             <span className={styles.icon} aria-hidden>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
+              <IconPhone />
             </span>
             <span>
               {telefonos.map((t, i) => (
@@ -70,10 +262,7 @@ function SucursalCard({ s }: { s: SucursalItem }) {
         {emails.length > 0 && (
           <li>
             <span className={styles.icon} aria-hidden>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
+              <IconMail />
             </span>
             <span className={styles.emails}>
               {emails.map((e) => (
@@ -85,10 +274,7 @@ function SucursalCard({ s }: { s: SucursalItem }) {
         {s.horario && (
           <li>
             <span className={styles.icon} aria-hidden>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
+              <IconClock />
             </span>
             <span className={styles.horario}>{s.horario}</span>
           </li>
@@ -97,7 +283,7 @@ function SucursalCard({ s }: { s: SucursalItem }) {
 
       <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={styles.mapsBtn}>
         Ver en Google Maps
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <path d="M5 12h14M13 5l7 7-7 7" />
         </svg>
       </a>
@@ -105,50 +291,18 @@ function SucursalCard({ s }: { s: SucursalItem }) {
   );
 }
 
-function DistribuidorCard({ s }: { s: SucursalItem }) {
-  return (
-    <article className={styles.distCard}>
-      <div className={styles.distBadge}>Distribuidor autorizado</div>
-      <h3>{s.nombre ?? s.ciudad}</h3>
-      <p className={styles.distLoc}>{s.ciudad}, {s.estado}</p>
-      <ul className={styles.details}>
-        {s.telefono && (
-          <li>
-            <span className={styles.icon} aria-hidden>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-            </span>
-            <a href={`tel:${normalizePhone(s.telefono)}`}>{s.telefono}</a>
-          </li>
-        )}
-        {s.email && (
-          <li>
-            <span className={styles.icon} aria-hidden>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-            </span>
-            <a href={`mailto:${s.email}`}>{s.email}</a>
-          </li>
-        )}
-      </ul>
-    </article>
-  );
-}
+/* ---------- Page ---------- */
 
 export default async function SucursalesPage() {
   const items = await getSucursales();
   const sucursales = items.filter((s) => (s.tipo ?? "sucursal") === "sucursal");
-  const distribuidores = items.filter((s) => s.tipo === "distribuidor");
 
   // Group sucursales by estado
   const grupos = sucursales.reduce<Record<string, SucursalItem[]>>((acc, s) => {
     (acc[s.estado] ??= []).push(s);
     return acc;
   }, {});
-  const ordenEstados = ["Veracruz", "CDMX", "Guanajuato", "Querétaro", "Tabasco", "Yucatán"];
+  const ordenEstados = ["Veracruz", "Guanajuato", "Tabasco", "Querétaro", "CDMX", "Yucatán"];
   const estados = Object.keys(grupos).sort((a, b) => {
     const ia = ordenEstados.indexOf(a);
     const ib = ordenEstados.indexOf(b);
@@ -159,71 +313,185 @@ export default async function SucursalesPage() {
   });
 
   return (
-    <section className={styles.section}>
-      <div className="container container-wide">
-        <header className={styles.head}>
-          <span className={styles.eyebrow}>Cobertura nacional</span>
-          <h1>Sucursales y distribuidores</h1>
-          <p>
-            {sucursales.length} sucursales propias en {estados.length} estados y {distribuidores.length} distribuidores autorizados.
-            Encuentra la más cercana o contáctanos para envío a cualquier punto de México.
-          </p>
-          <div className={styles.stats}>
-            <div><strong>{sucursales.length}</strong><span>Sucursales propias</span></div>
-            <div><strong>{estados.length}</strong><span>Estados</span></div>
-            <div><strong>{distribuidores.length}</strong><span>Distribuidores</span></div>
-            <div><strong>32</strong><span>Estados con envío</span></div>
-          </div>
-        </header>
-
-        {estados.map((estado) => (
-          <details key={estado} className={styles.estadoBlock}>
-            <summary className={styles.estadoTitle}>
-              <span className={styles.estadoBar} aria-hidden />
-              <span className={styles.chevron} aria-hidden>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </span>
-              {estado}
-              <span className={styles.estadoCount}>{grupos[estado].length} sucursal{grupos[estado].length > 1 ? "es" : ""}</span>
-            </summary>
-            <div className={styles.grid}>
-              {grupos[estado].map((s) => (
-                <SucursalCard key={s._id} s={s} />
-              ))}
+    <>
+      {/* 1. Hero */}
+      <section className={styles.hero}>
+        <div className="container container-wide">
+          <div className={styles.heroInner}>
+            <div className={styles.heroText}>
+              <span className={styles.eyebrow}>Sucursales</span>
+              <h1>
+                Encuentra tu sucursal <span className={styles.acento}>más cercana</span>
+              </h1>
+              <p>
+                Conoce todos los estados de la república en donde tenemos presencia de bodega y/o
+                Tienda Prolimp.
+              </p>
+              <nav className={styles.estadoPills} aria-label="Estados con sucursal Prolimp">
+                {estados.map((estado) => (
+                  <a key={estado} href={`#estado-${slugify(estado)}`} className={styles.pillLink}>
+                    {estado}
+                  </a>
+                ))}
+              </nav>
             </div>
-          </details>
-        ))}
 
-        {distribuidores.length > 0 && (
-          <div className={styles.distSection}>
-            <h2 className={styles.estadoTitle}>
-              <span className={styles.estadoBar} aria-hidden />
-              Distribuidores autorizados
-              <span className={styles.estadoCount}>{distribuidores.length} aliados</span>
-            </h2>
-            <p className={styles.distIntro}>
-              Puntos de venta oficiales fuera de nuestras zonas con sucursal propia. Trabajan directamente con productos Prolimp.
-            </p>
-            <div className={styles.distGrid}>
-              {distribuidores.map((s) => (
-                <DistribuidorCard key={s._id} s={s} />
-              ))}
-            </div>
-          </div>
-        )}
-
-        <div className={styles.cta}>
-          <div>
-            <h2>¿No encuentras tu ciudad?</h2>
-            <p>Enviamos productos a todo México. Contáctanos para tu cotización personalizada o para conocer el programa de distribuidores.</p>
-          </div>
-          <div className={styles.ctaActions}>
-            <Link href="/contacto" className={styles.btnPrimary}>Formulario de contacto</Link>
+            <aside className={styles.heroCard} aria-label="Resumen de presencia Prolimp">
+              <div className={styles.heroCardHead}>
+                <span className={styles.heroCardPin} aria-hidden>
+                  <IconPin size={26} />
+                </span>
+                <div>
+                  <strong>{sucursales.length} sucursales</strong>
+                  <span>en {estados.length} estados de México</span>
+                </div>
+              </div>
+              <ul className={styles.heroCardList}>
+                {estados.map((estado) => (
+                  <li key={estado}>
+                    <span>{estado}</span>
+                    <span className={styles.heroCardCount}>{grupos[estado].length}</span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* 1b. Detalle de sucursales por estado (destino de las pills) */}
+      <section className={`section ${styles.listado}`}>
+        <div className="container container-wide">
+          {estados.map((estado) => (
+            <section key={estado} id={`estado-${slugify(estado)}`} className={styles.estadoBlock}>
+              <h2 className={styles.estadoTitle}>
+                <span className={styles.estadoBar} aria-hidden />
+                {estado}
+                <span className={styles.estadoCount}>
+                  {grupos[estado].length} sucursal{grupos[estado].length > 1 ? "es" : ""}
+                </span>
+              </h2>
+              <div className={styles.grid}>
+                {grupos[estado].map((s) => (
+                  <SucursalCard key={s._id} s={s} />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </section>
+
+      {/* 2. Banda CTA envíos */}
+      <CtaBand
+        titulo="¿No encontraste sucursal en tu ciudad?"
+        lede="Hacemos envío a todo el país y atendemos clientes con servicio logístico a nivel nacional."
+        cta="Contáctanos"
+        href="/contacto"
+        variant="marino"
+      />
+
+      {/* 3. Distribuidores */}
+      <section className={`section ${styles.distSection}`}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <span className={styles.eyebrow}>Distribuidores</span>
+            <h2>Contamos con una red de distribuidores</h2>
+            <p>Nuestros distribuidores están para poner nuestros productos al alcance de todos.</p>
+          </div>
+          <ul className={styles.distGrid}>
+            {distribuidores.map((d) => (
+              <li key={d.nombre} className={styles.distCard}>
+                <h3>{d.nombre}</h3>
+                <p className={styles.distLoc}>{d.ubicacion}</p>
+                <ul className={styles.details}>
+                  <li>
+                    <span className={styles.icon} aria-hidden>
+                      <IconPhone />
+                    </span>
+                    <a href={`tel:${normalizePhone(d.telefono)}`}>Tel. {d.telefono}</a>
+                  </li>
+                  <li>
+                    <span className={styles.icon} aria-hidden>
+                      <IconMail />
+                    </span>
+                    <a href={`mailto:${d.email}`}>{d.email}</a>
+                  </li>
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 4. Banda buscamos distribuidores */}
+      <section className={styles.banda}>
+        <div className="container">
+          <h2>Buscamos distribuidores</h2>
+          <p>Deben contar con un perfil específico para poder distribuir nuestros productos</p>
+        </div>
+      </section>
+
+      {/* 5. Requisitos */}
+      <section className={`section ${styles.reqSection}`}>
+        <div className="container">
+          <ul className={styles.infoGrid}>
+            {requisitos.map((r) => (
+              <li key={r.titulo} className={styles.infoCard}>
+                <span className={styles.infoIcon} aria-hidden>
+                  {r.icon}
+                </span>
+                <h3>{r.titulo}</h3>
+                <p>{r.texto}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 6. Lo que te podemos ofrecer */}
+      <section className={`section ${styles.ofrecerSection}`}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <h2>
+              Lo que te podemos <span className={styles.acento}>ofrecer</span>
+            </h2>
+          </div>
+          <ul className={styles.infoGrid}>
+            {beneficios.map((b) => (
+              <li key={b.titulo} className={styles.infoCard}>
+                <span className={styles.infoIcon} aria-hidden>
+                  {b.icon}
+                </span>
+                <h3>{b.titulo}</h3>
+                <p>{b.texto}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 7. Banda CTA solicitud de distribución */}
+      <CtaBand
+        titulo="¿Quieres emprender un negocio y tienes experiencia en distribución de productos?"
+        lede="Llena el siguiente formulario y envíanos tu solicitud."
+        cta="Contáctanos"
+        href="/contacto"
+        variant="marino"
+      />
+
+      {/* 8. Mercado Libre */}
+      <section className={`section ${styles.mlSection}`}>
+        <div className="container">
+          <h2>
+            También encuentra nuestros productos en{" "}
+            <span className={styles.acento}>Mercado Libre</span>
+          </h2>
+          {/* TODO: replace href with the official Mercado Libre store URL (not found in the project yet). */}
+          <a href="#" className={styles.mlBtn}>
+            Ir a tienda
+          </a>
+        </div>
+      </section>
+    </>
   );
 }

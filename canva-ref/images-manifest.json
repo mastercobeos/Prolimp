@@ -1,0 +1,688 @@
+[
+ {
+  "file": "img-001-800x241.png",
+  "url": "https://media.canva.com/v2/files/uri:ifs%3A%2F%2FM%2F41c55824-9d7e-4e9d-88b7-7251ac6ab23c?csig=AAAAAAAAAAAAAAAAAAAAAAgwv-CKlIEViQ_6UmJPKlQK7fHY9YsUHtjkR5BTpzzT&exp=1786150722&signer=media-rpc&token=AAIAAU0AJDQxYzU1ODI0LTlkN2UtNGU5ZC04OGI3LTcyNTFhYzZhYjIzYwAAAAABn97hGdA4RsaK3uC4Ffp0dheHnaT5McX7-h_YfXOcqSIKDENMfQ",
+  "w": 800,
+  "h": 241,
+  "bytes": 34376
+ },
+ {
+  "file": "img-002-640x800.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:800/quality:100/uri:ifs%3A%2F%2FM%2F3f6702fe-c438-48d2-ac17-6da50e59255f/watermark:F/width:640?csig=AAAAAAAAAAAAAAAAAAAAAFgRTPc84dM--Bk5WCOac8wmS9lKdtaolXSh5BtmFTIs&exp=1786148863&osig=AAAAAAAAAAAAAAAAAAAAAD1aroETcUMLXEKSwq9Puj5vP9mUhE9DuIpcAh51gLPM&signer=media-rpc&x-canva-quality=screen",
+  "w": 640,
+  "h": 800,
+  "bytes": 763645
+ },
+ {
+  "file": "img-003-149x46.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:46/quality:100/uri:ifs%3A%2F%2FM%2FuAXwIU4lRwJq85dBvfLy_2zBxxZEx5JfS19LyPA2Vx0.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAFUo40spWNtYlMM_YdoGUsKCkybyJ64IdpNJpRLM_dYQ&exp=1786149660&osig=AAAAAAAAAAAAAAAAAAAAAMLonW86oHXWfyZyf-CV80wKKEFS6Pf0700kXcMBqC9b&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 46,
+  "bytes": 7756
+ },
+ {
+  "file": "img-004-799x520.jpg",
+  "url": "https://media.canva.com/v2/image-resize/format:JPG/height:520/quality:92/uri:ifs%3A%2F%2FM%2F557318c9-fd67-4029-892a-3d42fd63f52a/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAADO66YJg3xvvB2f-F0VWFUhyh5g4ha6OohrTuPTWUgWj&exp=1786151369&osig=AAAAAAAAAAAAAAAAAAAAANhoUcrzytgENYWnX8ucpRpcWJu-tS9EX0f68xnDPNXj&signer=media-rpc&x-canva-quality=screen",
+  "w": 799,
+  "h": 520,
+  "bytes": 100004
+ },
+ {
+  "file": "img-005-799x499.jpg",
+  "url": "https://media.canva.com/v2/image-resize/format:JPG/height:499/quality:92/uri:ifs%3A%2F%2FM%2F33b054e6-3c7d-47da-8f73-d6e0d5804280/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAKyv-BO90I_jwRc0nR_5Ec8LBlmTnzgqX9Bfp4ZN03ov&exp=1786151663&osig=AAAAAAAAAAAAAAAAAAAAAHCluZoh31B_t9SFmMVIKr6mH-wRITYnvF0jF6DdY_z0&signer=media-rpc&x-canva-quality=screen",
+  "w": 799,
+  "h": 499,
+  "bytes": 37035
+ },
+ {
+  "file": "img-006-200x155.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:155/quality:100/uri:ifs%3A%2F%2FM%2F9de6e634-15e2-49a5-ac2d-c07204ced55c/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAOsNZGZQmC7rM7ImqwoJY37Gtt15IHniZc5NyCaGNfXq&exp=1786148695&osig=AAAAAAAAAAAAAAAAAAAAAPLcHEFdwo-VtJJhGkjESe0Q3bSIVa6LTfCMzTJ2eXfI&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 200,
+  "h": 155,
+  "bytes": 54969
+ },
+ {
+  "file": "img-007-799x534.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:534/quality:100/uri:ifs%3A%2F%2FM%2Fea9a1bf9-d074-4d41-a957-7a7118ed58b2/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAA5ykTbrUynJ29pYNA9b0kaMULh6689NK-pF3ECqGIUB&exp=1786151334&osig=AAAAAAAAAAAAAAAAAAAAAFFLFmt9-UDILjlBivGWm37LCWu265P6WesrVB3fzSdv&signer=media-rpc&x-canva-quality=screen",
+  "w": 799,
+  "h": 534,
+  "bytes": 634201
+ },
+ {
+  "file": "img-008-199x162.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:162/quality:100/uri:ifs%3A%2F%2FM%2Fd5973610-02a8-44a9-ba27-8e69660fc530/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAADY0JbB2WhKnNq-5x9LoASz3vIkIm5shLHoMImRTQVh1&exp=1786149397&osig=AAAAAAAAAAAAAAAAAAAAAEHrb4C59mpHsQ_UG7jjtXSWcFeE6GGFJ8b-kRd1l7g0&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 199,
+  "h": 162,
+  "bytes": 33893
+ },
+ {
+  "file": "img-009-200x157.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:157/quality:100/uri:ifs%3A%2F%2FM%2Ff4bb2325-7d25-4bfc-8128-58138bc0123f/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAOOnIx07oLRIg-ylqmWRDeLG_jihqU1YT247Lv4k8-w_&exp=1786150729&osig=AAAAAAAAAAAAAAAAAAAAAA0nod0ksvuLDv3pw3ChXlN__XhVaBXcECkp23Hb-N6f&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 200,
+  "h": 157,
+  "bytes": 57670
+ },
+ {
+  "file": "img-010-199x147.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:147/quality:100/uri:ifs%3A%2F%2FM%2Fc411302e-7119-4372-b8bf-b50ff4b8c686/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAFhXgSv9rqQeEYyA2nDcPzsDDFubFvnOUMxBy7xiTT1O&exp=1786149676&osig=AAAAAAAAAAAAAAAAAAAAABFHiOvjmWxgvMJVAkI03ZXp7pKIwXf8DAogNxH2BlUP&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 199,
+  "h": 147,
+  "bytes": 56307
+ },
+ {
+  "file": "img-011-799x541.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:541/quality:100/uri:ifs%3A%2F%2FM%2F6ac3439b-bf90-4c3e-8b18-1d810b2c78d5/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAMxuANKA4xmDAhgZTXoiXX_L_CEPk1js6X1w_bj8q7YK&exp=1786150760&osig=AAAAAAAAAAAAAAAAAAAAAMTBm3an5wsxYI41D4ZHOljA3a8SDyNQWLLWP_skTK5f&signer=media-rpc&x-canva-quality=screen",
+  "w": 799,
+  "h": 541,
+  "bytes": 559699
+ },
+ {
+  "file": "img-012-799x481.jpg",
+  "url": "https://media.canva.com/v2/image-resize/format:JPG/height:481/quality:92/uri:ifs%3A%2F%2FM%2F43da3a89-2ffb-46be-bbc7-94ba0e3aef7c/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAJNAhRTr1I7jmuOXCMDuOHwZL-jue5OPWNeZ15zdkPfT&exp=1786148330&osig=AAAAAAAAAAAAAAAAAAAAAFyEyjY9txz5gafNgF1d9U0RoEuG1-D08wJ5yZQDsrvE&signer=media-rpc&x-canva-quality=screen",
+  "w": 799,
+  "h": 481,
+  "bytes": 160929
+ },
+ {
+  "file": "img-013-799x560.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:560/quality:100/uri:ifs%3A%2F%2FM%2Fd2d17337-9a16-42d7-9849-6bbd501b3446/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAKYpN-fPJdlvjwETdvPSWe0ZdYsHJ8uLZCpu97UDetS0&exp=1786148355&osig=AAAAAAAAAAAAAAAAAAAAACFCuDM10N3VP7suPb6NJ1Omn8h_OIQDI0oY2dOrekg7&signer=media-rpc&x-canva-quality=screen",
+  "w": 799,
+  "h": 560,
+  "bytes": 468884
+ },
+ {
+  "file": "img-014-199x143.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:143/quality:100/uri:ifs%3A%2F%2FM%2Fdd7dd9f6-b77e-4bbe-9430-1e869330f495/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAANNnBuSW3_VTqyWn2tak6rR-PqefMLANwI8YgX4ByxWl&exp=1786148819&osig=AAAAAAAAAAAAAAAAAAAAAPACmB0dlEltSiTuebnnx4qGwpPX7MBBBXrDpOpIgErT&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 199,
+  "h": 143,
+  "bytes": 52757
+ },
+ {
+  "file": "img-015-126x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2Fbb5d62c4-7503-4067-af15-a95c60c891c0/watermark:F/width:126?csig=AAAAAAAAAAAAAAAAAAAAAJGl0WV2YCHN_BF-Fzbi-zGgbgN5aJaWlIHhaezWUj18&exp=1786150183&osig=AAAAAAAAAAAAAAAAAAAAADpMWErna0GTzsBVcNrShmdU_NkRapmWnwgGYhj3Z7Sk&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 126,
+  "h": 150,
+  "bytes": 18075
+ },
+ {
+  "file": "img-016-102x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F2aa9dbe1-fa85-4f4f-9f36-9c87b9d5ba66/watermark:F/width:102?csig=AAAAAAAAAAAAAAAAAAAAADiWiJQ7GLd5GdoAe27I4vXLp6RIe9vPMj-IXggRu8sX&exp=1786151424&osig=AAAAAAAAAAAAAAAAAAAAAGwE3Tf-0WB0_9JokAeZgXGAX7Xzuppfzd-nMo6xpLEA&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 102,
+  "h": 150,
+  "bytes": 19111
+ },
+ {
+  "file": "img-017-127x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2Fc9a1e0cd-bf28-4a82-ab0e-261ea3b9b5bd/watermark:F/width:127?csig=AAAAAAAAAAAAAAAAAAAAADTfpx5CLsxM-2kpGpAaRuCpHGREbOr2FKDGaJRRg5ln&exp=1786151535&osig=AAAAAAAAAAAAAAAAAAAAAIfO1aqjhOzcgXBzyuuELqyGp29kK3GdJRuj90RG_lym&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 127,
+  "h": 149,
+  "bytes": 17808
+ },
+ {
+  "file": "img-018-127x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F613d049c-9b07-4841-9bdc-f0b08d0e1daf/watermark:F/width:127?csig=AAAAAAAAAAAAAAAAAAAAAIrJOE8087oaMDMwYrXcAF4wfQoKqxh4e7yqVRREDpNv&exp=1786149846&osig=AAAAAAAAAAAAAAAAAAAAACr2PLozJHyPusaiJyMg1jHBTjlAnWAG303CpTH7Gj3Y&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 127,
+  "h": 149,
+  "bytes": 21382
+ },
+ {
+  "file": "img-019-127x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F487fc0b8-c353-4a7d-b93d-a16a183aad30/watermark:F/width:127?csig=AAAAAAAAAAAAAAAAAAAAABeLfIiaC4-YyeeI0mMxoXAgMnJLbgv9cY9-7-cVz8a9&exp=1786149557&osig=AAAAAAAAAAAAAAAAAAAAAEbsuv16rMRUPe-2WbeRt7gI0rB7-SH2GIy_V-XFGlEB&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 127,
+  "h": 149,
+  "bytes": 16446
+ },
+ {
+  "file": "img-020-126x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F95d40c70-1baf-4c7d-af7f-38dcd473c182/watermark:F/width:126?csig=AAAAAAAAAAAAAAAAAAAAAPtehakFgYXommnFU6J1hbWGIw7xpNuWvg0Rl706c3ai&exp=1786151020&osig=AAAAAAAAAAAAAAAAAAAAAK2erIiqFsGF7NDqbqk3Kf7WlQKJfsx96iW5OQQCZ8gW&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 126,
+  "h": 149,
+  "bytes": 21713
+ },
+ {
+  "file": "img-021-112x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2Fe5778767-2aac-4b31-bd8b-2530b49ce2ae/watermark:F/width:112?csig=AAAAAAAAAAAAAAAAAAAAAJs5jYeUsanKQvUTozimRcXtEKdxyrNgwXWx-uM8rByw&exp=1786150920&osig=AAAAAAAAAAAAAAAAAAAAAEzeFcoDbJDCaseyXQ1DY8GoNWD-Jt6cB5RB5zIAXjTy&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 112,
+  "h": 149,
+  "bytes": 19079
+ },
+ {
+  "file": "img-022-94x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F18e45d07-e6a6-4e83-a06a-eac081bad158/watermark:F/width:94?csig=AAAAAAAAAAAAAAAAAAAAANvYxcMhqDO1mLocHErP4y14BlQFlNZAReQwQ3mjIU0r&exp=1786149951&osig=AAAAAAAAAAAAAAAAAAAAAHvQtFXxt4SndKyYv-KLKZLpEAN2b0vcjT2u5JQWQW2L&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 94,
+  "h": 149,
+  "bytes": 10350
+ },
+ {
+  "file": "img-023-131x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F144dbb89-d5ca-40df-96aa-0affa8bce71d/watermark:F/width:131?csig=AAAAAAAAAAAAAAAAAAAAAA0O1FnJU1MKS1tpvInmLWF6O1SB8klp39XGwTcVpkwk&exp=1786150262&osig=AAAAAAAAAAAAAAAAAAAAAKTQJ8FokrgvjgfZR9ndj9NyLG1ZfL2Zz_TetcLAgNp7&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 131,
+  "h": 149,
+  "bytes": 21751
+ },
+ {
+  "file": "img-024-138x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2Fbaed842c-41fa-4ab8-9217-4cd0c3aa0c49/watermark:F/width:138?csig=AAAAAAAAAAAAAAAAAAAAAOHqk6ixuRbxSObn--9wJCX0NVZKQFgm9FBEYwQU2nuB&exp=1786148313&osig=AAAAAAAAAAAAAAAAAAAAAIvMqpdR5lnBcp1JnqKivk-_gsmZC976bNYI4WFXWxin&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 138,
+  "h": 149,
+  "bytes": 24917
+ },
+ {
+  "file": "img-025-118x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F33ccdecf-48d6-4453-9e80-1070246c9b5e/watermark:F/width:118?csig=AAAAAAAAAAAAAAAAAAAAAGeb2ZK2P2QtdX4g-8xD12JUfZWHfKICDDMYug8301AL&exp=1786151659&osig=AAAAAAAAAAAAAAAAAAAAANdFsqzchf1wv8NRO_MUuRf_QteIJcM4lwxVqYf6oj79&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 118,
+  "h": 149,
+  "bytes": 19322
+ },
+ {
+  "file": "img-026-127x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F6f2f1843-0f36-4c48-834b-7005b6badf60/watermark:F/width:127?csig=AAAAAAAAAAAAAAAAAAAAAKjdFe8qkyH-y8dfOJhjfC7c3K-ToiwGH_3gh-EwNG56&exp=1786149822&osig=AAAAAAAAAAAAAAAAAAAAALUxDmvz_iX6jyWD7R8b3PopeWNFZR0wJSA5zMuVcaX2&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 127,
+  "h": 149,
+  "bytes": 16302
+ },
+ {
+  "file": "img-027-118x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F0dbf9904-387b-45d6-a3f0-c3f6f5f71737/watermark:F/width:118?csig=AAAAAAAAAAAAAAAAAAAAAJtdWiZ366elEu_Sas4bB-LdN--_kEXoalUu2Ggf4OCT&exp=1786150283&osig=AAAAAAAAAAAAAAAAAAAAAPhcpaKKmkN9x1X5WHZ0-ze04aJvqKC8tV5qlSeQK62A&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 118,
+  "h": 149,
+  "bytes": 19955
+ },
+ {
+  "file": "img-028-150x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2Fde38f6b6-b310-4fd5-a3e4-e6b234e78844/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAGEKTGupEOYwwa96S3qBlczwpOqI5HlqBmknInEe1xYj&exp=1786148958&osig=AAAAAAAAAAAAAAAAAAAAAGAx4f0KZYBoWrQw1FEqlv6gR7hSDf7hr-fAdRS8Ai8i&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 150,
+  "bytes": 30080
+ },
+ {
+  "file": "img-029-149x108.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:108/quality:100/uri:ifs%3A%2F%2FM%2Fa547eb2e-39e8-4ba6-b256-7d6919bf575c/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAPKMyhL26qihu8SGV8Dh9z3UW09wQUgGMDzIae1hd65a&exp=1786151796&osig=AAAAAAAAAAAAAAAAAAAAABZaWuOo7OOcvTuQtgANmGKrEEYv7CGhrcOFwGBUNgKz&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 108,
+  "bytes": 4589
+ },
+ {
+  "file": "img-030-149x115.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:115/quality:100/uri:ifs%3A%2F%2FM%2Fb994edca-0dda-4fca-9220-437de9c64647/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAANEt8WsqdSwX4DMA7Coo-N4l9DPOW0Ho6iuL-n00tt34&exp=1786148325&osig=AAAAAAAAAAAAAAAAAAAAAGps0KqgONowqWSZM48kFGFsoV65D9DAMNQSeUsdMKTy&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 115,
+  "bytes": 8036
+ },
+ {
+  "file": "img-031-150x101.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:101/quality:100/uri:ifs%3A%2F%2FM%2Fc29a2574-bac6-4d85-86d0-3e4b2f8cd252/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAACeBtjLk0luI6N7Xj23nfu0G7C_ech7ASyCAP_tEX0m0&exp=1786150078&osig=AAAAAAAAAAAAAAAAAAAAAGb8_yOF7DGjFcljUgRrERfUL2xvrPTeqDA5yjHmqosp&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 101,
+  "bytes": 5570
+ },
+ {
+  "file": "img-032-149x47.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:47/quality:100/uri:ifs%3A%2F%2FM%2FRC3dx-rs1B1rHcxWqFMkFOimCzEjYnUoPI49hzNoZD8.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAPlo5u4ubZDkYlgozPjNbadir7WlCZkwA22XlVRQhgdv&exp=1786150793&osig=AAAAAAAAAAAAAAAAAAAAAM5OFfHOBD6MCDa1mc8C1nRIYzBHr98h2Zl_hoN-IwJ4&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 47,
+  "bytes": 12481
+ },
+ {
+  "file": "img-033-149x69.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:69/quality:100/uri:ifs%3A%2F%2FM%2F51eef828-24c3-4555-8374-bc09041024ba/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAKGpTxVUoXvkiMQ7gTwj15dsGdPQA3rn2KhHgWl79WY6&exp=1786149139&osig=AAAAAAAAAAAAAAAAAAAAABiU2J47pQzGSrfO66aT-ZO-K9d3SdtZQCSNG6I4wnLB&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 69,
+  "bytes": 5436
+ },
+ {
+  "file": "img-034-200x158.png",
+  "url": "https://media-public.canva.com/M9ndI/MAETpAM9ndI/1/t.png",
+  "w": 200,
+  "h": 158,
+  "bytes": 7994
+ },
+ {
+  "file": "img-035-150x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F6c4fd5b5-9e43-4177-aa2e-45a6b512fd94/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAEGmWbtUpREOeWloPL74hnHNS7irfEgoR4t3Cjwxuzdc&exp=1786151680&osig=AAAAAAAAAAAAAAAAAAAAAFvGD-GLQZ3ZWEEw9qEsqgZKC0oNunsWP_bzSBPpt9X6&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 150,
+  "bytes": 34301
+ },
+ {
+  "file": "img-036-119x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F618c725a-7af2-42fa-9b44-57af10e1e0bc/watermark:F/width:119?csig=AAAAAAAAAAAAAAAAAAAAAK51MTziONEOqDoJMA4ExiQf-vZHHF7JM-wQyTEqTqyp&exp=1786148942&osig=AAAAAAAAAAAAAAAAAAAAACPjhoyJC9VYtCwInCnvKqyPAhylrPY6d5C4lAvu7GE-&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 119,
+  "h": 149,
+  "bytes": 9288
+ },
+ {
+  "file": "img-037-149x99.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:99/quality:100/uri:ifs%3A%2F%2FM%2Fd94c6b61-18ec-4d14-84db-af94802187ff/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAKsJV3P09VwX1UGJwjIQaFsipEXBXI1FGwVJjVytyg5V&exp=1786150988&osig=AAAAAAAAAAAAAAAAAAAAADbJz8k8IEsGSkug35_yHIpWvS065xef1K0sr5z_KDZa&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 99,
+  "bytes": 11794
+ },
+ {
+  "file": "img-038-112x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F1b720a65-c55e-474d-bd5e-807b580ca2a5/watermark:F/width:112?csig=AAAAAAAAAAAAAAAAAAAAAPYdRfUompg5fPRjEFLhC0fapLHp8hHImUgTxPHjXLDD&exp=1786150004&osig=AAAAAAAAAAAAAAAAAAAAAIJeQ8t-oqFwkDp2do4k52n6XXSpgKa0FrdUMt_v7NjC&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 112,
+  "h": 149,
+  "bytes": 17041
+ },
+ {
+  "file": "img-039-150x105.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:105/quality:100/uri:ifs%3A%2F%2FM%2F875379a2-be27-4780-bdb4-f934575f1fb6/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAJKhN1pSucJvTJNXGKZ6LCNBqnfUXroAjzM18z2Uo5cT&exp=1786149770&osig=AAAAAAAAAAAAAAAAAAAAAP1A4iGQ20bLQ2XkxVfEdx4DJh1nuavYVd0Q0raFeX3j&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 105,
+  "bytes": 20173
+ },
+ {
+  "file": "img-040-150x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2Fdc186a74-57ea-4ce5-bab6-29859c5a18d4/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAJMpP8B6WKD2C6k1mwacvd_jR6vFgr_VGWFA2pZPwsPn&exp=1786148832&osig=AAAAAAAAAAAAAAAAAAAAAOK-ZmGbqftYeJe6BhdQ0jJ4NY7fGw7reTJMQaE41k3x&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 150,
+  "bytes": 11848
+ },
+ {
+  "file": "img-041-106x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2Fc49d628a-8932-4937-8e14-7df18b3d827e/watermark:F/width:106?csig=AAAAAAAAAAAAAAAAAAAAAImDfJShGzHCY8CuOP6vcZE83Z1O0HeFmeUzmTGEI7-H&exp=1786151024&osig=AAAAAAAAAAAAAAAAAAAAAFICNzMBdo1yhsxPsSWfYUF2xdxg8EiGzZiQzpMK8LW8&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 106,
+  "h": 150,
+  "bytes": 12273
+ },
+ {
+  "file": "img-042-200x200.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Fbacdb2cb-af5b-4360-a82f-cc7afa5b4b41/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAABV9gjpueffsOXD9ogGm4CXvvptZkWeNoEl_hdjye-XY&exp=1786150830&osig=AAAAAAAAAAAAAAAAAAAAADwg8ZDXOc5Vg292IB5VW0TxJueVg-COQnaSKHtP2Gc7&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 200,
+  "h": 200,
+  "bytes": 13622
+ },
+ {
+  "file": "img-043-150x66.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:66/quality:100/uri:ifs%3A%2F%2FM%2Ff5029267-bc1b-48da-bb33-7c9e460ba514/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAJ3G2z8Xx41y0ZatWWxCU_p4SwaBML1LH4Z8kDONc3Pl&exp=1786148821&osig=AAAAAAAAAAAAAAAAAAAAAGEjg4z4jljRiX0oau-kw804rb_iJW1uOyHzqjMse_AU&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 66,
+  "bytes": 3044
+ },
+ {
+  "file": "img-044-200x200.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Fc4b18595-7c0d-4a44-9660-79eb68ac8fbc/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAANaEOmyMlbc9IV3eEmCtm_-cZYtvVF2Ugz4Tu-pUfppA&exp=1786149655&osig=AAAAAAAAAAAAAAAAAAAAAJhuQpFDl6f5xkdqsYWQnrN1tMGkFBr2EwR6lCNjc6h6&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 200,
+  "h": 200,
+  "bytes": 22466
+ },
+ {
+  "file": "img-045-200x200.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Fca706a98-7a3f-4d29-b6f7-439819dc87b4/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAFPm5rtdJv-7dOm5ZMHdqiL8ANNKY1gkHfhFfgx-N_IW&exp=1786151614&osig=AAAAAAAAAAAAAAAAAAAAACVf-7r0R52h88RDVntJM5PgM-SEl7lT7dYj9lPgH87w&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 200,
+  "h": 200,
+  "bytes": 28266
+ },
+ {
+  "file": "img-046-146x29.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:29/quality:100/uri:ifs%3A%2F%2FM%2F1bb127f8-98a5-4ff7-bed4-f2d9c722b97c/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAANtbjLTNfqz_o9R_-5--1pq_w_7t-p1mlDjEEks1tKs3&exp=1786151698&osig=AAAAAAAAAAAAAAAAAAAAAPk7qhS2lZ6L7HRDVJiRduNd9iFRJwCBSswuL-S0u0mo&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 146,
+  "h": 29,
+  "bytes": 2649
+ },
+ {
+  "file": "img-047-200x200.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2F09409c7f-7828-49d0-8388-21623c76a78f/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAMsZunq4wDwzJWFbPwGnVPmzzku3GaPqguoCj9Zn7WM3&exp=1786150310&osig=AAAAAAAAAAAAAAAAAAAAAIAtNWkG7Tb_wblO0Ie4vHU3CfwQX8nnLXV_rcYr1pIZ&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 200,
+  "h": 200,
+  "bytes": 24793
+ },
+ {
+  "file": "img-048-148x57.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:57/quality:100/uri:ifs%3A%2F%2FM%2Fb37e21bf-19f7-47bd-9ca4-e50183d30634/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAHpRui0BkGzuvx0ZEt_0zoQKxILMJ_WNiBhRtJoSX_Fn&exp=1786149110&osig=AAAAAAAAAAAAAAAAAAAAAGgXueduqkS1bjh72kwPa4_UFFqozyDsPccDor92tPtG&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 148,
+  "h": 57,
+  "bytes": 4576
+ },
+ {
+  "file": "img-049-149x115.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:115/quality:100/uri:ifs%3A%2F%2FM%2FqoSihVju3AxFIglCwZ0eHy3XdNmtCLq5mhdqLeNhN-I.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAOsP64UPZAxtkmuNV11QDZP9U71dNG1WwsoD9dTk5Xhd&exp=1786150444&osig=AAAAAAAAAAAAAAAAAAAAAK4pBajTLasT-WhpW4g0tQtsqK1r8HhsYYqmgkNfrTJb&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 115,
+  "bytes": 3140
+ },
+ {
+  "file": "img-050-1599x1069.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:1069/quality:100/uri:ifs%3A%2F%2FM%2F775164d4-e8a4-43d8-8e23-bb230360e0f5/watermark:F/width:1600?csig=AAAAAAAAAAAAAAAAAAAAAHhoGFaTsO8HavCNMVLnDrma9V7uGYpdtXGMHJk8aZhN&exp=1786150611&osig=AAAAAAAAAAAAAAAAAAAAACwofffVuxwGUlDNARtip-H1XsUMXIploro6cvhqA1dI&signer=media-rpc&x-canva-quality=screen_2x",
+  "w": 1599,
+  "h": 1069,
+  "bytes": 986362
+ },
+ {
+  "file": "img-051-1599x1066.jpg",
+  "url": "https://media.canva.com/v2/image-resize/format:JPG/height:1066/quality:92/uri:ifs%3A%2F%2FM%2Fa049f96e-0930-4af3-b8a2-44e51ab2f578/watermark:F/width:1600?csig=AAAAAAAAAAAAAAAAAAAAAN3jKu8Ak3M8qwFuor7vKlD4QyJIVXBGsDHwClM5cXUK&exp=1786151833&osig=AAAAAAAAAAAAAAAAAAAAAMonURRlb12h4EHVKrI37KGBNhokVudw_8VzQQwIuGEd&signer=media-rpc&x-canva-quality=screen_2x",
+  "w": 1599,
+  "h": 1066,
+  "bytes": 137794
+ },
+ {
+  "file": "img-052-800x800.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:800/quality:100/uri:ifs%3A%2F%2FM%2Fdc186a74-57ea-4ce5-bab6-29859c5a18d4/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAABMIcbVJyqFrZAH1VsiDzJcDbPnkXXfhpW49cKAbRD58&exp=1786148832&osig=AAAAAAAAAAAAAAAAAAAAAKzSG6c5vVO_M9kv1uaVihMWf_Q4LvexlCmtWLmHMXJB&signer=media-rpc&x-canva-quality=screen",
+  "w": 800,
+  "h": 800,
+  "bytes": 204068
+ },
+ {
+  "file": "img-053-403x798.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:800/quality:100/uri:ifs%3A%2F%2FM%2F77bdc34a-bb9e-4c27-9c4d-c774b9a5597d/watermark:F/width:403?csig=AAAAAAAAAAAAAAAAAAAAAInFTzadR3FMh-BxMbrw-S-TVGQUCgP8Z32mGyv7RyL1&exp=1786148846&osig=AAAAAAAAAAAAAAAAAAAAAIKgx5_mHY2j4oTa8kBmh0YwViSzuXbr7dxKfSBibq4o&signer=media-rpc&x-canva-quality=screen",
+  "w": 403,
+  "h": 798,
+  "bytes": 172569
+ },
+ {
+  "file": "img-054-149x56.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:56/quality:100/uri:ifs%3A%2F%2FM%2F02d8f354-a71b-4ea8-bfeb-09275c3c759f/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAMzlqZcCKXrx-KFVGli2l_l-h7-tSrKp1tz8hY-v1dSX&exp=1786148821&osig=AAAAAAAAAAAAAAAAAAAAALNRq76oTLb0KH9k4BRh47T7EcQu7ZIlPrbtEicWB8H6&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 56,
+  "bytes": 3610
+ },
+ {
+  "file": "img-055-800x800.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:800/quality:100/uri:ifs%3A%2F%2FM%2Fc2c90819-1174-4295-9459-1c7710416a83/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAANtw0xDCOxWxluv0ULglGRaAe77Sfs6DWbGuv_oqWV71&exp=1786149829&osig=AAAAAAAAAAAAAAAAAAAAAKetOmSVczM3hxoClSvZ-7S6NOUGktx9YNmoj7AYKsXE&signer=media-rpc&x-canva-quality=screen",
+  "w": 800,
+  "h": 800,
+  "bytes": 451385
+ },
+ {
+  "file": "img-056-149x107.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:107/quality:100/uri:ifs%3A%2F%2FM%2Fd9647113-acfd-44d9-ab98-97b268c50dfb/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAC2CqGJVTT-cJMHGCaeEkdPY2pAigUPvY5gRbwm_DLSV&exp=1786150000&osig=AAAAAAAAAAAAAAAAAAAAACjk9N9fudzjtVRzaI4mMDUmvlkC911nyCoWFo4-34rw&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 107,
+  "bytes": 11467
+ },
+ {
+  "file": "img-057-200x79.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:79/quality:100/uri:ifs%3A%2F%2FM%2F1d87542d-fe22-4d44-8877-f2781aab0701/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAMY9DEV9D3aBh5_Ig5zodKWOunqLzXUDwy3_ABNb7OTd&exp=1786149356&osig=AAAAAAAAAAAAAAAAAAAAALHyh0Dnb4wsPYTiqVUkn-Ix2t6UXZhgPs32UcQb5-LG&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 200,
+  "h": 79,
+  "bytes": 12294
+ },
+ {
+  "file": "img-058-150x75.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:75/quality:100/uri:ifs%3A%2F%2FM%2F8ad58a0a-2ae3-4b22-a708-48f507343355/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAHet9lhBbqNMrbmLsc8dtrIowR69TjWVUAMBSbehpktx&exp=1786148490&osig=AAAAAAAAAAAAAAAAAAAAAHgH-069W_z8mxdu8l9uPssNmWV5Y4lbuBIS0GrzJxFS&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 75,
+  "bytes": 7849
+ },
+ {
+  "file": "img-059-149x48.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:48/quality:100/uri:ifs%3A%2F%2FM%2Fc7e00ebf-b2a8-4209-a84d-c2fa815aeeae/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAKRULBQ0XPxDFBsqndinQVePBI6vH0M9mnFFf-UPmXI9&exp=1786148368&osig=AAAAAAAAAAAAAAAAAAAAAFl5WpttHYg4EmoQJblE5CfFsucJ_q9eh0X1JFRMd5ti&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 48,
+  "bytes": 15009
+ },
+ {
+  "file": "img-060-148x65.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:65/quality:100/uri:ifs%3A%2F%2FM%2F2f3d8121-0939-4e17-89fd-404bc0f4156a/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAK3IbZUT-ga4un7g94SA9-bujUqz2UbVVEfW0S_3KM7X&exp=1786150381&osig=AAAAAAAAAAAAAAAAAAAAAIiRZd6EzxJWm2d-1LKKU4PZ1VIezvIcL1qgqSVwgUIP&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 148,
+  "h": 65,
+  "bytes": 10455
+ },
+ {
+  "file": "img-061-190x138.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:138/quality:100/uri:ifs%3A%2F%2FM%2Fa547eb2e-39e8-4ba6-b256-7d6919bf575c/watermark:F/width:190?csig=AAAAAAAAAAAAAAAAAAAAAD0w2wlrs3r2AQC9HmH7yuFW6l4LNMIs_e4zIBiIiXY3&exp=1786151796&osig=AAAAAAAAAAAAAAAAAAAAAMHiVaaLCHsuf1DycxvOBMXUVl2SLRHs635hlWCgfulj&signer=media-rpc&x-canva-quality=screen_3x",
+  "w": 190,
+  "h": 138,
+  "bytes": 5789
+ },
+ {
+  "file": "img-062-150x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F89eb5b69-4480-4cd3-b736-162b84ae2208/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAH0zDfEV3jgQRk4dMuUesdfLR6cHt7xs151X7xa3Qk_E&exp=1786149616&osig=AAAAAAAAAAAAAAAAAAAAAOpP5PpYeeTJSA2fUrfK1uwq6HaE1k8ar5KBTopnAEQ6&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 150,
+  "bytes": 12272
+ },
+ {
+  "file": "img-063-149x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F05508c58-f99e-4ad8-8072-6a764fd60c41/watermark:F/width:149?csig=AAAAAAAAAAAAAAAAAAAAAPYZkwZnWU-zvrpGeoFbcQmRDEHedirZibdjjfWp1zDG&exp=1786150810&osig=AAAAAAAAAAAAAAAAAAAAAHvvFvyTUF0-JjkZwkYomQsMjWUeiPyZnH5irlbp7iKT&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 150,
+  "bytes": 17599
+ },
+ {
+  "file": "img-064-179x138.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:138/quality:100/uri:ifs%3A%2F%2FM%2Fb994edca-0dda-4fca-9220-437de9c64647/watermark:F/width:179?csig=AAAAAAAAAAAAAAAAAAAAAANx9YnvklJt8yQLTqZuY25W3CHpQCtTyhgNHsftw_lC&exp=1786148325&osig=AAAAAAAAAAAAAAAAAAAAALG2Dt14EC7B3Rv9qhQm0Awcyrqoi_j3RXAw6fCQ8Vpi&signer=media-rpc&x-canva-quality=screen_3x",
+  "w": 179,
+  "h": 138,
+  "bytes": 5413
+ },
+ {
+  "file": "img-065-146x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2Fa79bb8c0-f41d-43fc-9f72-62ef29a0d71f/watermark:F/width:146?csig=AAAAAAAAAAAAAAAAAAAAAP3tzFcN2pxoAxV3tDNVfHG1JJ-C88WiENXhuH1EmFix&exp=1786148432&osig=AAAAAAAAAAAAAAAAAAAAAA6Ro1WQmiGLs-FoOcnh58ciBWzFgDU4bYrEKmdJgUyy&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 146,
+  "h": 149,
+  "bytes": 33607
+ },
+ {
+  "file": "img-066-150x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F1e0d7006-1974-4ad0-a103-15536ee055b2/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAP2grBhh415KJf5sk3dzNXokhPuj4OMMaOx-aZSwSu0P&exp=1786149028&osig=AAAAAAAAAAAAAAAAAAAAAEh9qNMv9tyDqw6Zqmoj-Lk0pr9VI0detbtxdPSj2nLG&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 150,
+  "bytes": 5869
+ },
+ {
+  "file": "img-067-150x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F34826b45-29c3-4284-ace0-c61d94bfb71a/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAKy86L7ovPvf9aNHaiw3krn7ltmr5QZhCAgqIfdpAW97&exp=1786148508&osig=AAAAAAAAAAAAAAAAAAAAAIztpo22zU41gYzTcUn8mwtcas8i1l6AkJtDRzpjmorV&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 150,
+  "bytes": 12780
+ },
+ {
+  "file": "img-068-200x63.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:63/quality:100/uri:ifs%3A%2F%2FM%2FRC3dx-rs1B1rHcxWqFMkFOimCzEjYnUoPI49hzNoZD8.png/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAJWkcKuS2l__L8Ua9fpmq3HyPFV8aRvGFnHvEth0gd-k&exp=1786150793&osig=AAAAAAAAAAAAAAAAAAAAAIWIWMwT8TXbg6dL4ycya1ckj7kfwzV8TWovzEvbKAdg&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 200,
+  "h": 63,
+  "bytes": 18918
+ },
+ {
+  "file": "img-069-148x44.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:44/quality:100/uri:ifs%3A%2F%2FM%2FmiLGk5ZyNTBRphWcCFflh-qf1-sJDE3t8OxVH1s6MqU.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAADT3Mx4AoZ7i2hUTiYZqwMXhYQ7h8ewjzQIY1un1yxp5&exp=1786150594&osig=AAAAAAAAAAAAAAAAAAAAAFVbZDJjF0Tu7nAlldMh05OiDhbZD6Kk9IDhOTAaGKDc&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 148,
+  "h": 44,
+  "bytes": 6546
+ },
+ {
+  "file": "img-070-150x66.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:66/quality:100/uri:ifs%3A%2F%2FM%2FvVB4qBKHLgZfXxre758cS9TsMP08Knsp4PwE2b_Nc-c.svg/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAOQR16nKLZYWwbiGBONBliOLVz1GCrq1q0eEhwdRVeb5&exp=1786148684&osig=AAAAAAAAAAAAAAAAAAAAAO3Xti6XCb7CP9vgYX5omcNyQ1LQFOHzhHr067X0Pv1M&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 66,
+  "bytes": 4092
+ },
+ {
+  "file": "img-071-150x114.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:114/quality:100/uri:ifs%3A%2F%2FM%2FHDeTumgMLWil2vAJvD6ruM3jANQnXQ0EDDX2FbSvhoU.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAANY2i6lMtRFMi0GebHNnT5K2OGlBKfpeQUQmwZxf5_qW&exp=1786148302&osig=AAAAAAAAAAAAAAAAAAAAALzCzWrGZiNJkspvjXJYqG-Xv4jZCCDuzhUEkTRiXpj6&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 114,
+  "bytes": 8181
+ },
+ {
+  "file": "img-072-150x109.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:109/quality:100/uri:ifs%3A%2F%2FM%2FJSAEId-iQoMZGL569AGCYP22_2sCIbF6AWFRyw1shoc.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAACU0wfbMQWpILms-8ds0zGllZAQ3U-EfokXb3vQfGj_a&exp=1786149420&osig=AAAAAAAAAAAAAAAAAAAAAMqQdhjWcEo8b3e8W4oO3ZSVAcG0tt2l5-w_K2dOJw03&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 109,
+  "bytes": 24481
+ },
+ {
+  "file": "img-073-198x57.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:57/quality:100/uri:ifs%3A%2F%2FM%2FVSsOJh4QH6i8_59gM4WCIc3SQY3Eo2ZI11sdAay2P6I.png/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAMTRBgO-4sELLO05h0UsNKpXv8Hz9izl0nw1zd0xOuGG&exp=1786148324&osig=AAAAAAAAAAAAAAAAAAAAAJmY_1OWbq17mo1-_K1E0V-_2BkRYqeixkKDDGE2o_Q7&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 198,
+  "h": 57,
+  "bytes": 7356
+ },
+ {
+  "file": "img-074-149x110.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:110/quality:100/uri:ifs%3A%2F%2FM%2FkLJWt0uPYLB3AWvfRTRcgwAEesMH_6kH13n38E86mnc.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAACCTCDpITpxoXE6hsxipJZ3IbcNhrdsb_2ShRXLccIHK&exp=1786151704&osig=AAAAAAAAAAAAAAAAAAAAAGMhFQzwDfjh4dOatvYLoUQDJuuELndBPtGhXbS6BaZZ&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 110,
+  "bytes": 19969
+ },
+ {
+  "file": "img-075-150x85.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:85/quality:100/uri:ifs%3A%2F%2FM%2FipeF21lkstJYgR6-GyEgwOoEamQE0fktIWBQo85m5to.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAHjCYPWc2GsF4ovB9z4pn7-TMDzJ4_wWKeEGyuXqIpn9&exp=1786148375&osig=AAAAAAAAAAAAAAAAAAAAAJGZ4QAzFZbRpjMPK69LzIhOwXov2xWHqbGYFEMyp6Tz&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 85,
+  "bytes": 19501
+ },
+ {
+  "file": "img-076-150x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F7vnTml81euTxqkhgQ7Z5yk7cwGX6-z3Hq2xTRJpxcjE.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAC28hcMQTLixjDvzoYg-rVJ1hXlbQe8DFGrYnmrb6AY_&exp=1786150864&osig=AAAAAAAAAAAAAAAAAAAAAARFSlCAKQYBuKAbQsvIy41IB5rfVMphNj6LZXh8NO_P&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 150,
+  "bytes": 14348
+ },
+ {
+  "file": "img-077-148x80.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:80/quality:100/uri:ifs%3A%2F%2FM%2FY0lqE071aNFYyl_JHb17rHN6dCoISfkO2vXNTVRF2S0.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAMsN8Jo_X1d1Vvf6LTZE574o-NIuqGX-qLDoVMrwj81d&exp=1786148385&osig=AAAAAAAAAAAAAAAAAAAAADEwaqhUKVukbRsAbGYTlyQJSYFWzURarlcsSvjF8dIN&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 148,
+  "h": 80,
+  "bytes": 6742
+ },
+ {
+  "file": "img-078-150x150.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2FM146cQ1j80fJwzIQXmA79ExJjmvGF0MvxnfrtNH1YqQ.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAISIFuo_Q5RUxaG5kfbsQAH40SRWZvH3sstIATPsmn-9&exp=1786151855&osig=AAAAAAAAAAAAAAAAAAAAAB95g4UlpGt4MCAFl3KNf1SOyFG6O-0neEWMjoLcubk7&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 150,
+  "bytes": 11670
+ },
+ {
+  "file": "img-079-149x94.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:94/quality:100/uri:ifs%3A%2F%2FM%2FCXVuBPJDNuGiTbpfbJjWsxQFR_z_m_BL3oSmjjYT4r4.png/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAFOAAeW611PKLVrLyu66mJp1jSpvoJpI1fimCFxNeG_7&exp=1786148486&osig=AAAAAAAAAAAAAAAAAAAAAO_-o7TSlgxBMLYgvJ82AzX0m4ef_dEeujOH_qNpxAEj&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 149,
+  "h": 94,
+  "bytes": 4942
+ },
+ {
+  "file": "img-080-799x574.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:574/quality:100/uri:ifs%3A%2F%2FM%2Fd27f4f94-9798-44eb-b6eb-15ef1e100f3b/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAANlMWp8LKfNRyr15bJNLMzbWlhVOvkC983GshfPEU26z&exp=1786150190&osig=AAAAAAAAAAAAAAAAAAAAAKGNxB_cvfThEG-YTlPoeEwDGO79nh-DAYU72VDwCVMD&signer=media-rpc&x-canva-quality=screen",
+  "w": 799,
+  "h": 574,
+  "bytes": 535120
+ },
+ {
+  "file": "img-081-150x86.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:86/quality:100/uri:ifs%3A%2F%2FM%2Fae198451-be9e-407d-bcf8-c9a420c47508/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAH9G1S3EUv6yVWplYvKgCjWei146fHeiK7Sn_1YKKZqA&exp=1786151069&osig=AAAAAAAAAAAAAAAAAAAAAPZVSC0UZHwDqLnlf8Wd1yBV1YfqsbVNbKmCHhnbCKH1&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 150,
+  "h": 86,
+  "bytes": 7799
+ },
+ {
+  "file": "img-082-799x529.jpg",
+  "url": "https://media.canva.com/v2/image-resize/format:JPG/height:529/quality:92/uri:ifs%3A%2F%2FM%2F087b68b1-2bd5-4c3c-94df-5bcd662574d0/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAEq8vJmfe8yHG0ixw7OaBDIDBZZ2j0Zc8qgBhffwSv6X&exp=1786149515&osig=AAAAAAAAAAAAAAAAAAAAAPYO_4bkTe0VjRBttz6Of2ARnQYroTAKUabg4iLovtbx&signer=media-rpc&x-canva-quality=screen",
+  "w": 799,
+  "h": 529,
+  "bytes": 49074
+ },
+ {
+  "file": "img-083-199x75.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:75/quality:100/uri:ifs%3A%2F%2FM%2F02d8f354-a71b-4ea8-bfeb-09275c3c759f/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAABWkfGzrmK8kGZb5oSZfnkwyn2dohgS-v3mP-CcfzvfY&exp=1786148821&osig=AAAAAAAAAAAAAAAAAAAAADKdMwfPOtgxlU9OoIIvkz4Ty0CbHJJEqt9vMz3RPSJv&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 199,
+  "h": 75,
+  "bytes": 5182
+ },
+ {
+  "file": "img-084-800x600.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:600/quality:100/uri:ifs%3A%2F%2FM%2F24e80142-8377-4ffd-b8a8-5abbea590af7/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAO04fWUBXhn1YriOpjbzDiklCP14j__UfS4wCGeTtlw0&exp=1786151290&osig=AAAAAAAAAAAAAAAAAAAAAKS_nklUA4JorbhyZgUt2t_ZFY300XFZYA9jcCfFLUpt&signer=media-rpc&x-canva-quality=screen",
+  "w": 800,
+  "h": 600,
+  "bytes": 82819
+ },
+ {
+  "file": "img-085-800x757.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:757/quality:100/uri:ifs%3A%2F%2FM%2F4d413038-0947-46e6-8079-b319d0f64d57/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAHqgCdT2_kBed4IAFzRgC48q7Pz4pqcU1Z4zQTUzp_QD&exp=1786150148&osig=AAAAAAAAAAAAAAAAAAAAACfgWT0-40v_hpiRf91K_QdHnz2gE_WQ5pXL8SON2m-F&signer=media-rpc&x-canva-quality=screen",
+  "w": 800,
+  "h": 757,
+  "bytes": 370689
+ },
+ {
+  "file": "img-086-136x199.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Fc36fd7bc-449a-4e3b-9c93-7ea60a2e30d3/watermark:F/width:136?csig=AAAAAAAAAAAAAAAAAAAAAC_bh8ZQtLLss5h5T9M9b3sQ_vYoUlxEa6XQEgkoqtC3&exp=1786151960&osig=AAAAAAAAAAAAAAAAAAAAAPWL-PzlfuqmzfDxokCXBFCcfKr0Uw9M8LeiSXf6fJtg&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 136,
+  "h": 199,
+  "bytes": 23057
+ },
+ {
+  "file": "img-087-799x346.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:346/quality:100/uri:ifs%3A%2F%2FM%2F4aab225f-741a-464b-8514-ca95c65469c7/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAE6lXesYEdDc7-Ll0BelD6u56GBTVPsO_6bQMkYIsfns&exp=1786150330&osig=AAAAAAAAAAAAAAAAAAAAAHYR4kJ_H89xdjqwLcPD3O0_Ugo1dkqlxqASfT-jvgRX&signer=media-rpc&x-canva-quality=screen",
+  "w": 799,
+  "h": 346,
+  "bytes": 290854
+ },
+ {
+  "file": "img-088-136x149.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:150/quality:100/uri:ifs%3A%2F%2FM%2F87a7c57d-c8e0-43ce-b9b0-082656798daf/watermark:F/width:136?csig=AAAAAAAAAAAAAAAAAAAAAFmHvMlIooyG75LHRVC_Xf2zs3fmJ_IVnMK70UqM8Eri&exp=1786149388&osig=AAAAAAAAAAAAAAAAAAAAAPK6awzzvV4mIsCqDE5zeSe7nQK2-fq-orgf64l9HrzV&signer=media-rpc&x-canva-quality=micro_thumbnail",
+  "w": 136,
+  "h": 149,
+  "bytes": 21234
+ },
+ {
+  "file": "img-089-191x199.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2F54666e8b-660f-4006-a125-d5ddd7257d8f/watermark:F/width:191?csig=AAAAAAAAAAAAAAAAAAAAADsWwtrRQ2RALC9brx0zmBPIU5P2aD-X3rlABK8vEpeE&exp=1786150434&osig=AAAAAAAAAAAAAAAAAAAAAAhAG4kCC492jOEqkbHXxVqvBZs2XheZPBNoLZ6KSMJ0&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 191,
+  "h": 199,
+  "bytes": 29212
+ },
+ {
+  "file": "img-090-800x764.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:764/quality:100/uri:ifs%3A%2F%2FM%2F094bb006-2689-4a00-bca6-efbd3fc4a8e6/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAHiDbv5es6jmH5RiwVk1VEiqTrZVXj8ASjYM6WB-YKco&exp=1786149863&osig=AAAAAAAAAAAAAAAAAAAAALabpO4wU-s5c3zaF0xUgTuT6IZOnD5t6SEYKcIDG7-q&signer=media-rpc&x-canva-quality=screen",
+  "w": 800,
+  "h": 764,
+  "bytes": 328995
+ },
+ {
+  "file": "img-091-800x764.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:764/quality:100/uri:ifs%3A%2F%2FM%2F7a48d72f-4447-457e-ad01-3ffffdf7a4ad/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAANMt_bHoH3RCoQaK_QHhce2NyPFoQagBpH2M9NlWdqqt&exp=1786152221&osig=AAAAAAAAAAAAAAAAAAAAAEKulNwu5iGbUFl8zYGSVODbouSIdKNvZ8Q89HgXpM3M&signer=media-rpc&x-canva-quality=screen",
+  "w": 800,
+  "h": 764,
+  "bytes": 314301
+ },
+ {
+  "file": "img-092-199x144.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:144/quality:100/uri:ifs%3A%2F%2FM%2F3nNUuRKh6EBWHjBTcEL87TPFIsXqZCHkf0_05u7cd9s.png/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAALD0ijrNKiJ4vpclEOJUsOd6amcl-N-pVrKthodAaWFL&exp=1786149468&osig=AAAAAAAAAAAAAAAAAAAAAOamNZa5lHv5R8tSESofwQQ05O3d0Ku_sVGUVgqLwqB1&signer=media-rpc&x-canva-quality=thumbnail",
+  "w": 199,
+  "h": 144,
+  "bytes": 35903
+ },
+ {
+  "file": "img-093-600x800.jpg",
+  "url": "https://media.canva.com/v2/image-resize/format:JPG/height:800/quality:92/uri:ifs%3A%2F%2FM%2F4NdIIhcgq_cPA3Y2wMy42McCsewcCj1ERG1h4F4bPFU.jpg/watermark:F/width:600?csig=AAAAAAAAAAAAAAAAAAAAAOYWYtYnxhb0XC2jKYrruldsKzfLtNgA8Bx8gQjrfL7l&exp=1786149871&osig=AAAAAAAAAAAAAAAAAAAAAP9976TJfO2ISixHz_Pu3hw1AUe3uz0ju0jQdSO7oowL&signer=media-rpc&x-canva-quality=screen",
+  "w": 600,
+  "h": 800,
+  "bytes": 69969
+ },
+ {
+  "file": "img-094-566x799.jpg",
+  "url": "https://media.canva.com/v2/image-resize/format:JPG/height:800/quality:92/uri:ifs%3A%2F%2FM%2F2f2cdc84-b5c9-459a-9b20-e986a5ed2afc/watermark:F/width:566?csig=AAAAAAAAAAAAAAAAAAAAAP5VsHjmrrSEdGgFOreqsxoZ8ev16z1sRaBG_rYAyH1x&exp=1786149718&osig=AAAAAAAAAAAAAAAAAAAAAHsZQpIOsOz3X7hB5Q5uLpvtt2RXgkPQLNc9KaQDUUib&signer=media-rpc&x-canva-quality=screen",
+  "w": 566,
+  "h": 799,
+  "bytes": 40132
+ },
+ {
+  "file": "img-095-1600x1200.jpg",
+  "url": "https://media.canva.com/v2/image-resize/format:JPG/height:1200/quality:92/uri:ifs%3A%2F%2FM%2Fedcd3f95-2d03-4190-8471-45825c5d1240/watermark:F/width:1600?csig=AAAAAAAAAAAAAAAAAAAAADDTlWIhnnn_TXmcNQpAgbcKQjA6PVMEWFWhzUCDW0f5&exp=1786149863&osig=AAAAAAAAAAAAAAAAAAAAANbQqtJdlmqRmNCfg6aUoI4n7HCRE2HPFyPEYI9s0aj_&signer=media-rpc&x-canva-quality=screen_2x",
+  "w": 1600,
+  "h": 1200,
+  "bytes": 302895
+ },
+ {
+  "file": "img-096-1600x1200.jpg",
+  "url": "https://media.canva.com/v2/image-resize/format:JPG/height:1200/quality:92/uri:ifs%3A%2F%2FM%2F5fd8a5a3-ba7d-43cb-bb4d-63f22ef4cba3/watermark:F/width:1600?csig=AAAAAAAAAAAAAAAAAAAAAP7TPMZfoce1Qq35TeVqzWg3hBS7UR1t6sazLPUqP-1t&exp=1786151291&osig=AAAAAAAAAAAAAAAAAAAAAAUg95_NWZrkvkDqAhfFbWJSgaVtbcooZqtZvQ9QMuXb&signer=media-rpc&x-canva-quality=screen_2x",
+  "w": 1600,
+  "h": 1200,
+  "bytes": 250827
+ },
+ {
+  "file": "img-097-200x60.png",
+  "url": "https://media-public.canva.com/DnNtY/MAG6YGDnNtY/1/t.png",
+  "w": 200,
+  "h": 60,
+  "bytes": 3219
+ },
+ {
+  "file": "img-098-779x800.png",
+  "url": "https://media.canva.com/v2/image-resize/format:PNG/height:800/quality:100/uri:ifs%3A%2F%2FM%2F0db13c64-9dea-4948-9a8b-8de12e4f2f33/watermark:F/width:779?csig=AAAAAAAAAAAAAAAAAAAAAJ6_Fz-2yHfNoJw7lsBooWCjyhh_UB5r9x5v1fUwSCmg&exp=1786149914&osig=AAAAAAAAAAAAAAAAAAAAAA_8XQsPpQRgXLeg-lpCaTht11P2xEmP-66MFNGT7Ugo&signer=media-rpc&x-canva-quality=screen",
+  "w": 779,
+  "h": 800,
+  "bytes": 663679
+ }
+]
