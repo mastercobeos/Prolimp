@@ -3,6 +3,7 @@
 
 import "server-only";
 import { sanityFetch } from "@/sanity/live";
+import { client } from "@/sanity/client";
 import { urlForImage } from "@/sanity/image";
 import {
   homeQuery,
@@ -38,6 +39,10 @@ const cachedFetch = async <T>(query: string, params?: Record<string, unknown>): 
   const { data } = await sanityFetch({ query, params: params ?? {} });
   return data as T;
 };
+
+// Bypass Live para queries usadas en generateStaticParams (build-time, sin request).
+const staticFetch = <T>(query: string, params?: Record<string, unknown>) =>
+  client.fetch<T>(query, params ?? {}, { next: { revalidate: 3600 } });
 
 // -------- home
 export async function getHomeContent() {
@@ -355,33 +360,34 @@ export async function getPostBySlug(slug: string) {
   } | null>(postBySlugQuery, { slug });
 }
 
-// -------- slugs (para generateStaticParams)
+// -------- slugs (para generateStaticParams) — usan staticFetch, NO Live
+// Live/sanityFetch invoca draftMode(), no permitido en build sin request.
 export async function getAllCategoriaSlugs() {
-  return cachedFetch<{ slug: string }[]>(
+  return staticFetch<{ slug: string }[]>(
     `*[_type == "categoria" && defined(slug.current)]{ "slug": slug.current }`
   );
 }
 
 export async function getAllLineaSlugs() {
-  return cachedFetch<{ slug: string }[]>(
+  return staticFetch<{ slug: string }[]>(
     `*[_type == "linea" && defined(slug.current)]{ "slug": slug.current }`
   );
 }
 
 export async function getAllPostSlugs() {
-  return cachedFetch<{ slug: string }[]>(
+  return staticFetch<{ slug: string }[]>(
     `*[_type == "post" && defined(slug.current)]{ "slug": slug.current }`
   );
 }
 
 export async function getAllProductoSlugs() {
-  return cachedFetch<{ slug: string }[]>(
+  return staticFetch<{ slug: string }[]>(
     `*[_type == "producto" && activo == true && defined(slug.current)]{ "slug": slug.current }`
   );
 }
 
 export async function getAllMarcaSlugs() {
-  return cachedFetch<{ slug: string }[]>(
+  return staticFetch<{ slug: string }[]>(
     `*[_type == "marca" && defined(slug.current)]{ "slug": slug.current }`
   );
 }
