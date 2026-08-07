@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import styles from "./page.module.css";
 import { getPosts } from "@/lib/data";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Blog · Guías y tips de limpieza profesional",

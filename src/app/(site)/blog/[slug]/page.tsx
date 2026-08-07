@@ -56,10 +56,10 @@ const portableComponents: PortableTextComponents = {
     image: ({ value }) =>
       value?.asset ? (
         <Image
-          src={urlForImage(value).width(1200).url()}
+          src={urlForImage(value).width(720).url()}
           alt={value.alt ?? ""}
-          width={1200}
-          height={800}
+          width={720}
+          height={480}
           className={styles.contentImg}
         />
       ) : null,

@@ -28,7 +28,8 @@
   overflow: hidden;
   border: 1px solid var(--border);
   color: var(--fg) !important;
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem;
+  max-width: 960px;
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 .featured:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
@@ -68,6 +69,8 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   list-style: none;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 .card {
   display: flex;

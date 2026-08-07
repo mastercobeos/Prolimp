@@ -137,10 +137,10 @@ export const producto = defineType({
     }),
     defineField({
       name: "linkExterno",
-      title: "Link externo (Mercado Libre)",
+      title: "Link externo de compra",
       type: "url",
       group: "basico",
-      description: "Si el producto se vende en Mercado Libre, pega la URL aquí",
+      description: "URL externa donde se puede comprar el producto (opcional).",
     }),
     defineField({ name: "metaTitle", title: "SEO title", type: "string", group: "seo" }),
     defineField({ name: "metaDescription", title: "SEO description", type: "text", group: "seo", rows: 2 }),

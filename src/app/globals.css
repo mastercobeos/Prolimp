@@ -1,20 +1,25 @@
 /* Design tokens Prolimp */
 :root {
-  /* Marca */
+  /* Marca — colores corporativos oficiales */
+  --azul-marino: #002072;   /* corporativo — reemplaza --azul-900 */
+  --azul-claro: #0274c5;    /* corporativo — mismo que --azul-500 */
+  --gris-corp: #848387;     /* corporativo — texto secundario */
+
+  /* Aliases legacy (no romper componentes existentes) */
   --azul-500: #0274c5;
   --azul-600: #0263a8;
   --azul-700: #024f88;
-  --azul-900: #0c1f6e;
+  --azul-900: #002072;      /* actualizado a corporativo */
   --cyan-400: #00aeef;
   --cyan-300: #5bc0de;
 
   /* Neutros */
-  --gris-900: #0f172a;
-  --gris-800: #1e293b;
-  --gris-700: #334155;
-  --gris-600: #475569;
-  --gris-500: #64748b;
-  --gris-400: #94a3b8;
+  --gris-900: #002072;      /* redirigido a corporativo — nunca negro */
+  --gris-800: #002072;      /* redirigido a corporativo — nunca negro */
+  --gris-700: #4a5163;
+  --gris-600: #848387;      /* redirigido a corporativo */
+  --gris-500: #848387;      /* redirigido a corporativo */
+  --gris-400: #a5a5a8;
   --gris-300: #cbd5e1;
   --gris-200: #e2e8f0;
   --gris-100: #f1f5f9;
@@ -24,10 +29,10 @@
   /* Semantic */
   --bg: var(--blanco);
   --bg-alt: var(--gris-50);
-  --fg: var(--gris-900);
-  --fg-muted: var(--gris-600);
+  --fg: var(--azul-marino);
+  --fg-muted: var(--gris-corp);
   --border: var(--gris-200);
-  --primary: var(--azul-500);
+  --primary: var(--azul-claro);
   --primary-hover: var(--azul-600);
   --accent: var(--cyan-400);
   --success: #16a34a;

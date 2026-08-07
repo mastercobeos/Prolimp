@@ -41,6 +41,14 @@
   border-top: 3px solid var(--cyan-400);
   display: inline-block;
 }
+.contentImg {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin: 2rem auto;
+  border-radius: var(--radius-lg);
+}
 
 .cta {
   margin-top: 3rem;

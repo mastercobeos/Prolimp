@@ -336,7 +336,7 @@ export async function getPosts(): Promise<BlogListItem[]> {
     slug: p.slug,
     title: p.titulo,
     description: p.excerpt,
-    image: imgUrl(p.imagenPortada, 1200),
+    image: imgUrl(p.imagenPortada, 720),
     date: p.fechaPublicacion,
     destacado: p.destacado,
     categoria: p.categoria,

@@ -64,16 +64,16 @@ export function Footer({ categorias, lineas, empresa }: Props) {
           <div>
             <p className={styles.colTitle}>Productos</p>
             <ul>
-              {categorias.slice(0, 6).map((c) => (
+              {categorias.map((c) => (
                 <li key={c.slug}><Link href={`/productos/${c.slug}`}>{c.nombre}</Link></li>
               ))}
             </ul>
           </div>
 
           <div>
-            <p className={styles.colTitle}>Líneas propias</p>
+            <p className={styles.colTitle}>Limpiadores Prolimp®</p>
             <ul>
-              {lineas.slice(0, 6).map((l) => (
+              {lineas.map((l) => (
                 <li key={l.slug}><Link href={`/productos/quimicos/${l.slug}`}>{l.nombre}</Link></li>
               ))}
             </ul>

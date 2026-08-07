@@ -23,7 +23,7 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
       S.documentTypeListItem("producto").title("Productos").icon(() => "📦"),
       S.documentTypeListItem("categoria").title("Categorías").icon(() => "🗂️"),
-      S.documentTypeListItem("linea").title("Líneas de químicos").icon(() => "🧪"),
+      S.documentTypeListItem("linea").title("Limpiadores Prolimp®").icon(() => "🧪"),
       S.documentTypeListItem("marca").title("Marcas").icon(() => "🏷️"),
       S.divider(),
       S.documentTypeListItem("sucursal").title("Sucursales").icon(() => "📍"),

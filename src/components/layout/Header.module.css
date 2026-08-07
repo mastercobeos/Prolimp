@@ -168,21 +168,18 @@
   color: var(--primary);
 }
 
-/* Bridge invisible entre trigger y megamenu para no colapsar al mover el cursor */
+/* Bridge invisible entre trigger y megamenu para no colapsar al mover el cursor.
+   Debe capturar pointer events SIEMPRE — sin esto el cursor cae al fondo y se pierde
+   el :hover del <li>, cerrando el megamenu antes de que el usuario alcance sus items. */
 .hasMega::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: 100%;
-  width: 700px;
-  max-width: 90vw;
-  height: 22px;
-  pointer-events: none;
-}
-.hasMega:hover::after,
-.hasMega:focus-within::after,
-.mega:hover ~ * {
+  width: 720px;
+  max-width: 92vw;
+  height: 28px;
   pointer-events: auto;
 }
 .hasMega:hover .mega,
@@ -198,7 +195,7 @@
 /* Megamenu también glass */
 .mega {
   position: absolute;
-  top: calc(100% + 14px);
+  top: calc(100% + 10px);
   left: 50%;
   transform: translate(-50%, -8px);
   opacity: 0;

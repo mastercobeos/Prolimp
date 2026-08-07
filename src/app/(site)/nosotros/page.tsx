@@ -25,7 +25,7 @@ export default async function NosotrosPage() {
               <p>{empresa.descripcion}</p>
               <div className={styles.metrics}>
                 <div><strong>50+</strong><span>Años de experiencia</span></div>
-                <div><strong>11</strong><span>Líneas propias</span></div>
+                <div><strong>11</strong><span>Limpiadores Prolimp®</span></div>
                 <div><strong>ISO</strong><span>9001 certificados</span></div>
               </div>
             </div>

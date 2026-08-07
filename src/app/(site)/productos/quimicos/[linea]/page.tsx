@@ -64,7 +64,7 @@ export default async function LineaPage({ params }: { params: Promise<Params> })
               </div>
             </div>
             <div className={styles.heroImg}>
-              <Image src={l.image} alt={l.nombre} width={520} height={620} priority />
+              <Image src={l.image} alt={l.nombre} width={400} height={500} priority />
             </div>
           </div>
         </div>

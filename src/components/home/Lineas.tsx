@@ -12,7 +12,7 @@ export function Lineas({ lineas }: Props) {
         <div className={styles.header}>
           <div>
             <span className={styles.eyebrow}>Somos fabricantes</span>
-            <h2>{lineas.length} líneas de químicos propios</h2>
+            <h2>{lineas.length} líneas de Limpiadores Prolimp®</h2>
             <p>Fórmulas específicas para cada superficie, tipo de suciedad y ambiente de trabajo.</p>
           </div>
           <Link href="/productos/quimicos" className={styles.viewAll}>

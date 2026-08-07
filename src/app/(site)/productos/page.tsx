@@ -53,8 +53,8 @@ export default async function ProductosPage() {
       <section className={`section ${styles.lineasSection}`}>
         <div className="container container-wide">
           <div className={styles.sectionHead}>
-            <h2>11 líneas de químicos propios</h2>
-            <p>Nuestra fabricación marca <strong>Prolimp®</strong>.</p>
+            <h2>Nuestras 11 líneas de limpiadores químicos de fabricación propia</h2>
+            <p>Marca <strong>Limpiadores Prolimp®</strong>.</p>
           </div>
           <ul className={styles.lineasGrid}>
             {lineas.map((l) => (

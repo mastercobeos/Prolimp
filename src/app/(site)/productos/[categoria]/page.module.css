@@ -35,7 +35,7 @@
 .heroInner p { font-size: 1.05rem; max-width: 520px; margin-bottom: 2rem; }
 .heroImg {
   aspect-ratio: 1;
-  max-width: 420px;
+  max-width: 320px;
   margin: 0 auto;
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -128,25 +128,29 @@
 .otrasGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 1.25rem;
   list-style: none;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 .otraCard {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.25rem;
   background: white;
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   color: var(--fg) !important;
   text-align: center;
+  overflow: hidden;
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 .otraCard:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.otraCard img { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; }
-.otraCard strong { color: var(--azul-900); font-size: 0.9rem; }
+.otraCard img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.otraCard strong {
+  color: var(--azul-900);
+  font-size: 0.95rem;
+  padding: 0.85rem 1rem;
+}
 
 @media (max-width: 1024px) { .lineasGrid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 720px) { .heroInner, .lineasGrid, .otrasGrid { grid-template-columns: 1fr 1fr; } .heroInner { grid-template-columns: 1fr; } }

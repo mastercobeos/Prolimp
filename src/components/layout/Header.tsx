@@ -76,7 +76,7 @@ export function Header({ categorias, lineas }: Props) {
                       <div>
                         <span className={styles.megaTitle}>Categorías</span>
                         <ul>
-                          {categorias.slice(0, 6).map((c) => (
+                          {categorias.map((c) => (
                             <li key={c.slug}>
                               <Link href={`/productos/${c.slug}`}>{c.nombre}</Link>
                             </li>
@@ -84,9 +84,9 @@ export function Header({ categorias, lineas }: Props) {
                         </ul>
                       </div>
                       <div>
-                        <span className={styles.megaTitle}>Líneas de químicos</span>
+                        <span className={styles.megaTitle}>Limpiadores Prolimp®</span>
                         <ul>
-                          {lineas.slice(0, 6).map((l) => (
+                          {lineas.map((l) => (
                             <li key={l.slug}>
                               <Link href={`/productos/quimicos/${l.slug}`}>{l.nombre}</Link>
                             </li>
@@ -94,13 +94,17 @@ export function Header({ categorias, lineas }: Props) {
                         </ul>
                       </div>
                       <div>
-                        <span className={styles.megaTitle}>Soluciones por sector</span>
+                        <span className={styles.megaTitle}>Productos por sector</span>
                         <ul>
                           <li><Link href="/hospitales">Hospitales y clínicas</Link></li>
                           <li><Link href="/industria-alimentaria">Industria alimentaria</Link></li>
                           <li><Link href="/industria-lactea">Industria láctea</Link></li>
-                          <li><Link href="/plec">Línea PLEC (económica)</Link></li>
-                          <li><Link href="/siba">SIBA · Sistema de Baños</Link></li>
+                          <li><Link href="/plec">Línea PLEC · Ahorro</Link></li>
+                          <li>
+                            <a href="https://controldeolores-siba.com" target="_blank" rel="noopener noreferrer">
+                              SIBA · Control de malos olores
+                            </a>
+                          </li>
                         </ul>
                         <span className={styles.megaTitle} style={{ marginTop: "1rem", display: "block" }}>Más</span>
                         <ul>
@@ -144,19 +148,23 @@ export function Header({ categorias, lineas }: Props) {
                     <li key={c.slug}><Link href={`/productos/${c.slug}`} onClick={() => setOpen(false)}>{c.nombre}</Link></li>
                   ))}
                 </ul>
-                <span className={styles.mobileSubTitle}>Líneas de químicos</span>
+                <span className={styles.mobileSubTitle}>Limpiadores Prolimp®</span>
                 <ul>
-                  {lineas.slice(0, 12).map((l) => (
+                  {lineas.map((l) => (
                     <li key={l.slug}><Link href={`/productos/quimicos/${l.slug}`} onClick={() => setOpen(false)}>{l.nombre}</Link></li>
                   ))}
                 </ul>
-                <span className={styles.mobileSubTitle}>Soluciones por sector</span>
+                <span className={styles.mobileSubTitle}>Productos por sector</span>
                 <ul>
                   <li><Link href="/hospitales" onClick={() => setOpen(false)}>Hospitales y clínicas</Link></li>
                   <li><Link href="/industria-alimentaria" onClick={() => setOpen(false)}>Industria alimentaria</Link></li>
                   <li><Link href="/industria-lactea" onClick={() => setOpen(false)}>Industria láctea</Link></li>
-                  <li><Link href="/plec" onClick={() => setOpen(false)}>Línea PLEC (económica)</Link></li>
-                  <li><Link href="/siba" onClick={() => setOpen(false)}>SIBA · Sistema de Baños</Link></li>
+                  <li><Link href="/plec" onClick={() => setOpen(false)}>Línea PLEC · Ahorro</Link></li>
+                  <li>
+                    <a href="https://controldeolores-siba.com" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+                      SIBA · Control de malos olores
+                    </a>
+                  </li>
                   <li><Link href="/sistemas-dilucion" onClick={() => setOpen(false)}>Sistemas de Dilución</Link></li>
                 </ul>
               </div>

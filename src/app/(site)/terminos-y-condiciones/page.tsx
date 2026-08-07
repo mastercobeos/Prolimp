@@ -64,7 +64,7 @@ export default function TerminosYCondicionesPage() {
             <li>La disponibilidad de productos está sujeta a inventario en el momento de la cotización.</li>
             <li>Las imágenes de producto son ilustrativas; ligeras variaciones de color, envase o presentación pueden aplicar.</li>
             <li>Las cotizaciones formales se emiten por escrito con vigencia definida (típicamente 15 días naturales).</li>
-            <li>Los productos con enlace a Mercado Libre son vendidos bajo las políticas de dicha plataforma; consulta términos de Mercado Libre para envíos, devoluciones y garantías de esos casos.</li>
+            <li>Los productos con enlace de compra externo son vendidos bajo las políticas de la plataforma externa correspondiente; consulta los términos de esa plataforma para envíos, devoluciones y garantías de esos casos.</li>
           </ul>
         </section>
 

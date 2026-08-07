@@ -64,7 +64,7 @@ export default async function CategoriaPage({ params }: { params: Promise<Params
               </div>
             </div>
             <div className={styles.heroImg}>
-              <Image src={cat.image} alt={cat.nombre} width={500} height={500} priority />
+              <Image src={cat.image} alt={cat.nombre} width={400} height={400} priority />
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default async function CategoriaPage({ params }: { params: Promise<Params
           <div className="container container-wide">
             <div className={styles.sectionHead}>
               <span className={styles.eyebrowSm}>Fabricación propia</span>
-              <h2>11 líneas de químicos Prolimp®</h2>
+              <h2>11 líneas de Limpiadores Prolimp®</h2>
               <p>Cada línea reúne fórmulas específicas para un tipo de superficie o entorno.</p>
             </div>
             <ul className={styles.lineasGrid}>
@@ -178,7 +178,7 @@ export default async function CategoriaPage({ params }: { params: Promise<Params
             {otras.map((o) => (
               <li key={o.slug}>
                 <Link href={`/productos/${o.slug}`} className={styles.otraCard}>
-                  <Image src={o.image} alt={o.nombre} width={80} height={80} />
+                  <Image src={o.image} alt={o.nombre} width={280} height={210} />
                   <strong>{o.nombre}</strong>
                 </Link>
               </li>
