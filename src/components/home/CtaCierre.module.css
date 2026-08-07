@@ -43,10 +43,12 @@
 }
 
 .btnPrimary,
-.btnGhost {
+.btnGhost,
+.btnCatalog {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   padding: 1rem 1.75rem;
   border-radius: 999px;
   font-weight: 700;
@@ -54,6 +56,16 @@
   white-space: nowrap;
   min-width: 240px;
   text-align: center;
+}
+.btnCatalog {
+  background: linear-gradient(135deg, #00AEEF, #0274C5);
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 28px rgba(0, 174, 239, 0.35);
+}
+.btnCatalog:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(0, 174, 239, 0.5);
 }
 .btnPrimary {
   background:

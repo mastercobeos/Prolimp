@@ -122,7 +122,7 @@ export default async function CategoriaPage({ params }: { params: Promise<Params
           <div className="container container-wide">
             <div className={styles.sectionHead}>
               <h2>{productos.length} productos en {cat.nombre}</h2>
-              <p>Click en cualquier producto para ver la ficha completa y comprar en Mercado Libre.</p>
+              <p>Click en cualquier producto para ver la ficha completa.</p>
             </div>
             <ul className={styles.productGrid}>
               {productos.map((p) => {

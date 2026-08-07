@@ -143,14 +143,6 @@ export async function SectorLanding(props: SectorLandingProps) {
             <p>{props.ctaLede ?? "Nuestro equipo técnico te ayuda a diseñar el protocolo de limpieza correcto y a elegir los químicos adecuados."}</p>
             <div className={styles.ctaActions}>
               <Link href="/contacto" className={styles.btnPrimary}>Contactar un asesor</Link>
-              <a
-                href={`https://wa.me/5212291406981?text=${encodeURIComponent(`Hola, quiero asesoría para ${props.eyebrow.toLowerCase()}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.btnWa}
-              >
-                WhatsApp directo
-              </a>
             </div>
           </div>
         </div>

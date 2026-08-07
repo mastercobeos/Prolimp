@@ -75,7 +75,26 @@
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.catalogLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--azul-700);
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(0, 174, 239, 0.08);
+  border: 1px solid rgba(0, 174, 239, 0.25);
   margin-bottom: 3rem;
+  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.catalogLink:hover {
+  background: rgba(0, 174, 239, 0.15);
+  transform: translateY(-1px);
 }
 
 .btnPrimary,

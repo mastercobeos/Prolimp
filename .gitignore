@@ -47,3 +47,7 @@ Thumbs.db
 
 # Folder legado que quedó bloqueado en el rename
 web/
+
+# Scripts de upscale — estado y temporales
+upscale-progress.json
+upscale-tmp/

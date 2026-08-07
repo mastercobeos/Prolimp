@@ -168,12 +168,31 @@
   color: var(--primary);
 }
 
+/* Bridge invisible entre trigger y megamenu para no colapsar al mover el cursor */
+.hasMega::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  width: 700px;
+  max-width: 90vw;
+  height: 22px;
+  pointer-events: none;
+}
+.hasMega:hover::after,
+.hasMega:focus-within::after,
+.mega:hover ~ * {
+  pointer-events: auto;
+}
 .hasMega:hover .mega,
-.hasMega:focus-within .mega {
+.hasMega:focus-within .mega,
+.mega:hover {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translate(-50%, 0);
   pointer-events: auto;
+  transition-delay: 0ms;
 }
 
 /* Megamenu también glass */

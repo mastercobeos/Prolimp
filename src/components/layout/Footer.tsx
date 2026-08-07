@@ -91,9 +91,6 @@ export function Footer({ categorias, lineas, empresa }: Props) {
                 <a href={`mailto:${empresa.email}`}>{empresa.email}</a>
               </li>
               <li>
-                <a href="https://www.mercadolibre.com.mx/pagina/prolimp_2194" target="_blank" rel="noopener noreferrer">Tienda Mercado Libre</a>
-              </li>
-              <li>
                 <Link href="/descarga-catalogo">Descargar catálogo</Link>
               </li>
               <li>

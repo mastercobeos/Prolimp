@@ -172,8 +172,8 @@ export const postBySlugQuery = groq`
 `;
 
 export const sucursalesQuery = groq`
-  *[_type == "sucursal"] | order(esPrincipal desc, orden asc, ciudad asc){
-    _id, ciudad, estado, esPrincipal, telefono, whatsapp, email,
-    direccion, horario, mapaEmbed
+  *[_type == "sucursal"] | order(tipo asc, esPrincipal desc, orden asc, ciudad asc){
+    _id, tipo, nombre, ciudad, estado, esPrincipal, telefono, telefonoAlt, whatsapp,
+    email, emailAlt, direccion, codigoPostal, horario, mapaEmbed
   }
 `;

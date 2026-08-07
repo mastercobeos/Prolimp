@@ -81,6 +81,68 @@
 .infoGrid h3 { color: var(--azul-900); margin-bottom: 0.5rem; font-size: 1.1rem; }
 .infoGrid p { font-size: 0.9rem; }
 
+/* Products grid */
+.productsSection { background: var(--bg); }
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.productCard {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  color: var(--fg) !important;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--cyan-400);
+}
+.productImg {
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #f4f9ff, white);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.productImg img { width: 100%; height: 100%; object-fit: contain; padding: 0.75rem; }
+.imgPh { color: var(--fg-muted); font-size: 0.8rem; }
+.productBody { padding: 1rem 1.15rem 1.25rem; display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
+.productBody h3 { color: var(--azul-900); font-size: 0.98rem; line-height: 1.25; margin: 0; }
+.productBody p { font-size: 0.82rem; color: var(--fg-muted); margin: 0; line-height: 1.4; }
+.productSku {
+  margin-top: auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--azul-700);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Empty state */
+.emptyState { background: var(--bg-alt); }
+.emptyBox {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  text-align: center;
+}
+.emptyIcon { font-size: 3rem; margin-bottom: 1rem; }
+.emptyBox h2 { color: var(--azul-900); margin-bottom: 0.75rem; font-size: 1.35rem; }
+.emptyBox p { color: var(--fg-muted); margin-bottom: 1.5rem; }
+.emptyActions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+
 .otrasSection { background: var(--bg); }
 .sectionHead { text-align: center; margin-bottom: 2.5rem; }
 .otrasGrid {

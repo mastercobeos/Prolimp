@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
-import { getAllLineaSlugs, getEmpresa, getLineas } from "@/lib/data";
+import { getAllLineaSlugs, getLineas, getLineaBySlug } from "@/lib/data";
+import { urlForImage } from "@/sanity/image";
 
 type Params = { linea: string };
 
@@ -25,10 +26,14 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
 export default async function LineaPage({ params }: { params: Promise<Params> }) {
   const { linea } = await params;
-  const [lineas, empresa] = await Promise.all([getLineas(), getEmpresa()]);
+  const [lineas, lineaData] = await Promise.all([
+    getLineas(),
+    getLineaBySlug(linea),
+  ]);
   const l = lineas.find((x) => x.slug === linea);
   if (!l) notFound();
 
+  const productos = lineaData?.productos ?? [];
   const otras = lineas.filter((x) => x.slug !== l.slug);
 
   return (
@@ -56,14 +61,6 @@ export default async function LineaPage({ params }: { params: Promise<Params> })
               </div>
               <div className={styles.actions}>
                 <Link href="/contacto" className={styles.btnPrimary}>Solicitar ficha técnica</Link>
-                <a
-                  href={`https://wa.me/${empresa.whatsapp}?text=${encodeURIComponent(`Hola, quiero información sobre la línea ${l.nombre} de Prolimp.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.btnGhost}
-                >
-                  WhatsApp
-                </a>
               </div>
             </div>
             <div className={styles.heroImg}>
@@ -94,6 +91,49 @@ export default async function LineaPage({ params }: { params: Promise<Params> })
           </div>
         </div>
       </section>
+
+      {productos.length > 0 ? (
+        <section className={`section ${styles.productsSection}`}>
+          <div className="container container-wide">
+            <div className={styles.sectionHead}>
+              <h2>{productos.length} productos línea {l.nombre}</h2>
+              <p>Click en cualquier producto para ver la ficha completa.</p>
+            </div>
+            <ul className={styles.productGrid}>
+              {productos.map((p) => {
+                const src = p.imagenPrincipal ? urlForImage(p.imagenPrincipal).width(400).auto("format").url() : null;
+                return (
+                  <li key={p._id}>
+                    <Link href={`/producto/${p.slug}`} className={styles.productCard}>
+                      <div className={styles.productImg}>
+                        {src ? <Image src={src} alt={p.nombre} width={300} height={300} /> : <div className={styles.imgPh}>Sin imagen</div>}
+                      </div>
+                      <div className={styles.productBody}>
+                        <h3>{p.nombre}</h3>
+                        {p.descripcionCorta && <p>{p.descripcionCorta}</p>}
+                        {p.sku && <span className={styles.productSku}>SKU · {p.sku}</span>}
+                      </div>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
+      ) : (
+        <section className={`section ${styles.emptyState}`}>
+          <div className="container">
+            <div className={styles.emptyBox}>
+              <div className={styles.emptyIcon}>📦</div>
+              <h2>Aún no hay productos cargados en línea {l.nombre}</h2>
+              <p>Nuestro equipo puede enviarte la ficha técnica.</p>
+              <div className={styles.emptyActions}>
+                <Link href="/contacto" className={styles.btnPrimary}>Pedir información</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className={`section ${styles.otrasSection}`}>
         <div className="container container-wide">

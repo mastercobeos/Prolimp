@@ -44,9 +44,10 @@ export const post = defineType({
     defineField({ name: "autor", type: "string", group: "basico", initialValue: "Equipo Prolimp" }),
     defineField({
       name: "categoria",
-      title: "Categoría (tag)",
-      type: "string",
+      title: "Categorías",
+      type: "array",
       group: "basico",
+      of: [{ type: "string" }],
       options: {
         list: [
           { title: "Guías", value: "guias" },
@@ -54,9 +55,19 @@ export const post = defineType({
           { title: "Productos", value: "productos" },
           { title: "Casos de uso", value: "casos" },
           { title: "Noticias", value: "noticias" },
+          { title: "Aseo General", value: "aseo-general" },
+          { title: "Baños", value: "banos" },
+          { title: "Albercas", value: "albercas" },
+          { title: "Automotriz", value: "automotriz" },
+          { title: "Cocina", value: "cocina" },
+          { title: "Industria Alimentaria", value: "industria-alimentaria" },
+          { title: "Desinfección", value: "desinfeccion" },
+          { title: "Pisos", value: "pisos" },
+          { title: "Lavandería", value: "lavanderia" },
         ],
+        layout: "tags",
       },
-      initialValue: "guias",
+      initialValue: [],
     }),
     defineField({
       name: "contenido",

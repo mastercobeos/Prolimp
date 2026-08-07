@@ -125,7 +125,7 @@ export default async function NosotrosPage() {
         </div>
       </section>
 
-      <CtaCierre whatsapp={empresa.whatsapp} />
+      <CtaCierre />
     </>
   );
 }

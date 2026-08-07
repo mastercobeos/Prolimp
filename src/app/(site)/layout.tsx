@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { getCategorias, getLineas, getEmpresa } from "@/lib/data";
+import { SanityLive } from "@/sanity/live";
 
 export default async function SiteLayout({
   children,
@@ -26,6 +27,7 @@ export default async function SiteLayout({
         youtube={empresa.youtube}
       />
       <CookieBanner />
+      <SanityLive />
     </>
   );
 }

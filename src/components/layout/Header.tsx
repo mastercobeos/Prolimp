@@ -8,12 +8,11 @@ import styles from "./Header.module.css";
 import { SearchBox } from "./SearchBox";
 
 const navItems = [
-  { href: "/", label: "Inicio" },
+  { href: "/sistemas-dilucion", label: "Sistemas de dilución" },
   { href: "/nosotros", label: "Nosotros" },
   { href: "/productos", label: "Productos", megamenu: true },
   { href: "/sucursales", label: "Sucursales" },
   { href: "/blog", label: "Blog" },
-  { href: "https://www.mercadolibre.com.mx/pagina/prolimp_2194", label: "Tienda", external: true },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -70,11 +69,7 @@ export function Header({ categorias, lineas }: Props) {
           <ul>
             {navItems.map((item) => (
               <li key={item.href} className={item.megamenu ? styles.hasMega : undefined}>
-                {item.external ? (
-                  <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
-                ) : (
-                  <Link href={item.href}>{item.label}</Link>
-                )}
+                <Link href={item.href}>{item.label}</Link>
                 {item.megamenu && (
                   <div className={styles.mega}>
                     <div className={styles.megaGrid}>
@@ -136,7 +131,7 @@ export function Header({ categorias, lineas }: Props) {
 
       <div className={clsx(styles.mobile, open && styles.mobileOpen)}>
         <ul className={styles.mobileNav}>
-          <li><Link href="/" onClick={() => setOpen(false)}>Inicio</Link></li>
+          <li><Link href="/sistemas-dilucion" onClick={() => setOpen(false)}>Sistemas de dilución</Link></li>
           <li><Link href="/nosotros" onClick={() => setOpen(false)}>Nosotros</Link></li>
           <li className={styles.mobileGroup}>
             <details>
@@ -169,11 +164,6 @@ export function Header({ categorias, lineas }: Props) {
           </li>
           <li><Link href="/sucursales" onClick={() => setOpen(false)}>Sucursales</Link></li>
           <li><Link href="/blog" onClick={() => setOpen(false)}>Blog</Link></li>
-          <li>
-            <a href="https://www.mercadolibre.com.mx/pagina/prolimp_2194" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
-              Tienda
-            </a>
-          </li>
           <li><Link href="/contacto" onClick={() => setOpen(false)}>Contacto</Link></li>
         </ul>
         <Link href="/contacto" className={styles.mobileCta} onClick={() => setOpen(false)}>

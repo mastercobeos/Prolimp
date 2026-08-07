@@ -14,6 +14,11 @@ export const apiVersion =
 // Server-only. NUNCA agregar NEXT_PUBLIC_ prefix.
 export const writeToken = process.env.SANITY_API_WRITE_TOKEN;
 
+// Server-only. Token de lectura para Live Content API.
+// Reusa el WRITE token si no hay READ dedicado (write incluye permiso read).
+export const readToken =
+  process.env.SANITY_API_READ_TOKEN || process.env.SANITY_API_WRITE_TOKEN;
+
 export const studioUrl = "/studio";
 
 function assertValue<T>(v: T | undefined, msg: string): T {

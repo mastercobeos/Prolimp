@@ -71,14 +71,6 @@ export default async function MarcaPage({ params }: { params: Params }) {
               </div>
               <div className={styles.actions}>
                 <Link href="/contacto" className={styles.btnPrimary}>Solicitar cotización</Link>
-                <a
-                  href={`https://wa.me/5212291406981?text=${encodeURIComponent(`Hola, quiero información de productos ${marca.nombre}`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.btnGhost}
-                >
-                  WhatsApp
-                </a>
               </div>
             </div>
             {logoSrc && (

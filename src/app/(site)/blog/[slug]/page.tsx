@@ -4,7 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import styles from "./page.module.css";
-import { getAllPostSlugs, getEmpresa, getPostBySlug, getPosts } from "@/lib/data";
+import { getAllPostSlugs, getPostBySlug, getPosts } from "@/lib/data";
 import { urlForImage } from "@/sanity/image";
 
 type Params = { slug: string };
@@ -27,9 +27,30 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 const portableComponents: PortableTextComponents = {
   block: {
     normal: ({ children }) => <p>{children}</p>,
+    h1: ({ children }) => <h2>{children}</h2>,
     h2: ({ children }) => <h2>{children}</h2>,
     h3: ({ children }) => <h3>{children}</h3>,
+    h4: ({ children }) => <h4>{children}</h4>,
     blockquote: ({ children }) => <blockquote>{children}</blockquote>,
+  },
+  list: {
+    bullet: ({ children }) => <ul>{children}</ul>,
+    number: ({ children }) => <ol>{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }) => <li>{children}</li>,
+    number: ({ children }) => <li>{children}</li>,
+  },
+  marks: {
+    strong: ({ children }) => <strong>{children}</strong>,
+    em: ({ children }) => <em>{children}</em>,
+    underline: ({ children }) => <u>{children}</u>,
+    code: ({ children }) => <code>{children}</code>,
+    link: ({ value, children }) => (
+      <a href={value?.href} target={value?.href?.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+        {children}
+      </a>
+    ),
   },
   types: {
     image: ({ value }) =>
@@ -47,10 +68,9 @@ const portableComponents: PortableTextComponents = {
 
 export default async function BlogPostPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const [post, allPosts, empresa] = await Promise.all([
+  const [post, allPosts] = await Promise.all([
     getPostBySlug(slug),
     getPosts(),
-    getEmpresa(),
   ]);
   if (!post) notFound();
 
@@ -116,16 +136,9 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
 
           <aside className={styles.cta}>
             <h3>¿Necesitas los productos que mencionamos?</h3>
-            <p>Cotización rápida por WhatsApp o formulario.</p>
+            <p>Solicita cotización o explora el catálogo completo.</p>
             <div className={styles.ctaActions}>
-              <a
-                href={`https://wa.me/${empresa.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.btnPrimary}
-              >
-                Escribir por WhatsApp
-              </a>
+              <Link href="/contacto" className={styles.btnPrimary}>Solicitar cotización</Link>
               <Link href="/productos" className={styles.btnGhost}>Ver catálogo</Link>
             </div>
           </aside>

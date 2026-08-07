@@ -36,7 +36,6 @@ export default function DescargaCatalogoPage() {
           </div>
         </div>
         <div className={styles.cardActions}>
-          {/* Nota: reemplazar con URL del PDF cuando el cliente lo suba a /public/pdf/catalogo.pdf */}
           <a
             href="/pdf/catalogo-prolimp.pdf"
             download
@@ -49,14 +48,6 @@ export default function DescargaCatalogoPage() {
             </svg>
             Descargar PDF
           </a>
-          <a
-            href={`https://wa.me/5212291406981?text=${encodeURIComponent("Hola, quiero recibir el catálogo Prolimp por WhatsApp")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondaryBtn}
-          >
-            Solicitar por WhatsApp
-          </a>
         </div>
       </section>
 
@@ -65,7 +56,7 @@ export default function DescargaCatalogoPage() {
         <p>
           Todo el catálogo está también disponible en nuestra sección de{" "}
           <Link href="/productos">Productos</Link>, organizado por categoría, línea y marca.
-          Cada producto tiene su ficha completa con imágenes, presentaciones y link directo a Mercado Libre.
+          Cada producto tiene su ficha completa con imágenes, presentaciones y opción de cotización directa.
         </p>
         <div className={styles.altActions}>
           <Link href="/productos" className={styles.linkBtn}>Ver catálogo online →</Link>

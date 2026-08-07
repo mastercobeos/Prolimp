@@ -2,7 +2,7 @@
 // Toda la app lee de acá. Si Sanity está vacío o falla, cae a lib/content.ts.
 
 import "server-only";
-import { client } from "@/sanity/client";
+import { sanityFetch } from "@/sanity/live";
 import { urlForImage } from "@/sanity/image";
 import {
   homeQuery,
@@ -34,10 +34,10 @@ const imgUrl = (source: SanityImageSource | undefined | null, w = 800): string |
   }
 };
 
-const cachedFetch = <T>(query: string, params?: Record<string, unknown>) =>
-  client.fetch<T>(query, params ?? {}, {
-    next: { revalidate: 60, tags: ["sanity"] },
-  });
+const cachedFetch = async <T>(query: string, params?: Record<string, unknown>): Promise<T> => {
+  const { data } = await sanityFetch({ query, params: params ?? {} });
+  return data as T;
+};
 
 // -------- home
 export async function getHomeContent() {
@@ -57,8 +57,8 @@ export async function getHomeContent() {
     heroTituloParte1: data?.heroTituloParte1 ?? "Un mundo más limpio es un lugar",
     heroTituloAcento: data?.heroTituloAcento ?? "más seguro y saludable.",
     heroLede: data?.heroLede ?? "Fabricamos 11 líneas de químicos de limpieza profesional...",
-    heroImagen:
-      "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=1200&q=85&auto=format&fit=crop",
+    heroImagen: imgUrl(data?.heroImagen, 1600)
+      ?? "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=1200&q=85&auto=format&fit=crop",
     stats: data?.stats?.length
       ? data.stats
       : [
@@ -255,20 +255,26 @@ export async function getProductoBySlug(slug: string) {
 }
 
 // -------- sucursales
-export async function getSucursales() {
-  const data = await cachedFetch<{
-    _id: string;
-    ciudad: string;
-    estado: string;
-    esPrincipal?: boolean;
-    telefono?: string;
-    whatsapp?: string;
-    email?: string;
-    direccion?: string;
-    horario?: string;
-    mapaEmbed?: string;
-  }[]>(sucursalesQuery);
-  if (!data?.length) return fallback.sucursales;
+export type SucursalItem = {
+  _id: string;
+  tipo?: "sucursal" | "distribuidor";
+  nombre?: string;
+  ciudad: string;
+  estado: string;
+  esPrincipal?: boolean;
+  telefono?: string;
+  telefonoAlt?: string;
+  whatsapp?: string;
+  email?: string;
+  emailAlt?: string;
+  direccion?: string;
+  codigoPostal?: string;
+  horario?: string;
+  mapaEmbed?: string;
+};
+export async function getSucursales(): Promise<SucursalItem[]> {
+  const data = await cachedFetch<SucursalItem[]>(sucursalesQuery);
+  if (!data?.length) return fallback.sucursales as SucursalItem[];
   return data;
 }
 
