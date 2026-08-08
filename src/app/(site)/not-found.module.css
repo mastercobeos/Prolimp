@@ -1,0 +1,92 @@
+.wrap {
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(60% 50% at 50% 0%, var(--bg-tint-strong) 0%, transparent 70%),
+    linear-gradient(180deg, var(--bg-tint) 0%, white 60%);
+  padding-block: clamp(7rem, 14vw, 10rem) clamp(3rem, 6vw, 5rem);
+}
+
+.inner {
+  text-align: center;
+  max-width: 640px;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  background: rgba(2, 116, 197, 0.08);
+  color: var(--azul-700);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+
+.code {
+  font-size: clamp(5rem, 14vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--azul-marino);
+  letter-spacing: -0.04em;
+  margin-bottom: 0.5rem;
+}
+.drop {
+  color: var(--azul-500);
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.inner h1 {
+  font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+  margin-bottom: 0.75rem;
+}
+
+.lede {
+  color: var(--fg-muted);
+  margin-bottom: 2rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--azul-500), var(--azul-700));
+  color: white !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-brand);
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px rgba(2, 116, 197, 0.35);
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--azul-700);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.btnGhost:hover {
+  border-color: var(--azul-500);
+  background: var(--gris-50);
+}
