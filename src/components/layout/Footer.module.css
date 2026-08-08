@@ -94,12 +94,13 @@
 .bottom {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
   padding-top: 2rem;
   color: var(--gris-400);
   font-size: 0.85rem;
+  text-align: center;
 }
 
 @media (max-width: 1024px) {
@@ -139,8 +140,30 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 1.75rem;
   margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 .newsletter label { color: rgba(255, 255, 255, 0.85); }
+
+.middleMeta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.fabricantes {
+  color: var(--gris-300);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .newsletter { flex-direction: column; align-items: flex-start; }
+  .middleMeta { justify-content: flex-start; }
+}
 
 .madeBy {
   display: inline-flex;

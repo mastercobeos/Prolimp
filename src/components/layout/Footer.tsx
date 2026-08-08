@@ -111,27 +111,29 @@ export function Footer({ categorias, lineas, empresa }: Props) {
 
         <div className={styles.newsletter}>
           <NewsletterForm />
+          <div className={styles.middleMeta}>
+            <span className={styles.fabricantes}>Fabricantes mexicanos desde {empresa.fundacion}</span>
+            <a
+              href="https://growflowautomat.com/en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.madeBy}
+            >
+              Made by
+              <span>Grow Flow Automation</span>
+              <Image
+                src="/img/logo/growflow-icon.png"
+                alt=""
+                width={16}
+                height={16}
+                aria-hidden
+              />
+            </a>
+          </div>
         </div>
 
         <div className={styles.bottom}>
           <span>{empresa.copyright}</span>
-          <span>Fabricantes mexicanos desde {empresa.fundacion}</span>
-          <a
-            href="https://growflowautomat.com/en"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.madeBy}
-          >
-            Made by
-            <span>Grow Flow Automation</span>
-            <Image
-              src="/img/logo/growflow-icon.png"
-              alt=""
-              width={16}
-              height={16}
-              aria-hidden
-            />
-          </a>
         </div>
       </div>
     </footer>
