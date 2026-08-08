@@ -193,10 +193,22 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
   }
 }
 
-/* Cuando la búsqueda está abierta: oculta contenido del navbar (logo, nav links, burger)
-   pero mantiene el pill glass visible para que la barra de búsqueda se vea sobre él */
-body[data-search-open="true"] header > div > *:not([aria-hidden]) {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 200ms ease-out;
+/* Cuando la búsqueda está abierta en MÓVIL: oculta contenido del navbar (logo, nav
+   links, burger) pero mantiene el pill glass visible para que la barra de búsqueda se
+   vea sobre él. En desktop el buscador solo ocupa el tramo derecho del pill (después
+   de Contacto), así que el menú permanece visible. */
+@media (max-width: 960px) {
+  body[data-search-open="true"] header > div > *:not([aria-hidden]) {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease-out;
+  }
+}
+/* En desktop solo se desvanece la lupa (el input la reemplaza en ese espacio) */
+@media (min-width: 961px) {
+  body[data-search-open="true"] header button[aria-label="Buscar productos"] {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease-out;
+  }
 }

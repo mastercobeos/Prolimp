@@ -26,10 +26,34 @@ export function SearchBox() {
   const [q, setQ] = useState("");
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
+  const [pos, setPos] = useState<{ left: number; width: number } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const debounceRef = useRef<number | null>(null);
 
   useEffect(() => { setMounted(true); }, []);
+
+  // Desktop: la barra ocupa solo el hueco entre el fin del menú (Contacto) y el borde
+  // derecho del pill. En móvil (nav oculto) se usa el layout CSS de ancho completo.
+  useEffect(() => {
+    if (!open) { setPos(null); return; }
+    const measure = () => {
+      // The nav element is flex-stretched, so its right edge includes empty space;
+      // the real boundary is the last menu link (Contacto).
+      const links = document.querySelectorAll("header nav > ul > li > a");
+      const lastLink = links[links.length - 1];
+      const pill = document.querySelector("header > div");
+      if (!lastLink || !pill || window.innerWidth <= 960) { setPos(null); return; }
+      const linkRight = lastLink.getBoundingClientRect().right;
+      const pillRight = pill.getBoundingClientRect().right - 16;
+      let left = linkRight + 12;
+      let width = pillRight - left;
+      if (width < 180) { width = 180; left = pillRight - width; }
+      setPos({ left, width });
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [open]);
 
   // Marca body cuando search está abierto — usado por Header para ocultarse
   useEffect(() => {
@@ -103,13 +127,14 @@ export function SearchBox() {
         <div className={styles.overlay} onClick={close}>
           <div
             className={`${styles.container} ${closing ? styles.closing : ""}`}
+            style={pos ? { left: pos.left, right: "auto", width: pos.width, transform: "none" } : undefined}
             onClick={(e) => e.stopPropagation()}
           >
             <div className={styles.bar}>
               <input
                 ref={inputRef}
                 type="search"
-                placeholder="Buscar producto por nombre, SKU o descripción..."
+                placeholder="Buscar producto..."
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
                 className={styles.input}

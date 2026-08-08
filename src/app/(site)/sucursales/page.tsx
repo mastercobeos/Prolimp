@@ -486,8 +486,12 @@ export default async function SucursalesPage() {
             También encuentra nuestros productos en{" "}
             <span className={styles.acento}>Mercado Libre</span>
           </h2>
-          {/* TODO: replace href with the official Mercado Libre store URL (not found in the project yet). */}
-          <a href="#" className={styles.mlBtn}>
+          <a
+            href="https://www.mercadolibre.com.mx/pagina/prolimp_2194"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.mlBtn}
+          >
             Ir a tienda
           </a>
         </div>
