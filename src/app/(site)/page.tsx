@@ -24,7 +24,7 @@ export default async function Home() {
         titulo1={home.heroTituloParte1}
         tituloAcento={home.heroTituloAcento}
         lede={home.heroLede}
-        imagen={home.heroImagen}
+        imagenes={home.heroImagenes}
         stats={home.stats}
       />
       <Lineas lineas={lineas} />

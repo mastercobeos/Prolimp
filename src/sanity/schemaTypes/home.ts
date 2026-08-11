@@ -32,11 +32,18 @@ export const home = defineType({
         "Fabricamos 11 líneas de químicos de limpieza profesional y distribuimos las mejores marcas. Soluciones para hoteles, hospitales, restaurantes, industria y hogar en todo México.",
     }),
     defineField({
-      name: "heroImagen",
-      title: "Imagen hero",
-      type: "image",
-      options: { hotspot: true },
-      fields: [{ name: "alt", type: "string" }],
+      name: "heroImagenes",
+      title: "Imágenes hero (slider)",
+      description: "Si hay más de una, alternan cada 5 segundos con transición suave.",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [{ name: "alt", type: "string", title: "Texto alternativo" }],
+        },
+      ],
+      validation: (r) => r.min(1).max(6),
     }),
     defineField({
       name: "stats",

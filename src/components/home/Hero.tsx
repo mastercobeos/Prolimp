@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import clsx from "clsx";
 import styles from "./Hero.module.css";
 
 type Props = {
@@ -7,11 +11,24 @@ type Props = {
   titulo1: string;
   tituloAcento: string;
   lede: string;
-  imagen: string;
+  imagenes: string[];
   stats: { valor: string; etiqueta: string }[];
 };
 
-export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagen, stats }: Props) {
+const AUTOPLAY_MS = 5000;
+
+export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: Props) {
+  const [index, setIndex] = useState(0);
+  const hasSlider = imagenes.length > 1;
+
+  useEffect(() => {
+    if (!hasSlider) return;
+    const id = window.setInterval(() => {
+      setIndex((i) => (i + 1) % imagenes.length);
+    }, AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [hasSlider, imagenes.length]);
+
   return (
     <section className={styles.hero}>
       <div className={styles.heroBg} aria-hidden />
@@ -48,16 +65,38 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagen, stats }: Pr
         </div>
 
         <div className={styles.visual}>
-          <div className={styles.imgWrap}>
-            <Image
-              src={imagen}
-              alt="Personal de limpieza profesional Prolimp"
-              width={640}
-              height={720}
-              priority
-              className={styles.mainImg}
-            />
+          <div
+            className={styles.imgWrap}
+            aria-roledescription={hasSlider ? "carousel" : undefined}
+          >
+            {imagenes.map((src, i) => (
+              <Image
+                key={src}
+                src={src}
+                alt="Imagen hero Prolimp"
+                width={640}
+                height={720}
+                priority={i === 0}
+                className={clsx(styles.mainImg, i === index && styles.mainImgActive)}
+                aria-hidden={i !== index}
+              />
+            ))}
           </div>
+          {hasSlider && (
+            <div className={styles.dots} role="tablist" aria-label="Slider hero">
+              {imagenes.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  role="tab"
+                  aria-selected={i === index}
+                  aria-label={`Ir a slide ${i + 1}`}
+                  className={clsx(styles.dotBtn, i === index && styles.dotBtnActive)}
+                  onClick={() => setIndex(i)}
+                />
+              ))}
+            </div>
+          )}
           <div className={styles.badge}>
             <span>Certificados</span>
             <strong>ISO 9000</strong>

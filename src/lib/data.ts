@@ -51,19 +51,23 @@ export async function getHomeContent() {
     heroTituloParte1?: string;
     heroTituloAcento?: string;
     heroLede?: string;
-    heroImagen?: SanityImageSource;
+    heroImagenes?: SanityImageSource[];
     stats?: { valor: string; etiqueta: string }[];
     diferenciadores?: { titulo: string; descripcion: string; icon?: SanityImageSource }[];
     ctaCierreTitulo?: string;
     ctaCierreLede?: string;
   }>(homeQuery);
+  const imagenes = (data?.heroImagenes ?? [])
+    .map((i) => imgUrl(i, 1600))
+    .filter((u): u is string => Boolean(u));
   return {
     heroEyebrow: data?.heroEyebrow ?? "Fabricantes desde 1997",
     heroTituloParte1: data?.heroTituloParte1 ?? "Creamos espacios limpios,",
     heroTituloAcento: data?.heroTituloAcento ?? "seguros y saludables",
     heroLede: data?.heroLede ?? "Todo para la limpieza de tu empresa: limpiadores profesionales, herramientas resistentes, insumos especializados y asesoría para elegir mejor.",
-    heroImagen: imgUrl(data?.heroImagen, 1600)
-      ?? "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=1200&q=85&auto=format&fit=crop",
+    heroImagenes: imagenes.length
+      ? imagenes
+      : ["https://images.unsplash.com/photo-1585421514738-01798e348b17?w=1200&q=85&auto=format&fit=crop"],
     stats: data?.stats?.length
       ? data.stats
       : [

@@ -236,10 +236,12 @@
 /* Visual */
 .visual {
   position: relative;
+  min-width: 0;
   animation: fadeIn 0.9s var(--ease) 0.2s both;
 }
 .imgWrap {
   position: relative;
+  width: 100%;
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -247,11 +249,54 @@
   box-shadow: 0 30px 60px -20px rgba(12, 31, 110, 0.4);
 }
 .mainImg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  mix-blend-mode: normal;
+  opacity: 0;
+  transition: opacity 700ms var(--ease);
+}
+.mainImgActive {
+  opacity: 1;
+}
+
+.dots {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.4rem 0.7rem;
+  background: rgba(12, 31, 110, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 999px;
+  z-index: 3;
+}
+.dotBtn {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), width var(--dur-fast) var(--ease);
+}
+.dotBtn:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+.dotBtnActive {
+  width: 22px;
+  background: white;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainImg { transition: none; }
 }
 
 .badge, .badge2 {
