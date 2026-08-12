@@ -136,9 +136,8 @@
 }
 .logo img {
   width: auto;
-  height: 34px;
+  height: 40px;
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(23%) sepia(92%) saturate(2100%) hue-rotate(190deg) brightness(94%) contrast(100%);
 }
 
 .nav {

@@ -42,59 +42,66 @@
   list-style: none;
 }
 
-/* Tarjeta mockup 2026: foto arriba + barra de color con nombre y flecha */
+/* Tarjeta según el mockup 2026: la foto va enmarcada en el color de la línea y
+   debajo una barra del MISMO color con el nombre y la flecha. El color llega
+   por la variable --linea que el componente pone en línea. */
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: var(--radius);
+  border-radius: 6px;
   overflow: hidden;
-  background: white;
-  border: 1px solid var(--border);
+  background: var(--linea, var(--azul-500));
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
 }
-.card:hover .arrow { transform: translateX(4px); }
+.card:hover .arrow { transform: translateX(3px); }
 
+/* El marco de color se logra con el padding de la tarjeta alrededor de la foto. */
 .imgWrap {
   aspect-ratio: 5 / 4;
   overflow: hidden;
+  margin: 4px 4px 0;
+  border-radius: 3px;
 }
 .imgWrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform var(--dur-slow) var(--ease);
 }
 .card:hover .imgWrap img {
   transform: scale(1.06);
 }
 
+/* Barra alta, texto a la izquierda y flecha pegada al texto (no al borde). */
 .label {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0.8rem 1rem;
+  justify-content: flex-start;
+  gap: 0.9rem;
+  padding: 1.35rem 1.15rem;
 }
 .label h3 {
   color: white;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
+  margin: 0;
 }
 .arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.32);
   color: white;
   transition: transform var(--dur-fast) var(--ease);
 }

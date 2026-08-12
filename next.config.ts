@@ -16,6 +16,14 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["clsx"],
   },
+  async redirects() {
+    return [
+      // PLEC no es una línea más: es marca propia y tiene su landing dedicada.
+      // Su página de línea quedaría vacía (sus productos viven en Aseo General,
+      // Baños, etc.), así que se manda a la landing que sí tiene contenido.
+      { source: "/productos/quimicos/plec", destination: "/plec", permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;

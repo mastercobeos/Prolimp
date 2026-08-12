@@ -3,7 +3,7 @@ import { SectorLanding } from "@/components/landings/SectorLanding";
 
 export const metadata: Metadata = {
   title: "Limpieza para industria alimentaria",
-  description: "Químicos y sistemas de limpieza para plantas de alimentos, procesadoras y empaque. Línea PLEC de Prolimp cumple con normativas de sanidad y BPM.",
+  description: "Químicos y sistemas de limpieza para plantas de alimentos, procesadoras y empaque. Fórmulas Prolimp que cumplen con normativas de sanidad y BPM.",
 };
 
 export const revalidate = 60;
@@ -14,16 +14,23 @@ export default function IndustriaAlimentariaPage() {
       eyebrow="Industria alimentaria"
       titulo="Limpieza y sanitización para"
       tituloAcento="plantas de alimentos"
-      lede="Fórmulas grado alimenticio, cumplimiento con NOM-251-SSA1 y buenas prácticas de manufactura. Detergentes alcalinos, desinfectantes yodóforos, sanitizantes para superficies en contacto con alimentos y equipos CIP."
-      heroImage="https://images.unsplash.com/photo-1615394054350-a90a3ac09310?w=1200&q=85&auto=format&fit=crop"
-      productosLineaSlug="plec"
-      productosLimit={8}
+      lede="Limpiadores, desengrasantes y desinfectantes desarrollados para apoyar rutinas de limpieza y sanitización en plantas de alimentos, cocinas industriales, procesadoras y áreas de trabajo donde la higiene debe mantenerse bajo control."
+      heroImage="https://images.pexels.com/photos/5532717/pexels-photo-5532717.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      sellos
+      productosSlugs={[
+        "deterfoam-l-i-detergente-alcalino-clorado-alta-espuma",
+        "ultra-k-i-detergente-alcalino-baja-espuma",
+        "deterprol-s-e-i-detergente-alcalino-clorado-sin-espuma",
+        "alkaprol-detergente-alcalino-clorado",
+        "ad-s-e-i-detergente-acido-desincrustante-sin-espuma",
+        "alumiprol-limpiador-y-abrillantador-de-aluminio",
+      ]}
       ctaLede="Diseñamos protocolos de sanitización según tu proceso: recepción de materia prima, línea de producción, envasado y almacén. Auditamos, capacitamos y suministramos."
       beneficios={[
-        { icon: "🧪", titulo: "Grado alimenticio", descripcion: "Fórmulas aprobadas para contacto con alimentos, biodegradables y libres de residuos tóxicos." },
-        { icon: "✅", titulo: "Cumplimiento normativo", descripcion: "NOM-251-SSA1, BPM, HACCP y auditorías de sanidad. Fichas técnicas y hojas de seguridad de cada producto." },
-        { icon: "🧼", titulo: "CIP y COP", descripcion: "Detergentes alcalinos, ácidos y desinfectantes para limpieza en sitio (CIP) y equipos desmontables." },
-        { icon: "🥩", titulo: "Todos los sectores", descripcion: "Cárnicos, panaderías, procesadoras, envasado, bebidas, congelados y cadena de frío." },
+        { icon: "medalla", titulo: "NSF, Kosher y Desinfección", descripcion: "Respaldo para procesos donde la inocuidad importa. Fórmulas seleccionadas con retos microbianos y virucidas para procesos de desinfección profesional." },
+        { icon: "norma", titulo: "Cumplimiento normativo", descripcion: "NOM-251-SSA1, BPM, HACCP y auditorías de sanidad. Fichas técnicas y hojas de seguridad de cada producto." },
+        { icon: "cip", titulo: "CIP y COP", descripcion: "Detergentes alcalinos, ácidos y desinfectantes para limpieza en sitio (CIP) y equipos desmontables." },
+        { icon: "sectores", titulo: "Todos los sectores", descripcion: "Cárnicos, panaderías, procesadoras, envasado, bebidas, congelados y cadena de frío." },
       ]}
     />
   );

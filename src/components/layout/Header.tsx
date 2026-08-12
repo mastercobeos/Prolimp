@@ -6,10 +6,12 @@ import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import styles from "./Header.module.css";
 import { SearchBox } from "./SearchBox";
+import { lineaHref } from "@/lib/lineaHref";
 
 const navItems = [
-  { href: "/sistemas-dilucion", label: "Sistemas de dilución" },
+  { href: "/", label: "Inicio" },
   { href: "/nosotros", label: "Nosotros" },
+  { href: "/sistemas-dilucion", label: "Sistemas de Dilución" },
   { href: "/productos", label: "Productos", megamenu: true },
   { href: "/sucursales", label: "Sucursales" },
   { href: "/blog", label: "Blog" },
@@ -58,10 +60,10 @@ export function Header({ categorias, lineas }: Props) {
       <div className={clsx("container-wide container", styles.inner)}>
         <Link href="/" className={styles.logo}>
           <Image
-            src="/img/logo/prolimp-logo.webp"
+            src="/img/logo/logo.webp"
             alt="Prolimp"
             width={140}
-            height={42}
+            height={49}
             priority
           />
         </Link>
@@ -93,7 +95,7 @@ export function Header({ categorias, lineas }: Props) {
                         <ul>
                           {lineas.map((l) => (
                             <li key={l.slug}>
-                              <Link href={`/productos/quimicos/${l.slug}`}>{l.nombre}</Link>
+                              <Link href={lineaHref(l.slug)}>{l.nombre}</Link>
                             </li>
                           ))}
                         </ul>
@@ -140,8 +142,9 @@ export function Header({ categorias, lineas }: Props) {
 
       <div className={clsx(styles.mobile, open && styles.mobileOpen)}>
         <ul className={styles.mobileNav}>
-          <li><Link href="/sistemas-dilucion" onClick={() => setOpen(false)}>Sistemas de dilución</Link></li>
+          <li><Link href="/" onClick={() => setOpen(false)}>Inicio</Link></li>
           <li><Link href="/nosotros" onClick={() => setOpen(false)}>Nosotros</Link></li>
+          <li><Link href="/sistemas-dilucion" onClick={() => setOpen(false)}>Sistemas de Dilución</Link></li>
           <li className={styles.mobileGroup}>
             <details>
               <summary>Productos</summary>
@@ -156,7 +159,7 @@ export function Header({ categorias, lineas }: Props) {
                 <span className={styles.mobileSubTitle}>Limpiadores Prolimp®</span>
                 <ul>
                   {lineas.map((l) => (
-                    <li key={l.slug}><Link href={`/productos/quimicos/${l.slug}`} onClick={() => setOpen(false)}>{l.nombre}</Link></li>
+                    <li key={l.slug}><Link href={lineaHref(l.slug)} onClick={() => setOpen(false)}>{l.nombre}</Link></li>
                   ))}
                 </ul>
                 <span className={styles.mobileSubTitle}>Productos por sector</span>

@@ -24,6 +24,60 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   };
 }
 
+const COLUMNA = 760; // ancho útil del cuerpo del artículo
+
+type BloqueImagen = { _type: "image"; asset?: unknown; alt?: string; ancho?: number; alto?: number };
+
+/* Respeta el tamaño del archivo original: nunca le pide a Sanity más ancho del
+   que la imagen tiene, así que los sellos chicos se ven chicos y nítidos en vez
+   de estirados a lo ancho de la columna. */
+function ImagenContenido({
+  value,
+  enGaleria,
+  esPortada,
+}: { value: BloqueImagen; enGaleria?: boolean; esPortada?: boolean }) {
+  if (!value?.asset) return null;
+  const anchoReal = value.ancho ?? COLUMNA;
+  const altoReal = value.alto ?? Math.round(anchoReal * 0.66);
+  const ancho = Math.min(anchoReal, COLUMNA);
+  const alto = Math.round((altoReal / anchoReal) * ancho);
+  const clase = esPortada ? styles.portadaImg : enGaleria ? styles.galeriaImg : styles.contentImg;
+
+  return (
+    <Image
+      src={urlForImage(value).width(Math.min(anchoReal, COLUMNA * 2)).auto("format").url()}
+      alt={value.alt ?? ""}
+      width={ancho}
+      height={alto}
+      priority={esPortada}
+      className={clase}
+      style={{ maxWidth: `${ancho}px` }}
+    />
+  );
+}
+
+/* Agrupa imágenes consecutivas en una fila. Varios artículos traen tandas de
+   sellos o pasos seguidos que, uno bajo otro, quedaban en una columna larguísima. */
+type Bloque = { _type?: string; [k: string]: unknown };
+function agruparImagenes(bloques: Bloque[]): Bloque[] {
+  const salida: Bloque[] = [];
+  let buffer: Bloque[] = [];
+  const volcar = () => {
+    if (buffer.length > 1) {
+      salida.push({ _type: "galeria", _key: `galeria-${salida.length}`, imagenes: buffer });
+    } else if (buffer.length === 1) {
+      salida.push(buffer[0]);
+    }
+    buffer = [];
+  };
+  for (const b of bloques) {
+    if (b?._type === "image") buffer.push(b);
+    else { volcar(); salida.push(b); }
+  }
+  volcar();
+  return salida;
+}
+
 const portableComponents: PortableTextComponents = {
   block: {
     normal: ({ children }) => <p>{children}</p>,
@@ -53,16 +107,14 @@ const portableComponents: PortableTextComponents = {
     ),
   },
   types: {
-    image: ({ value }) =>
-      value?.asset ? (
-        <Image
-          src={urlForImage(value).width(720).url()}
-          alt={value.alt ?? ""}
-          width={720}
-          height={480}
-          className={styles.contentImg}
-        />
-      ) : null,
+    image: ({ value }) => <ImagenContenido value={value as BloqueImagen} />,
+    galeria: ({ value }) => (
+      <div className={styles.galeria}>
+        {(value as { imagenes: BloqueImagen[] }).imagenes.map((img, i) => (
+          <ImagenContenido key={i} value={img} enGaleria />
+        ))}
+      </div>
+    ),
   },
 };
 
@@ -78,7 +130,8 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
   const wordCount = JSON.stringify(post.contenido ?? []).split(/\s+/).length;
   const readingTime = Math.max(1, Math.round(wordCount / 220));
 
-  const heroImgSrc = post.imagenPortada ? urlForImage(post.imagenPortada).width(1200).url() : undefined;
+  const portada = post.imagenPortada as (BloqueImagen | undefined);
+  const heroImgSrc = portada ? urlForImage(portada).width(Math.min(portada.ancho ?? 1200, 1200)).url() : undefined;
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -91,7 +144,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
     publisher: {
       "@type": "Organization",
       name: "Prolimp",
-      logo: { "@type": "ImageObject", url: "https://www.prolimp.com/img/logo/prolimp-logo.webp" },
+      logo: { "@type": "ImageObject", url: "https://www.prolimp.com/img/logo/logo.webp" },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.prolimp.com/blog/${post.slug}` },
   };
@@ -127,9 +180,18 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
           </div>
         </header>
 
+        {portada?.asset ? (
+          <div className={`container ${styles.portadaWrap}`}>
+            <ImagenContenido value={{ ...portada, alt: portada.alt ?? post.titulo }} esPortada />
+          </div>
+        ) : null}
+
         <div className={`container ${styles.body}`}>
           {post.contenido ? (
-            <PortableText value={post.contenido as never} components={portableComponents} />
+            <PortableText
+              value={agruparImagenes(post.contenido as Bloque[]) as never}
+              components={portableComponents}
+            />
           ) : (
             <p>Este artículo se está actualizando.</p>
           )}

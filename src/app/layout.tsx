@@ -35,7 +35,7 @@ const organizationLd = {
   name: "Prolimp",
   legalName: "Prolimp del Centro, S.A. de C.V.",
   url: "https://www.prolimp.com",
-  logo: "https://www.prolimp.com/img/logo/prolimp-logo.webp",
+  logo: "https://www.prolimp.com/img/logo/logo.webp",
   description:
     "Fabricantes mexicanos de químicos y productos de limpieza para industria, hoteles, hospitales, restaurantes y hogar. 11 líneas propias con certificación ISO 9001.",
   foundingDate: "1971",

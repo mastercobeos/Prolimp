@@ -78,9 +78,9 @@
   height: auto;
 }
 
-/* ---------- Tarjetas de confianza ---------- */
+/* ---------- Tarjetas de confianza (banda azul del mockup) ---------- */
 .confianzaSection {
-  background: var(--bg-tint);
+  background: linear-gradient(135deg, var(--azul-700), var(--azul-900) 70%, #05114a);
 }
 .confianzaGrid {
   list-style: none;
@@ -133,6 +133,8 @@
 .sectionHead h2 {
   color: var(--azul-marino);
   margin-block: 0.85rem 0.75rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--azul-500);
 }
 .sectionHead p {
   max-width: 620px;
@@ -157,13 +159,10 @@
   max-height: 64px;
   width: auto;
   object-fit: contain;
-  filter: grayscale(1);
-  opacity: 0.75;
-  transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease);
 }
 .marcasCard li:hover img {
-  filter: grayscale(0);
-  opacity: 1;
+  transform: scale(1.06);
 }
 
 /* ---------- Capacitación ---------- */
@@ -193,6 +192,8 @@
 .capContent h2 {
   color: var(--azul-marino);
   margin-block: 0.85rem 0.75rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--azul-500);
 }
 .capSubtitulo {
   color: var(--azul-500);
@@ -271,7 +272,7 @@
     grid-template-columns: repeat(4, 1fr);
   }
   .capGrid {
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 3.5rem;
   }
 }

@@ -33,7 +33,6 @@
   line-height: 1.6;
 }
 .logo {
-  filter: brightness(0) invert(1);
   height: 44px;
   width: auto;
 }

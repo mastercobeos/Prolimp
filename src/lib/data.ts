@@ -45,21 +45,30 @@ const staticFetch = <T>(query: string, params?: Record<string, unknown>) =>
   client.fetch<T>(query, params ?? {}, { next: { revalidate: 3600 } });
 
 // -------- home
+export type HeroSlide = { url: string; ctaLabel?: string; ctaHref?: string };
+
 export async function getHomeContent() {
   const data = await cachedFetch<{
     heroEyebrow?: string;
     heroTituloParte1?: string;
     heroTituloAcento?: string;
     heroLede?: string;
-    heroImagenes?: SanityImageSource[];
+    heroImagenes?: (SanityImageSource & { ctaLabel?: string; ctaHref?: string })[];
     stats?: { valor: string; etiqueta: string }[];
     diferenciadores?: { titulo: string; descripcion: string; icon?: SanityImageSource }[];
     ctaCierreTitulo?: string;
     ctaCierreLede?: string;
   }>(homeQuery);
-  const imagenes = (data?.heroImagenes ?? [])
-    .map((i) => imgUrl(i, 1600))
-    .filter((u): u is string => Boolean(u));
+  const imagenes: HeroSlide[] = (data?.heroImagenes ?? [])
+    .map<HeroSlide | null>((i) => {
+      const url = imgUrl(i, 1600);
+      if (!url) return null;
+      const slide: HeroSlide = { url };
+      if (i.ctaLabel) slide.ctaLabel = i.ctaLabel;
+      if (i.ctaHref) slide.ctaHref = i.ctaHref;
+      return slide;
+    })
+    .filter((s): s is HeroSlide => s !== null);
   return {
     heroEyebrow: data?.heroEyebrow ?? "Fabricantes desde 1997",
     heroTituloParte1: data?.heroTituloParte1 ?? "Creamos espacios limpios,",
@@ -67,7 +76,7 @@ export async function getHomeContent() {
     heroLede: data?.heroLede ?? "Todo para la limpieza de tu empresa: limpiadores profesionales, herramientas resistentes, insumos especializados y asesoría para elegir mejor.",
     heroImagenes: imagenes.length
       ? imagenes
-      : ["https://images.unsplash.com/photo-1585421514738-01798e348b17?w=1200&q=85&auto=format&fit=crop"],
+      : [{ url: "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=1200&q=85&auto=format&fit=crop" }],
     stats: data?.stats?.length
       ? data.stats
       : [
@@ -125,7 +134,7 @@ export async function getLineas() {
     slug: l.slug,
     nombre: l.nombre,
     descripcion: l.descripcion,
-    image: imgUrl(l.imagen, 500) ?? "/img/lineas/automotriz.webp",
+    image: imgUrl(l.imagen, 900) ?? "/img/lineas/automotriz.webp",
   }));
 }
 
@@ -150,7 +159,7 @@ export async function getCategorias() {
     slug: c.slug,
     nombre: c.nombre,
     descripcion: c.descripcion,
-    image: imgUrl(c.imagen, 500) ?? "/img/categorias/quimicos.webp",
+    image: imgUrl(c.imagen, 900) ?? "/img/categorias/quimicos.webp",
     destacada: c.destacada,
   }));
 }
@@ -182,7 +191,7 @@ export async function getMarcas() {
   return data.map((m) => ({
     slug: m.slug,
     nombre: m.nombre,
-    image: imgUrl(m.logo, 300) ?? "/img/marcas/prolimp.webp",
+    image: imgUrl(m.logo, 700) ?? "/img/marcas/prolimp.webp",
     productos: m.productos ?? 0,
   }));
 }
@@ -329,7 +338,7 @@ export async function getPosts(): Promise<BlogListItem[]> {
   const data = await cachedFetch<{
     _id: string; titulo: string; slug: string; excerpt: string;
     fechaPublicacion?: string; destacado?: boolean; categoria?: string;
-    imagenPortada?: SanityImageSource;
+    imagenPortada?: SanityImageSource & { ancho?: number; alto?: number };
   }[]>(postsQuery);
   if (!data?.length) {
     return fallbackPosts.map((p) => ({
@@ -340,7 +349,9 @@ export async function getPosts(): Promise<BlogListItem[]> {
     slug: p.slug,
     title: p.titulo,
     description: p.excerpt,
-    image: imgUrl(p.imagenPortada, 720),
+    // Nunca pedir más ancho del que tiene el archivo: agrandarlo desde Sanity
+    // sólo interpola y la portada sale borrosa.
+    image: imgUrl(p.imagenPortada, Math.min(p.imagenPortada?.ancho ?? 720, 720)),
     date: p.fechaPublicacion,
     destacado: p.destacado,
     categoria: p.categoria,

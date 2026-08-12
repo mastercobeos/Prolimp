@@ -6,12 +6,14 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import styles from "./Hero.module.css";
 
+type Slide = { url: string; ctaLabel?: string; ctaHref?: string };
+
 type Props = {
   eyebrow: string;
   titulo1: string;
   tituloAcento: string;
   lede: string;
-  imagenes: string[];
+  imagenes: Slide[];
   stats: { valor: string; etiqueta: string }[];
 };
 
@@ -28,6 +30,9 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
     }, AUTOPLAY_MS);
     return () => window.clearInterval(id);
   }, [hasSlider, imagenes.length]);
+
+  const goPrev = () => setIndex((i) => (i - 1 + imagenes.length) % imagenes.length);
+  const goNext = () => setIndex((i) => (i + 1) % imagenes.length);
 
   return (
     <section className={styles.hero}>
@@ -69,10 +74,10 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
             className={styles.imgWrap}
             aria-roledescription={hasSlider ? "carousel" : undefined}
           >
-            {imagenes.map((src, i) => (
+            {imagenes.map((slide, i) => (
               <Image
-                key={src}
-                src={src}
+                key={slide.url}
+                src={slide.url}
                 alt="Imagen hero Prolimp"
                 width={640}
                 height={720}
@@ -81,6 +86,58 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
                 aria-hidden={i !== index}
               />
             ))}
+            {imagenes[index]?.ctaLabel && imagenes[index]?.ctaHref && (
+              (() => {
+                const href = imagenes[index]!.ctaHref!;
+                const label = imagenes[index]!.ctaLabel!;
+                const external = /^https?:\/\//.test(href);
+                return external ? (
+                  <a
+                    key={`cta-${index}`}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.slideCta}
+                  >
+                    {label}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M5 12h14M13 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                ) : (
+                  <Link key={`cta-${index}`} href={href} className={styles.slideCta}>
+                    {label}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M5 12h14M13 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                );
+              })()
+            )}
+            {hasSlider && (
+              <>
+                <button
+                  type="button"
+                  className={clsx(styles.arrow, styles.arrowPrev)}
+                  onClick={goPrev}
+                  aria-label="Imagen anterior"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  className={clsx(styles.arrow, styles.arrowNext)}
+                  onClick={goNext}
+                  aria-label="Imagen siguiente"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </>
+            )}
           </div>
           {hasSlider && (
             <div className={styles.dots} role="tablist" aria-label="Slider hero">

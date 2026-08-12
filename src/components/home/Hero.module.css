@@ -295,6 +295,58 @@
   border-radius: 999px;
 }
 
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--azul-700);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px -4px rgba(12, 31, 110, 0.35);
+  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.arrow:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.08);
+}
+.arrowPrev { left: 0.75rem; }
+.arrowNext { right: 0.75rem; }
+
+/* Va debajo de la insignia "Certificados ISO 9000" (que ocupa del 8% al 18% de
+   la altura) y algo más a la derecha que ella, para que no se encimen. */
+.slideCta {
+  position: absolute;
+  top: 34%;
+  left: 4%;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  background: white;
+  color: var(--azul-700) !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 8px 20px -4px rgba(12, 31, 110, 0.4);
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+  animation: fadeIn 400ms var(--ease) both;
+}
+.slideCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(12, 31, 110, 0.5);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mainImg { transition: none; }
 }
@@ -334,7 +386,7 @@
 
 @media (max-width: 1024px) {
   .inner { grid-template-columns: 1fr; gap: 3rem; }
-  .visual { max-width: 480px; margin: 0 auto; }
+  .visual { width: 100%; max-width: 480px; justify-self: center; }
   .badge { left: -2%; }
   .badge2 { right: -2%; }
 }

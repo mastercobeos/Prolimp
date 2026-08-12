@@ -8,7 +8,7 @@ export const homeQuery = groq`
     heroTituloParte1,
     heroTituloAcento,
     heroLede,
-    "heroImagenes": heroImagenes[]{${imgFields}},
+    "heroImagenes": heroImagenes[]{${imgFields}, ctaLabel, ctaHref},
     stats,
     diferenciadores[]{
       titulo,
@@ -158,14 +158,29 @@ export const postsQuery = groq`
   *[_type == "post"] | order(fechaPublicacion desc){
     _id, titulo, "slug": slug.current, excerpt, autor, categoria,
     fechaPublicacion, destacado,
-    "imagenPortada": imagenPortada{${imgFields}}
+    // El ancho real evita pedirle a Sanity más de lo que la portada tiene:
+    // 32 de 49 son menores a 720px y se veían borrosas al agrandarlas.
+    "imagenPortada": imagenPortada{${imgFields},
+      "ancho": asset->metadata.dimensions.width,
+      "alto": asset->metadata.dimensions.height
+    }
   }
 `;
 
 export const postBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug][0]{
     _id, titulo, "slug": slug.current, excerpt, autor, categoria,
-    fechaPublicacion, contenido,
+    fechaPublicacion,
+    // Las imágenes del cuerpo llevan su tamaño real para no pedirle a Sanity
+    // más ancho del que tienen (eso las agrandaba y las reventaba).
+    contenido[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "ancho": asset->metadata.dimensions.width,
+        "alto": asset->metadata.dimensions.height
+      }
+    },
     "imagenPortada": imagenPortada{${imgFields}},
     metaTitle, metaDescription, originalUrl
   }

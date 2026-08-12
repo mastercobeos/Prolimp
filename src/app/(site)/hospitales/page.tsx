@@ -12,19 +12,24 @@ export default function HospitalesPage() {
   return (
     <SectorLanding
       eyebrow="Sector salud"
-      titulo="Higiene profesional para"
-      tituloAcento="hospitales y clínicas"
-      lede="Desinfectantes de amplio espectro con retos microbianos, virucidas y bactericidas para áreas críticas: quirófanos, UCI, hospitalización, urgencias y consultorios. Cumplen con COFEPRIS."
-      heroImage="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=1200&q=85&auto=format&fit=crop"
-      productosLineaSlug="higiene"
-      productosLimit={8}
-      ctaLede="Diseñamos el protocolo de limpieza y desinfección para tu unidad médica: áreas administrativas, comunes, hospitalización, urgencias y quirófanos."
+      titulo="Higiene profesional"
+      tituloAcento="para hospitales y clínicas y consultorios"
+      lede="Limpiadores y desinfectantes para áreas generales de hospitales, clínicas y consultorios, pensados para mantener espacios más limpios, seguros y controlados en la operación diaria."
+      heroImage="/img/redesign/hospitales-hero.webp"
+      productosSlugs={[
+        "germiprol-s-p-detergente-sanitizante-a-base-de-sales-cuaternarias",
+        "desengrasante-dp1-concentrado",
+        "clorolimp-blanqueador-desinfectante-y-deodorizante-al-6",
+        "desinfectante-virucida-san-100",
+      ]}
+      ctaTitulo="¿Necesitas apoyo para mejorar tu proceso de limpieza?"
+      ctaLede="Te ayudamos a elegir los productos adecuados y a definir rutinas de limpieza y desinfección para áreas generales de hospitales, clínicas y consultorios."
       gradienteHero="linear-gradient(135deg, rgba(0,174,239,0.14), rgba(2,116,197,0.10) 60%, rgba(255,255,255,0.6))"
       beneficios={[
-        { icon: "🦠", titulo: "Virucida y bactericida", descripcion: "SAN-100, Termocitrus y otros con retos microbianos comprobados. Elimina virus envueltos y no envueltos." },
-        { icon: "🏥", titulo: "Áreas críticas", descripcion: "Fórmulas específicas para quirófanos, UCI, salas de espera y consultorios. Sin residuo tóxico." },
-        { icon: "✅", titulo: "COFEPRIS", descripcion: "Registros sanitarios vigentes. Fichas técnicas y hojas de seguridad de cada producto." },
-        { icon: "🧴", titulo: "Gel y jabón antibacterial", descripcion: "Prol Gel 70, Jabonlimp y toallitas desinfectantes para higiene de manos del personal." },
+        { icon: "desinfeccion", titulo: "Desinfección con respaldo", descripcion: "Fórmulas seleccionadas con retos microbianos y virucidas para procesos de higiene profesional." },
+        { icon: "camilla", titulo: "Áreas críticas", descripcion: "Fórmulas específicas funcionales para la demanda de estos segmentos." },
+        { icon: "documentos", titulo: "Soporte documental", descripcion: "Fichas técnicas, hojas de seguridad y registros aplicables para apoyar procesos internos de control." },
+        { icon: "botella", titulo: "Higiene de uso diario", descripcion: "Productos para apoyar rutinas constantes de limpieza e higiene." },
       ]}
     />
   );

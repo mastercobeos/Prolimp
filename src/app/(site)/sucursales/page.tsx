@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import styles from "./page.module.css";
 import { CtaBand } from "@/components/shared/CtaBand";
-import { getSucursales, type SucursalItem } from "@/lib/data";
+import { getEmpresa, getSucursales, type SucursalItem } from "@/lib/data";
+import { DistribuidorForm } from "./DistribuidorForm";
 
 export const metadata: Metadata = {
   title: "Sucursales y distribuidores",
@@ -166,48 +168,47 @@ type InfoCard = { titulo: string; texto: string; icon: ReactNode };
 
 const requisitos: InfoCard[] = [
   {
-    titulo: "Estructura Comercial",
-    texto: "Tener bodegas, oficinas y demás instalaciones que permitan distribuir y tener solvencia económica.",
+    titulo: "Infraestructura operativa",
+    texto: "Contar con bodega, oficina o instalaciones adecuadas para almacenar, administrar y distribuir productos.",
     icon: <IconBodega />,
   },
   {
     titulo: "Experiencia",
-    texto: "Contar con experiencia en distribución de productos para la industria y el comercio.",
+    texto: "Conocimiento en la comercialización de productos para industria, comercio, instituciones o empresas.",
     icon: <IconMedalla />,
   },
   {
-    titulo: "Equipo y Solvencia",
-    texto: "Contar con equipo de trabajo o personal para ventas, además de solvencia económica.",
+    titulo: "Estructura comercial",
+    texto: "Equipo de ventas o personal dedicado a la prospección, seguimiento y atención de clientes.",
     icon: <IconEquipo />,
   },
   {
-    titulo: "Unidades",
-    texto: "Tener unidades de transporte y reparto de productos.",
+    titulo: "Solvencia económica",
+    texto: "Capacidad financiera para operar, abastecerse y dar continuidad al crecimiento de la zona.",
     icon: <IconCamion />,
   },
 ];
 
-// NOTE: proposed copy — the mockup leaves these four cards empty; replace when the final content is defined.
 const beneficios: InfoCard[] = [
   {
-    titulo: "Precios de mayorista",
-    texto: "Esquema de precios preferenciales que te da un margen competitivo desde el primer pedido.",
+    titulo: "Atractivos márgenes de utilidad",
+    texto: "",
     icon: <IconEtiqueta />,
   },
   {
-    titulo: "Capacitación y soporte técnico",
-    texto: "Te capacitamos en el uso y venta de nuestros productos, con asesoría técnica permanente.",
+    titulo: "Asesoría técnica y comercial",
+    texto: "",
     icon: <IconLibro />,
   },
   {
-    titulo: "Marca reconocida con registro sanitario",
-    texto: "Más de 35 años en el mercado y fórmulas con registros ante la Secretaría de Salud.",
-    icon: <IconEscudo />,
+    titulo: "Amplia gama de Productos y Servicios",
+    texto: "",
+    icon: <IconPaquete />,
   },
   {
-    titulo: "Surtido consolidado a todo el país",
-    texto: "Enviamos tu pedido completo a cualquier punto de la república con logística propia.",
-    icon: <IconPaquete />,
+    titulo: "Soporte técnico",
+    texto: "",
+    icon: <IconEscudo />,
   },
 ];
 
@@ -218,7 +219,7 @@ function SucursalCard({ s }: { s: SucursalItem }) {
   const emails = [s.email, s.emailAlt].filter(Boolean) as string[];
   const mapsUrl = s.direccion
     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Prolimp ${s.ciudad} ${s.direccion}`)}`
-    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Prolimp ${s.ciudad}`)}`;
+    : null;
 
   return (
     <article className={styles.card}>
@@ -281,12 +282,14 @@ function SucursalCard({ s }: { s: SucursalItem }) {
         )}
       </ul>
 
-      <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={styles.mapsBtn}>
-        Ver en Google Maps
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <path d="M5 12h14M13 5l7 7-7 7" />
-        </svg>
-      </a>
+      {mapsUrl && (
+        <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={styles.mapsBtn}>
+          Ver en Google Maps
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </a>
+      )}
     </article>
   );
 }
@@ -294,7 +297,7 @@ function SucursalCard({ s }: { s: SucursalItem }) {
 /* ---------- Page ---------- */
 
 export default async function SucursalesPage() {
-  const items = await getSucursales();
+  const [items, empresa] = await Promise.all([getSucursales(), getEmpresa()]);
   const sucursales = items.filter((s) => (s.tipo ?? "sucursal") === "sucursal");
 
   // Group sucursales by estado
@@ -334,6 +337,15 @@ export default async function SucursalesPage() {
                   </a>
                 ))}
               </nav>
+              <div className={styles.heroFoto}>
+                <Image
+                  src="/img/redesign/sucursales-hero.webp"
+                  alt="Personal de Prolimp cargando cajas en el camión de reparto"
+                  width={1200}
+                  height={1106}
+                  priority
+                />
+              </div>
             </div>
 
             <aside className={styles.heroCard} aria-label="Resumen de presencia Prolimp">
@@ -390,16 +402,52 @@ export default async function SucursalesPage() {
         variant="marino"
       />
 
+      {/* 2b. Mercado Libre */}
+      <section className={`section ${styles.mlSection}`}>
+        <div className="container">
+          <h2>También encuentra nuestros productos en:</h2>
+          <div className={styles.mlRow}>
+            <Image
+              src="/img/redesign/mercadolibre-logo.png"
+              alt="Mercado Libre"
+              width={268}
+              height={68}
+              className={styles.mlLogo}
+            />
+            <a
+              href="https://www.mercadolibre.com.mx/pagina/prolimp_2194"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.mlBtn}
+            >
+              Ir a tienda
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* 3. Distribuidores */}
       <section className={`section ${styles.distSection}`}>
         <div className="container">
           <div className={styles.sectionHead}>
             <span className={styles.eyebrow}>Distribuidores</span>
-            <h2>Contamos con una red de distribuidores</h2>
-            <p>Nuestros distribuidores están para poner nuestros productos al alcance de todos.</p>
+            <h2>Red de distribuidores Prolimp</h2>
+            <p>
+              Acercamos nuestros productos de limpieza profesional a más empresas a través de
+              aliados comerciales en diferentes zonas.
+            </p>
           </div>
-          <ul className={styles.distGrid}>
-            {distribuidores.map((d) => (
+          <div className={styles.distLayout}>
+            <div className={styles.distFoto}>
+              <Image
+                src="/img/redesign/distribuidor-retrato.webp"
+                alt="Repartidor Prolimp al volante de su camioneta"
+                width={1200}
+                height={1402}
+              />
+            </div>
+            <ul className={styles.distGrid}>
+              {distribuidores.map((d) => (
               <li key={d.nombre} className={styles.distCard}>
                 <h3>{d.nombre}</h3>
                 <p className={styles.distLoc}>{d.ubicacion}</p>
@@ -418,8 +466,9 @@ export default async function SucursalesPage() {
                   </li>
                 </ul>
               </li>
-            ))}
-          </ul>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -427,13 +476,19 @@ export default async function SucursalesPage() {
       <section className={styles.banda}>
         <div className="container">
           <h2>Buscamos distribuidores</h2>
-          <p>Deben contar con un perfil específico para poder distribuir nuestros productos</p>
+          <p>
+            En Prolimp buscamos aliados comerciales con la capacidad operativa, comercial y
+            financiera para representar y distribuir nuestros productos en nuevas zonas.
+          </p>
         </div>
       </section>
 
       {/* 5. Requisitos */}
       <section className={`section ${styles.reqSection}`}>
         <div className="container">
+          <div className={styles.sectionHead}>
+            <h2>Perfil que buscamos</h2>
+          </div>
           <ul className={styles.infoGrid}>
             {requisitos.map((r) => (
               <li key={r.titulo} className={styles.infoCard}>
@@ -453,7 +508,7 @@ export default async function SucursalesPage() {
         <div className="container">
           <div className={styles.sectionHead}>
             <h2>
-              Lo que te podemos <span className={styles.acento}>ofrecer</span>
+              Lo que te podemos <span className={styles.acento}>ofrecerte</span>
             </h2>
           </div>
           <ul className={styles.infoGrid}>
@@ -463,37 +518,30 @@ export default async function SucursalesPage() {
                   {b.icon}
                 </span>
                 <h3>{b.titulo}</h3>
-                <p>{b.texto}</p>
+                {b.texto && <p>{b.texto}</p>}
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* 7. Banda CTA solicitud de distribución */}
-      <CtaBand
-        titulo="¿Quieres emprender un negocio y tienes experiencia en distribución de productos?"
-        lede="Llena el siguiente formulario y envíanos tu solicitud."
-        cta="Contáctanos"
-        href="/contacto"
-        variant="marino"
-      />
-
-      {/* 8. Mercado Libre */}
-      <section className={`section ${styles.mlSection}`}>
+      {/* 7. Formulario de solicitud de distribución (lámina 4) */}
+      <section className={styles.formSection}>
         <div className="container">
           <h2>
-            También encuentra nuestros productos en{" "}
-            <span className={styles.acento}>Mercado Libre</span>
+            ¿Quieres emprender un negocio o tienes experiencia en distribución de productos?
           </h2>
-          <a
-            href="https://www.mercadolibre.com.mx/pagina/prolimp_2194"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.mlBtn}
-          >
-            Ir a tienda
-          </a>
+          <div className={styles.formGrid}>
+            <div className={styles.formFoto}>
+              <Image
+                src="/img/redesign/distribuidor-form.webp"
+                alt="Repartidor cargando cajas Prolimp en una camioneta"
+                width={1200}
+                height={1681}
+              />
+            </div>
+            <DistribuidorForm whatsapp={empresa.whatsapp} />
+          </div>
         </div>
       </section>
     </>

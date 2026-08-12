@@ -76,7 +76,7 @@ for (const i of currentArray) {
   });
 }
 
-// 3) nueva imagen (si no está ya)
+// 3) nueva imagen (si no está ya) — con CTA "Ver más" hacia /productos
 const alreadyHasNew = items.some((i) => i.asset._ref === newAssetId);
 if (!alreadyHasNew) {
   items.push({
@@ -84,7 +84,13 @@ if (!alreadyHasNew) {
     _type: "image",
     asset: { _type: "reference", _ref: newAssetId },
     alt: NEW_ALT,
+    ctaLabel: "Ver más",
+    ctaHref: "/productos",
   });
+} else {
+  // Si ya está, asegura que el CTA quede seteado.
+  const idx = items.findIndex((i) => i.asset._ref === newAssetId);
+  items[idx] = { ...items[idx], ctaLabel: items[idx].ctaLabel ?? "Ver más", ctaHref: items[idx].ctaHref ?? "/productos" };
 }
 
 const patch = client.patch("home-singleton").set({ heroImagenes: items }).unset(["heroImagen"]);

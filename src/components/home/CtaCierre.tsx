@@ -26,7 +26,7 @@ export function CtaCierre({ titulo, lede }: Props) {
                 <polyline points="7 10 12 15 17 10" />
                 <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
-              Descargar catálogo PDF
+              Descarga Catálogo PDF
             </a>
           </div>
         </div>

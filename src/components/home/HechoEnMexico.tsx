@@ -13,10 +13,13 @@ export function HechoEnMexico() {
             height={420}
             className={styles.productos}
           />
-          <span className={styles.badge}>
-            Hecho en
-            <strong>México</strong>
-          </span>
+          <Image
+            src="/img/redesign/hecho-en-mexico.webp"
+            alt="Hecho en México"
+            width={130}
+            height={130}
+            className={styles.badge}
+          />
         </div>
         <div className={styles.text}>
           <p>Fabricamos en México</p>

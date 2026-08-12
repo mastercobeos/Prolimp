@@ -18,7 +18,9 @@ export function Marcas({ marcas }: Props) {
           {marcas.map((m) => (
             <li key={m.slug}>
               <Link href={`/productos/marcas/${m.slug}`} className={styles.card}>
-                <Image src={m.image} alt={m.nombre} width={200} height={200} />
+                <div className={styles.imgWrap}>
+                  <Image src={m.image} alt={m.nombre} width={700} height={700} />
+                </div>
                 <div className={styles.info}>
                   <strong>{m.nombre}</strong>
                   <span>{m.productos} productos</span>

@@ -20,12 +20,12 @@ const confianza = [
   },
   {
     titulo: "Empresa ESR",
-    descripcion: "Reconocidos por nuestra responsabilidad social empresarial.",
+    descripcion: "Compromiso reconocido con la responsabilidad social empresarial.",
     imgs: [{ src: "/img/redesign/sello-esr.png", alt: "Distintivo Empresa Socialmente Responsable", width: 200, height: 79 }],
   },
   {
     titulo: "Registros Sanitarios",
-    descripcion: "Regulados por la Secretaría de Salud de México.",
+    descripcion: "Productos regulados ante la Secretaría de Salud.",
     imgs: [
       { src: "/img/redesign/sello-salud.png", alt: "Secretaría de Salud", width: 149, height: 48 },
       { src: "/img/redesign/sello-cofepris.png", alt: "COFEPRIS", width: 150, height: 75 },
@@ -33,26 +33,26 @@ const confianza = [
   },
   {
     titulo: "Miembros ISSA",
-    descripcion: "Asociación mundial de la industria de la limpieza.",
+    descripcion: "Parte de la asociación mundial de la industria de la limpieza.",
     imgs: [{ src: "/img/redesign/sello-issa.png", alt: "ISSA", width: 148, height: 65 }],
   },
 ];
 
 const marcas = [
-  { src: "/img/redesign/marca-wiese.png", alt: "Wiese", width: 150, height: 109 },
-  { src: "/img/redesign/marca-kimberly.png", alt: "Kimberly-Clark Professional", width: 150, height: 66 },
-  { src: "/img/redesign/marca-castor.png", alt: "El Castor", width: 150, height: 114 },
-  { src: "/img/redesign/marca-rubbermaid.png", alt: "Rubbermaid", width: 148, height: 44 },
-  { src: "/img/redesign/marca-scf.png", alt: "SCF", width: 148, height: 80 },
-  { src: "/img/redesign/marca-jvd.png", alt: "JVD", width: 149, height: 94 },
-  { src: "/img/redesign/marca-cuplasa.png", alt: "Cuplasa", width: 150, height: 85 },
-  { src: "/img/redesign/marca-libra.png", alt: "Libra", width: 150, height: 150 },
-  { src: "/img/redesign/marca-sanchez.png", alt: "Sánchez y Martín", width: 198, height: 57 },
-  { src: "/img/redesign/marca-corona.png", alt: "La Corona", width: 149, height: 110 },
-  { src: "/img/redesign/marca-rml.png", alt: "RML", width: 150, height: 150 },
+  { src: "/img/redesign/marca-wiese.webp", alt: "Wiese", width: 600, height: 436 },
+  { src: "/img/redesign/marca-kimberly.webp", alt: "Kimberly-Clark Professional", width: 600, height: 230 },
+  { src: "/img/redesign/marca-castor.webp", alt: "El Castor", width: 600, height: 456 },
+  { src: "/img/redesign/marca-rubbermaid.webp", alt: "Rubbermaid", width: 600, height: 178 },
+  { src: "/img/redesign/marca-scf.webp", alt: "SCF", width: 600, height: 324 },
+  { src: "/img/redesign/marca-jvd.webp", alt: "JVD", width: 600, height: 379 },
+  { src: "/img/redesign/marca-cuplasa.webp", alt: "Cuplasa", width: 600, height: 340 },
+  { src: "/img/redesign/marca-libra.webp", alt: "Libra", width: 600, height: 600 },
+  { src: "/img/redesign/marca-sanchez.webp", alt: "Sánchez y Martín", width: 600, height: 173 },
+  { src: "/img/redesign/marca-corona.webp", alt: "La Corona", width: 600, height: 443 },
+  { src: "/img/redesign/marca-rml.webp", alt: "RML", width: 600, height: 600 },
 ];
 
-const materiales = ["Manual de Procesos", "Fichas Técnicas", "Hojas de Seguridad", "Ayudas Visuales"];
+const materiales = ["Manual de Procesos", "Fichas Técnicas", "Hojas de Seguridad", "Ayudas Visuales", "Constancia DC3"];
 
 function DocIcon() {
   return (
@@ -74,7 +74,7 @@ export default async function NosotrosPage() {
         <div className="container container-wide">
           <div className={styles.heroInner}>
             <div className={styles.heroText}>
-              <span className={styles.eyebrow}>Acerca de nosotros</span>
+              <span className={styles.eyebrow}>Nosotros</span>
               <h1>
                 Somos fabricantes <span className={styles.acento}>de limpiadores y desinfectantes</span>
               </h1>
@@ -163,24 +163,6 @@ export default async function NosotrosPage() {
       <section className={`section ${styles.capacitacionSection}`}>
         <div className="container container-wide">
           <div className={styles.capGrid}>
-            <div className={styles.capFotos}>
-              <div className={styles.capFoto}>
-                <Image
-                  src="/img/redesign/capacitacion-dosificador.png"
-                  alt="Técnica operando un dosificador de limpiadores"
-                  width={799}
-                  height={574}
-                />
-              </div>
-              <div className={styles.capFoto}>
-                <Image
-                  src="/img/redesign/capacitacion-sala.jpg"
-                  alt="Sala de capacitación con personal de limpieza"
-                  width={799}
-                  height={529}
-                />
-              </div>
-            </div>
             <div className={styles.capContent}>
               <span className={styles.eyebrow}>Capacitación</span>
               <h2>Fortalecemos el oficio de la limpieza</h2>
@@ -204,6 +186,24 @@ export default async function NosotrosPage() {
                   </li>
                 ))}
               </ul>
+            </div>
+            <div className={styles.capFotos}>
+              <div className={styles.capFoto}>
+                <Image
+                  src="/img/redesign/capacitacion-sala.jpg"
+                  alt="Sala de capacitación con personal de limpieza"
+                  width={799}
+                  height={529}
+                />
+              </div>
+              <div className={styles.capFoto}>
+                <Image
+                  src="/img/redesign/capacitacion-dosificador.png"
+                  alt="Técnica operando un dosificador de limpiadores"
+                  width={799}
+                  height={574}
+                />
+              </div>
             </div>
           </div>
         </div>

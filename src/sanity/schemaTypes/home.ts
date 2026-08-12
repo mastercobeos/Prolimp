@@ -40,7 +40,21 @@ export const home = defineType({
         {
           type: "image",
           options: { hotspot: true },
-          fields: [{ name: "alt", type: "string", title: "Texto alternativo" }],
+          fields: [
+            { name: "alt", type: "string", title: "Texto alternativo" },
+            {
+              name: "ctaLabel",
+              type: "string",
+              title: "Texto botón (opcional)",
+              description: 'Ej: "Ver más". Si se llena, aparece un botón overlay arriba-izquierda.',
+            },
+            {
+              name: "ctaHref",
+              type: "string",
+              title: "Link del botón (opcional)",
+              description: 'Ruta interna ("/productos") o URL externa ("https://...").',
+            },
+          ],
         },
       ],
       validation: (r) => r.min(1).max(6),

@@ -12,19 +12,25 @@ export default function IndustriaLacteaPage() {
   return (
     <SectorLanding
       eyebrow="Industria láctea"
-      titulo="Higiene profesional para"
-      tituloAcento="lácteos y quesos"
-      lede="Removemos residuos proteicos y minerales sin corroer acero inoxidable. Línea especializada para procesadoras de leche, queserías, salas de ordeño y equipos de pasteurización."
-      heroImage="https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=1200&q=85&auto=format&fit=crop"
-      productosLineaSlug="plec"
-      productosLimit={6}
-      ctaLede="Nuestros técnicos diseñan la rotación alcalino-ácido correcta para que tus superficies queden libres de biofilms y depósitos de calcio."
+      titulo="Limpieza profesional para"
+      tituloAcento="la industria láctea y quesera"
+      lede="Limpiadores y desinfectantes profesionales para apoyar la higiene en queserías, procesadoras de leche, salas de ordeño y áreas de producción. Ayudan a remover residuos grasos, proteicos y minerales generados durante la operación diaria."
+      heroImage="/img/redesign/lactea-hero.webp"
+      sellos
+      beneficiosTitulo="Fórmulas diseñadas para la industria láctea y quesera"
+      productosSlugs={[
+        "deterfoam-l-i-detergente-alcalino-clorado-alta-espuma",
+        "ultra-k-i-detergente-alcalino-baja-espuma",
+        "deterprol-s-e-i-detergente-alcalino-clorado-sin-espuma",
+        "alkaprol-detergente-alcalino-clorado",
+      ]}
+      ctaLede="Te ayudamos a elegir los productos adecuados y a definir rutinas de limpieza y sanitización para queserías, procesadoras de leche, salas de ordeño y áreas de trabajo."
       gradienteHero="linear-gradient(135deg, rgba(0,174,239,0.15), rgba(255,255,255,0.6) 60%, rgba(2,116,197,0.12))"
       beneficios={[
-        { icon: "🥛", titulo: "Remueve leche y proteína", descripcion: "Detergentes alcalinos que disuelven residuos grasos y proteicos sin dejar espuma en enjuague." },
-        { icon: "⚗️", titulo: "Descalcifica minerales", descripcion: "Ácidos que eliminan sarro, depósitos de calcio y biofilm sin dañar acero inoxidable." },
-        { icon: "💧", titulo: "Aptos CIP", descripcion: "Bajo espumante, enjuague fácil, ideales para sistemas de limpieza en sitio automatizados." },
-        { icon: "🧫", titulo: "Sanitizantes", descripcion: "Yodóforos y ácido peracético para desinfección final de superficies en contacto con producto." },
+        { icon: "grasa", titulo: "Remoción de grasa y proteína", descripcion: "Limpiadores alcalinos que ayudan a remover suciedad propia del proceso, como grasa, leche, proteína y materia orgánica." },
+        { icon: "sarro", titulo: "Remoción de sarro y minerales", descripcion: "Fórmulas ácidas para apoyar la remoción de incrustaciones, sales minerales y residuos adheridos en superficies y equipos." },
+        { icon: "cip", titulo: "Limpieza CIP y COP", descripcion: "Fórmulas para apoyar la limpieza de circuitos cerrados, equipos y piezas desmontables dentro de procesos lácteos y queseros." },
+        { icon: "desinfeccion", titulo: "Desinfección con respaldo", descripcion: "Sanitizantes y desinfectantes con documentación técnica para apoyar procesos de higiene e inocuidad en planta." },
       ]}
     />
   );

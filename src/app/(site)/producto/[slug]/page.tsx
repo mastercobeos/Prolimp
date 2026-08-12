@@ -5,7 +5,24 @@ import { PortableText } from "@portabletext/react";
 import type { Metadata } from "next";
 import { urlForImage } from "@/sanity/image";
 import { getProductoBySlug } from "@/lib/data";
+import { splitNombreProducto } from "@/lib/productName";
 import styles from "./page.module.css";
+
+/* Los documentos migrados traen al final del cuerpo los links crudos de la página
+   vieja ("wa.link/...", "prolimp.com/sucursales..."); esa invitación ahora vive en
+   la banda "¿Te gustaría probarlo?" al pie, así que se filtran del prose. */
+type PTSpan = { text?: string };
+type PTBlock = { _type?: string; children?: PTSpan[] };
+function limpiarDescripcion(blocks: unknown[]): unknown[] {
+  const basura = /wa\.link|wa\.me|prolimp\.com\/sucursales|¿te gustaría probarlo\?|conoce nuestras sucursales donde puedes adquirirlo/i;
+  return blocks.filter((b) => {
+    const block = b as PTBlock;
+    if (block._type !== "block" || !block.children) return true;
+    const texto = block.children.map((c) => c.text ?? "").join("").trim();
+    if (!texto) return true;
+    return !basura.test(texto);
+  });
+}
 
 type Params = Promise<{ slug: string }>;
 
@@ -28,6 +45,8 @@ export default async function ProductoPage({ params }: { params: Params }) {
 
   const heroSrc = p.imagenPrincipal ? urlForImage(p.imagenPrincipal).width(1200).auto("format").url() : undefined;
   const gallery = (p.galeria ?? []).map((g) => urlForImage(g).width(800).auto("format").url());
+  const { titulo: nombreTitulo, subtitulo: nombreSubtitulo } = splitNombreProducto(p.nombre);
+  const descripcionLimpia = limpiarDescripcion((p.descripcion as unknown[]) ?? []);
 
   const productLd = {
     "@context": "https://schema.org",
@@ -111,19 +130,20 @@ export default async function ProductoPage({ params }: { params: Params }) {
               )}
             </div>
 
-            <h1 className={styles.title}>{p.nombre}</h1>
-            {p.descripcionCorta && <p className={styles.subtitle}>{p.descripcionCorta}</p>}
+            <h1 className={styles.title}>{nombreTitulo}</h1>
+            {nombreSubtitulo && <p className={styles.subtitle}>{nombreSubtitulo}</p>}
             {p.sku && <p className={styles.sku}>SKU · {p.sku}</p>}
-
-            {p.descripcion && (p.descripcion as unknown[]).length > 0 && (
-              <div className={styles.prose}>
-                <PortableText value={p.descripcion as never} />
-              </div>
-            )}
+            {p.descripcionCorta && <p className={styles.shortDesc}>{p.descripcionCorta}</p>}
 
             <div className={styles.ctas}>
               <Link href={`/contacto?producto=${p.slug}`} className={styles.quoteBtn}>Solicitar cotización</Link>
             </div>
+
+            {descripcionLimpia.length > 0 && (
+              <div className={styles.prose}>
+                <PortableText value={descripcionLimpia as never} />
+              </div>
+            )}
 
             {p.presentaciones && p.presentaciones.length > 0 && (
               <div className={styles.block}>
@@ -188,6 +208,19 @@ export default async function ProductoPage({ params }: { params: Params }) {
           </section>
         </div>
       </div>
+
+      <section className={styles.probarBand}>
+        <div className={styles.probarInner}>
+          <div className={styles.probarText}>
+            <h2>¿Te gustaría probarlo?</h2>
+            <p>Conoce nuestras sucursales donde puedes adquirirlo.</p>
+          </div>
+          <div className={styles.probarActions}>
+            <Link href="/sucursales" className={styles.probarBtn}>Sucursales</Link>
+            <Link href="/contacto" className={styles.probarBtn}>Contáctanos</Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

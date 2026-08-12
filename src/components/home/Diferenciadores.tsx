@@ -7,22 +7,22 @@ type Props = {
 
 const sellos = [
   {
-    img: "/img/redesign/sello-nsf.png",
+    img: "/img/redesign/sello-nsf.webp",
     titulo: "NSF International",
     descripcion: "Registro ante la National Science Foundation, producto seguro para la industria alimentaria.",
   },
   {
-    img: "/img/redesign/sello-desinfeccion.png",
+    img: "/img/redesign/sello-desinfeccion.webp",
     titulo: "Desinfección garantizada",
     descripcion: "Nuestros productos cuentan con retos microbianos que aseguran su efectividad.",
   },
   {
-    img: "/img/redesign/sello-kosher.png",
+    img: "/img/redesign/sello-kosher.webp",
     titulo: "Certificación Kosher",
     descripcion: "Contamos con certificación que avala el cumplimiento de los estándares de la Ley Judía.",
   },
   {
-    img: "/img/redesign/sello-virus.png",
+    img: "/img/redesign/sello-virus.webp",
     titulo: "Eficaz contra virus",
     descripcion: "Efectividad contra virus de características similares a SARS-COV-2 comprobada.",
   },
@@ -60,7 +60,7 @@ export function Diferenciadores({ items }: Props) {
           {sellos.map((s) => (
             <li key={s.titulo}>
               <div className={styles.selloImg}>
-                <Image src={s.img} alt={s.titulo} width={120} height={90} />
+                <Image src={s.img} alt={s.titulo} width={600} height={450} />
               </div>
               <h3>{s.titulo}</h3>
               <p>{s.descripcion}</p>

@@ -41,13 +41,64 @@
   border-top: 3px solid var(--cyan-400);
   display: inline-block;
 }
-.contentImg {
+/* Portada del artículo: va bajo el título, como en el blog original. */
+.portadaWrap {
+  max-width: 760px;
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+.portadaImg {
   display: block;
   width: 100%;
-  max-width: 480px;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.body h3 {
+  margin-block: 2rem 0.75rem;
+  color: var(--azul-700);
+  font-size: 1.15rem;
+}
+.body ul,
+.body ol {
+  margin: 0 0 1.5rem 1.25rem;
+  padding-left: 1rem;
+  color: var(--gris-800);
+}
+.body li {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 0.5rem;
+}
+.body blockquote {
+  margin: 2rem 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 4px solid var(--cyan-400);
+  color: var(--gris-700);
+  font-style: italic;
+}
+
+/* La imagen se muestra a su tamaño real (el ancho se fija en línea desde el
+   componente). Sin width:100% los sellos chicos ya no se estiran. */
+.contentImg {
+  display: block;
   height: auto;
   margin: 2rem auto;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
+}
+
+/* Tandas de imágenes consecutivas: en fila y centradas, no apiladas. */
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+.galeriaImg {
+  height: auto;
+  border-radius: var(--radius);
 }
 
 .cta {

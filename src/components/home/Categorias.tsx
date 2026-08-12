@@ -19,7 +19,7 @@ export function Categorias({ categorias }: Props) {
             <li key={c.slug}>
               <Link href={`/productos/${c.slug}`} className={styles.card}>
                 <div className={styles.imgWrap}>
-                  <Image src={c.image} alt={c.nombre} width={300} height={300} />
+                  <Image src={c.image} alt={c.nombre} width={900} height={900} />
                 </div>
                 <h3>{c.nombre}</h3>
                 <p>{c.descripcion}</p>

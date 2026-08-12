@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { lineaHref } from "@/lib/lineaHref";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 import { NewsletterForm } from "./NewsletterForm";
@@ -31,10 +32,10 @@ export function Footer({ categorias, lineas, empresa }: Props) {
           <div className={styles.brand}>
             <Link href="/">
               <Image
-                src="/img/logo/prolimp-logo.webp"
+                src="/img/logo/logo-white.webp"
                 alt="Prolimp"
                 width={160}
-                height={48}
+                height={56}
                 className={styles.logo}
               />
             </Link>
@@ -74,7 +75,7 @@ export function Footer({ categorias, lineas, empresa }: Props) {
             <p className={styles.colTitle}>Limpiadores Prolimp®</p>
             <ul>
               {lineas.map((l) => (
-                <li key={l.slug}><Link href={`/productos/quimicos/${l.slug}`}>{l.nombre}</Link></li>
+                <li key={l.slug}><Link href={lineaHref(l.slug)}>{l.nombre}</Link></li>
               ))}
             </ul>
           </div>

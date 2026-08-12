@@ -68,7 +68,7 @@
   text-align: center;
 }
 .checkIcon {
-  color: #76b82a;
+  color: var(--azul-500);
   flex-shrink: 0;
 }
 .heroCard {

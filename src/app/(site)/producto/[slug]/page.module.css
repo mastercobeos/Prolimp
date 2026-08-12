@@ -118,6 +118,11 @@
   letter-spacing: 0.02em;
   margin: 0.25rem 0 0;
 }
+.shortDesc {
+  color: var(--gris-700);
+  line-height: 1.7;
+  margin: 0.5rem 0 0;
+}
 
 .prose { margin-top: 0.5rem; }
 .prose p { color: var(--gris-700); line-height: 1.7; margin-bottom: 0.5rem; }
@@ -197,3 +202,35 @@
   box-shadow: var(--shadow-sm);
 }
 .docBtn:hover { border-color: var(--azul-500); color: var(--azul-500); }
+
+/* Banda "¿Te gustaría probarlo?" (lámina 12/13) */
+.probarBand {
+  background: var(--grad-banda-marino);
+  color: white;
+  padding: clamp(2.5rem, 5vw, 3.5rem) 1.5rem;
+}
+.probarInner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.probarText { flex: 1; min-width: 260px; }
+.probarText h2 { color: white; font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: 0.5rem; }
+.probarText p { color: rgba(255, 255, 255, 0.9); font-size: 1.05rem; margin: 0; }
+.probarActions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.probarBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.85rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #e9f6ff, #9fd8f7);
+  color: var(--azul-700) !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 200ms;
+}
+.probarBtn:hover { transform: translateY(-2px); }

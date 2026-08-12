@@ -23,27 +23,13 @@
 }
 .badge {
   position: absolute;
-  right: -0.75rem;
+  right: -1rem;
   top: 38%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-  padding: 0.6rem 0.9rem;
-  background: #7a2e21;
-  color: white;
-  border: 2px solid white;
+  width: clamp(70px, 10vw, 110px);
+  height: auto;
   border-radius: var(--radius-sm);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   box-shadow: var(--shadow);
   rotate: -3deg;
-}
-.badge strong {
-  font-size: 0.95rem;
-  letter-spacing: 0.1em;
 }
 
 .text p {

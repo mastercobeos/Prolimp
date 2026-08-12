@@ -117,8 +117,10 @@ function CheckIcon() {
 
 export default async function SistemasDilucionPage() {
   const data = await getSistemasDilucion();
-  const heroLede = data?.descripcion || HERO_LEDE;
-  const beneficios = data?.beneficios?.length ? data.beneficios : HERO_BENEFITS;
+  const heroLede = HERO_LEDE;
+  const beneficios = (data?.beneficios?.length ? data.beneficios : HERO_BENEFITS).map((b) =>
+    b.replace(/\.$/, "")
+  );
 
   return (
     <main className={styles.page}>
@@ -145,10 +147,10 @@ export default async function SistemasDilucionPage() {
             </div>
             <div className={styles.heroCard}>
               <Image
-                src="/img/redesign/tekstil-equipo.png"
-                alt="Equipos de dosificación Prolimp"
-                width={720}
-                height={540}
+                src="/img/redesign/dilucion-hero.webp"
+                alt="Equipos de dosificación y dilución Prolimp"
+                width={1200}
+                height={1149}
                 priority
                 className={styles.heroImage}
               />
@@ -200,13 +202,13 @@ export default async function SistemasDilucionPage() {
         </div>
       </section>
 
-      {/* 3. Banda CTA asesoría */}
+      {/* 3. Banda CTA folleto dosificación */}
       <CtaBand
         variant="marino"
-        titulo="Obtén asesoría especializada"
-        lede="Para la correcta implementación del sistema de dilución profesional, descarga el folleto para ampliar la información."
+        titulo="Conoce más"
+        lede="Descarga el folleto y revisa cómo funciona el sistema de dosificación"
         cta="Descargar folleto"
-        href="/contacto"
+        href="/descarga-catalogo"
       />
 
       {/* 4. Pro Omni */}
@@ -252,6 +254,15 @@ export default async function SistemasDilucionPage() {
         </div>
       </section>
 
+      {/* 4b. Banda CTA folleto dilución */}
+      <CtaBand
+        variant="marino"
+        titulo="Conoce más"
+        lede="Descarga el folleto y revisa cómo funciona el sistema de dilución"
+        cta="Descargar folleto"
+        href="/descarga-catalogo"
+      />
+
       {/* 5. Otros equipos */}
       <section className={styles.equipos}>
         <div className="container">
@@ -265,10 +276,10 @@ export default async function SistemasDilucionPage() {
           <ul className={styles.equiposGrid}>
             {OTROS_EQUIPOS.map((e) => (
               <li key={e.titulo} className={styles.equipoCard}>
-                <h3>{e.titulo}</h3>
                 <div className={styles.equipoImgWrap}>
                   <Image src={e.img} alt={e.titulo} width={400} height={300} className={styles.equipoImg} />
                 </div>
+                <h3>{e.titulo}</h3>
                 <p>{e.texto}</p>
               </li>
             ))}
@@ -276,12 +287,13 @@ export default async function SistemasDilucionPage() {
         </div>
       </section>
 
-      {/* 6. Banda CTA lavandería */}
+      {/* 6. Banda CTA asesoría */}
       <CtaBand
         variant="azul"
-        titulo="Limpiadores para tu lavandería"
-        cta="Ver más"
-        href="/productos/quimicos/lavanderia"
+        titulo="¿Necesitas asesoría para tu operación?"
+        lede="Nuestro equipo te ayuda a elegir e implementar el sistema de dosificación ideal para tu operación."
+        cta="Contactar con un Asesor"
+        href="/contacto"
       />
     </main>
   );
