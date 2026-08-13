@@ -339,6 +339,22 @@ async function elementToBlocks($, el) {
         // Imágenes dentro de celdas se extraen como bloques image aparte (raro pero
         // pasa en algunos posts con logos incrustados).
         const trs = $node.find("tr").toArray();
+
+        // Pre-check: tablas de layout (usadas como wrapper de contenido rico).
+        // Si toda la tabla tiene una sola celda que contiene headings, listas o
+        // imágenes, recursamos en el contenido en vez de aplanarlo a texto.
+        const allCells = $node.find("th,td").toArray();
+        const hasRichChildInAnyCell = allCells.some((c) => $(c).find("h1,h2,h3,h4,ul,ol,img,table").length > 0);
+        const isSingleCellLayout = trs.length <= 1 && allCells.length <= 1;
+        const isSingleColumnLayout = trs.length > 0 && trs.every((tr) => $(tr).find("th,td").length <= 1);
+        if ((isSingleCellLayout || isSingleColumnLayout) && hasRichChildInAnyCell) {
+          for (const cell of allCells) {
+            const inner = await elementToBlocks($, cell);
+            blocks.push(...inner);
+          }
+          break;
+        }
+
         const parsedRows = [];
         let headers = null;
         for (const tr of trs) {
@@ -367,9 +383,7 @@ async function elementToBlocks($, el) {
             parsedRows.push(rowCells);
           }
         }
-        // Detección de "tabla de layout": si todas las filas son 1 sola celda o
-        // hay solo 1 fila, probablemente el <table> era un wrapper de párrafos,
-        // no una tabla real. Emitir cada celda como bloque normal.
+        // Detección de "tabla de layout" (texto plano en una sola celda/columna).
         const allRows = headers ? [headers, ...parsedRows] : parsedRows;
         const isLayoutTable =
           allRows.length === 0 ||
@@ -517,12 +531,38 @@ async function scrapePost(url, categories) {
   const publishedAt = $('meta[property="article:published_time"]').attr("content") || null;
   const authorMeta = $('meta[name="author"]').attr("content");
 
-  const bodyEl = $("#hs_cos_wrapper_post_body");
-  if (bodyEl.length === 0) throw new Error(`no body wrapper for ${url}`);
+  // Los posts nuevos parten el contenido en varios wrappers HubSpot:
+  //   #hs_cos_wrapper_post_body                (intro)
+  //   #hs_cos_wrapper_masdescripcion__content  (cuerpo 1)
+  //   #hs_cos_wrapper_masdescripcion2__content (cuerpo 2)
+  //   ...etc.
+  // Antes solo leíamos post_body y por eso los posts largos salían truncados.
+  const bodySelectors = [
+    "#hs_cos_wrapper_post_body",
+    "[id^='hs_cos_wrapper_masdescripcion']",
+  ];
+  const seen = new Set();
+  const bodyEls = [];
+  for (const sel of bodySelectors) {
+    $(sel).each((_, el) => {
+      const id = $(el).attr("id");
+      // Los wrappers "outer" (sin sufijo _) envuelven al inner "_content_" que
+      // tiene el mismo contenido; para evitar duplicar procesamos solo el outer.
+      if (id && (id.endsWith("_content_") || id.endsWith("_") )) return;
+      if (seen.has(id)) return;
+      seen.add(id);
+      bodyEls.push(el);
+    });
+  }
+  if (bodyEls.length === 0) throw new Error(`no body wrapper for ${url}`);
 
-  preprocesarItemsPasos($, bodyEl);
-
-  const rawBlocks = await elementToBlocks($, bodyEl.get(0));
+  const rawBlocks = [];
+  for (const el of bodyEls) {
+    const $el = $(el);
+    preprocesarItemsPasos($, $el);
+    const inner = await elementToBlocks($, el);
+    rawBlocks.push(...inner);
+  }
   const contenido = cleanBlocks(rawBlocks);
 
   let cover = null;
