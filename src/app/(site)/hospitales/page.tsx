@@ -11,6 +11,7 @@ export const revalidate = 60;
 export default function HospitalesPage() {
   return (
     <SectorLanding
+      catalogoSlug="hospitales"
       eyebrow="Sector salud"
       titulo="Higiene profesional"
       tituloAcento="para hospitales y clínicas y consultorios"

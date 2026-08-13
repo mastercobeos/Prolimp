@@ -64,6 +64,29 @@ Estos son bugs reales que ocurrieron en este proyecto. Léelos antes de tocar c�
 - **Backdrop-filter sobre overlay dim** puede crear halo rectangular visible.
   Cuando el overlay tiene `background: rgba(...)` semi-transparente Y el pill encima tiene `backdrop-filter: brightness(1.10)`, el composite crea una "isla" más clara. Solución: overlay 100% transparente o quitar el brightness del pill.
 
+## Catálogos PDF
+
+- **Los PDFs viven en Sanity, no en el repo.** Documento `catalogo`: el campo `slug` decide qué
+  botón lo descarga (`hospitales`, `plec`, `lavanderia`, `proomni`… y `general` como fallback).
+  Agregar un folleto = crear el documento en el Studio; no se toca código ni se hace deploy.
+  En `public/pdf/` sólo queda `catalogo-prolimp.pdf` como red de seguridad si Sanity falla.
+
+- **Nunca hardcodees un `href` a un PDF.** Todo pasa por `catalogoPara(slug)` en
+  `src/lib/catalogos.ts` — es `async` y está envuelto en `cache()` de React, así que varias
+  llamadas en un mismo render hacen una sola consulta.
+
+- **El atributo `download` NO funciona cross-origin.** El navegador lo ignora en enlaces a otro
+  dominio, así que con `cdn.sanity.io` no sirve para nada. Lo que fuerza la descarga es el
+  parámetro **`?dl=nombre.pdf`** del CDN de Sanity, que responde con `Content-Disposition:
+  attachment`. El `download` se deja sólo porque el fallback local sí es same-origin.
+
+- **En `?dl=` usa nombres con guiones, sin acentos ni espacios.** El CDN devuelve el nombre tal
+  cual llega, así que un espacio se guarda literalmente como `%20` en el archivo del visitante.
+
+- **Para bajar un archivo usa `<a href download>`, no `<Link>`.** `next/link` es para navegación
+  entre rutas; con un archivo rompe la descarga. `CtaBand` acepta la prop `download` y cambia
+  a `<a>` internamente.
+
 ## Windows dev environment
 
 - **PowerShell no soporta env vars inline al estilo bash.**

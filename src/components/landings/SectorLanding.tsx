@@ -6,6 +6,7 @@ import { client } from "@/sanity/client";
 import { groq } from "next-sanity";
 import { splitNombreProducto } from "@/lib/productName";
 import { CtaBand } from "@/components/shared/CtaBand";
+import { catalogoPara } from "@/lib/catalogos";
 import styles from "./SectorLanding.module.css";
 
 export type SectorLandingProps = {
@@ -36,6 +37,8 @@ export type SectorLandingProps = {
   ctaLede?: string;
   ctaLabel?: string;
   gradienteHero?: string;
+  /** Slug del folleto que baja el botón del hero. Sin él cae al catálogo general. */
+  catalogoSlug?: string;
 };
 
 type Producto = {
@@ -200,6 +203,7 @@ export async function SectorLanding(props: SectorLandingProps) {
     });
   }
 
+  const catalogo = await catalogoPara(props.catalogoSlug);
   const gradient = props.gradienteHero ?? "linear-gradient(135deg, rgba(0,174,239,0.12), rgba(2,116,197,0.18) 60%, rgba(12,31,110,0.15))";
   const beneficiosTitulo = props.beneficiosTitulo ?? `Fórmulas diseñadas para ${props.eyebrow.toLowerCase()}`;
 
@@ -218,12 +222,12 @@ export async function SectorLanding(props: SectorLandingProps) {
               <p className={styles.lede}>{props.lede}</p>
               <div className={styles.actions}>
                 <Link href="/contacto" className={styles.btnGhost}>Solicitar cotización</Link>
-                <Link href="/descarga-catalogo" className={styles.btnPrimary}>
+                <a href={catalogo.href} download={catalogo.nombre} className={styles.btnPrimary}>
                   Descarga Catálogo
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                     <path d="M5 12h14M13 5l7 7-7 7" />
                   </svg>
-                </Link>
+                </a>
               </div>
             </div>
             {props.heroImage && (

@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import { getAllLineaSlugs, getLineas, getLineaBySlug } from "@/lib/data";
 import { urlForImage } from "@/sanity/image";
 import { CtaBand } from "@/components/shared/CtaBand";
+import { catalogoPara } from "@/lib/catalogos";
 import { Lineas } from "@/components/home/Lineas";
 import { splitNombreProducto } from "@/lib/productName";
 
@@ -42,6 +43,7 @@ export default async function LineaPage({ params }: { params: Promise<Params> })
   if (!l) notFound();
 
   const productos = lineaData?.productos ?? [];
+  const catalogo = await catalogoPara(linea);
 
   return (
     <>
@@ -179,7 +181,8 @@ export default async function LineaPage({ params }: { params: Promise<Params> })
         titulo="¿Quieres ver nuestro catálogo en PDF?"
         lede="Estamos seguros de la eficacia de nuestros productos."
         cta="Descarga Catálogo"
-        href="/descarga-catalogo"
+        href={catalogo.href}
+        download={catalogo.nombre}
       />
 
       <Lineas lineas={lineas} />

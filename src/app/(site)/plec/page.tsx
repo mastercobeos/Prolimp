@@ -11,6 +11,7 @@ export const revalidate = 60;
 export default function PlecPage() {
   return (
     <SectorLanding
+      catalogoSlug="plec"
       tema="rojo"
       eyebrow="Limpieza y ahorro"
       tituloPrefijo="PLEC -"

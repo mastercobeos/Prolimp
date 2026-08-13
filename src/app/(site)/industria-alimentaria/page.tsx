@@ -11,6 +11,7 @@ export const revalidate = 60;
 export default function IndustriaAlimentariaPage() {
   return (
     <SectorLanding
+      catalogoSlug="industria-alimentaria"
       eyebrow="Industria alimentaria"
       titulo="Limpieza y sanitización para"
       tituloAcento="plantas de alimentos"

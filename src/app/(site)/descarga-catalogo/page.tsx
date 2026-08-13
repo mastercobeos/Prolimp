@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { catalogoPara } from "@/lib/catalogos";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -7,7 +8,8 @@ export const metadata: Metadata = {
   description: "Descarga el catálogo completo de productos Prolimp: químicos, papel, jarcería, dosificadores y más.",
 };
 
-export default function DescargaCatalogoPage() {
+export default async function DescargaCatalogoPage() {
+  const catalogo = await catalogoPara("general");
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
@@ -37,8 +39,8 @@ export default function DescargaCatalogoPage() {
         </div>
         <div className={styles.cardActions}>
           <a
-            href="/pdf/catalogo-prolimp.pdf"
-            download
+            href={catalogo.href}
+            download={catalogo.nombre}
             className={styles.primaryBtn}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>

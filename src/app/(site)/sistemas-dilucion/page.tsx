@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { CtaBand } from "@/components/shared/CtaBand";
 import { getSistemasDilucion } from "@/lib/data";
+import { catalogoPara } from "@/lib/catalogos";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -117,6 +118,10 @@ function CheckIcon() {
 
 export default async function SistemasDilucionPage() {
   const data = await getSistemasDilucion();
+  const [folletoTekstil, folletoProOmni] = await Promise.all([
+    catalogoPara("tekstil-pro"),
+    catalogoPara("proomni"),
+  ]);
   const heroLede = HERO_LEDE;
   const beneficios = (data?.beneficios?.length ? data.beneficios : HERO_BENEFITS).map((b) =>
     b.replace(/\.$/, "")
@@ -208,7 +213,8 @@ export default async function SistemasDilucionPage() {
         titulo="Conoce más"
         lede="Descarga el folleto y revisa cómo funciona el sistema de dosificación"
         cta="Descargar folleto"
-        href="/descarga-catalogo"
+        href={folletoTekstil.href}
+        download={folletoTekstil.nombre}
       />
 
       {/* 4. Pro Omni */}
@@ -260,7 +266,8 @@ export default async function SistemasDilucionPage() {
         titulo="Conoce más"
         lede="Descarga el folleto y revisa cómo funciona el sistema de dilución"
         cta="Descargar folleto"
-        href="/descarga-catalogo"
+        href={folletoProOmni.href}
+        download={folletoProOmni.nombre}
       />
 
       {/* 5. Otros equipos */}

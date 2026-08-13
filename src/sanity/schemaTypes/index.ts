@@ -9,6 +9,7 @@ import { sucursal } from "./sucursal";
 import { empresa } from "./empresa";
 import { sistemasDilucion } from "./sistemasDilucion";
 import { suscripcion } from "./suscripcion";
+import { catalogo } from "./catalogo";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   home,
@@ -20,5 +21,6 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   marca,
   sucursal,
   post,
+  catalogo,
   suscripcion,
 ];

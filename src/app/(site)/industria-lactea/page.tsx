@@ -11,6 +11,7 @@ export const revalidate = 60;
 export default function IndustriaLacteaPage() {
   return (
     <SectorLanding
+      catalogoSlug="industria-lactea"
       eyebrow="Industria láctea"
       titulo="Limpieza profesional para"
       tituloAcento="la industria láctea y quesera"

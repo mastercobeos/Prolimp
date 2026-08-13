@@ -9,12 +9,14 @@ type Props = {
   href: string;
   cta?: string;
   external?: boolean;
+  /** Nombre de archivo: convierte la banda en descarga directa en vez de navegación. */
+  download?: string;
   /** Logo o arte a la derecha de la banda */
   logo?: { src: string; alt: string; width: number; height: number };
   variant?: "azul" | "marino" | "proxter";
 };
 
-export function CtaBand({ titulo, lede, href, cta = "Ver más", external, logo, variant = "marino" }: Props) {
+export function CtaBand({ titulo, lede, href, cta = "Ver más", external, download, logo, variant = "marino" }: Props) {
   const inner = (
     <>
       <div className={styles.text}>
@@ -37,7 +39,11 @@ export function CtaBand({ titulo, lede, href, cta = "Ver más", external, logo, 
   const className = clsx(styles.band, styles[variant]);
   return (
     <section className={styles.wrap}>
-      {external ? (
+      {download ? (
+        <a href={href} download={download} className={className}>
+          {inner}
+        </a>
+      ) : external ? (
         <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
           {inner}
         </a>
