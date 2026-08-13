@@ -302,13 +302,18 @@ export default async function SucursalesPage() {
   const tiendas = items.filter((s) => s.tipo === "tienda");
   const coberturas = items.filter((s) => s.tipo === "cobertura");
 
-  // Group sucursales by estado
+  // Group sucursales y tiendas por estado (mostramos ambas)
   const grupos = sucursales.reduce<Record<string, SucursalItem[]>>((acc, s) => {
     (acc[s.estado] ??= []).push(s);
     return acc;
   }, {});
+  const gruposTiendas = tiendas.reduce<Record<string, SucursalItem[]>>((acc, t) => {
+    (acc[t.estado] ??= []).push(t);
+    return acc;
+  }, {});
   const ordenEstados = ["Veracruz", "Guanajuato", "Tabasco", "Querétaro", "CDMX", "Yucatán"];
-  const estados = Object.keys(grupos).sort((a, b) => {
+  const estadosSet = new Set([...Object.keys(grupos), ...Object.keys(gruposTiendas)]);
+  const estados = [...estadosSet].sort((a, b) => {
     const ia = ordenEstados.indexOf(a);
     const ib = ordenEstados.indexOf(b);
     if (ia === -1 && ib === -1) return a.localeCompare(b);
@@ -360,12 +365,15 @@ export default async function SucursalesPage() {
                 </div>
               </div>
               <ul className={styles.heroCardList}>
-                {estados.map((estado) => (
-                  <li key={estado}>
-                    <span>{estado}</span>
-                    <span className={styles.heroCardCount}>{grupos[estado].length}</span>
-                  </li>
-                ))}
+                {estados.map((estado) => {
+                  const total = (grupos[estado]?.length ?? 0) + (gruposTiendas[estado]?.length ?? 0);
+                  return (
+                    <li key={estado}>
+                      <span>{estado}</span>
+                      <span className={styles.heroCardCount}>{total}</span>
+                    </li>
+                  );
+                })}
               </ul>
               {coberturas.length > 0 && (
                 <p className={styles.heroCardNota}>
@@ -387,22 +395,41 @@ export default async function SucursalesPage() {
       {/* 1b. Detalle de sucursales por estado (destino de las pills) */}
       <section className={`section ${styles.listado}`}>
         <div className="container container-wide">
-          {estados.map((estado) => (
-            <section key={estado} id={`estado-${slugify(estado)}`} className={styles.estadoBlock}>
-              <h2 className={styles.estadoTitle}>
-                <span className={styles.estadoBar} aria-hidden />
-                {estado}
-                <span className={styles.estadoCount}>
-                  {grupos[estado].length} sucursal{grupos[estado].length > 1 ? "es" : ""}
-                </span>
-              </h2>
-              <div className={styles.grid}>
-                {grupos[estado].map((s) => (
-                  <SucursalCard key={s._id} s={s} />
-                ))}
-              </div>
-            </section>
-          ))}
+          {estados.map((estado) => {
+            const sucs = grupos[estado] ?? [];
+            const tds = gruposTiendas[estado] ?? [];
+            const partes = [];
+            if (sucs.length) partes.push(`${sucs.length} sucursal${sucs.length > 1 ? "es" : ""}`);
+            if (tds.length) partes.push(`${tds.length} tienda${tds.length > 1 ? "s" : ""}`);
+            return (
+              <section key={estado} id={`estado-${slugify(estado)}`} className={styles.estadoBlock}>
+                <h2 className={styles.estadoTitle}>
+                  <span className={styles.estadoBar} aria-hidden />
+                  {estado}
+                  <span className={styles.estadoCount}>{partes.join(" · ")}</span>
+                </h2>
+                {sucs.length > 0 && (
+                  <div className={styles.grid}>
+                    {sucs.map((s) => (
+                      <SucursalCard key={s._id} s={s} />
+                    ))}
+                  </div>
+                )}
+                {tds.length > 0 && (
+                  <>
+                    <h3 className={styles.subgrupoTitle}>
+                      Tienda{tds.length > 1 ? "s" : ""} Prolimp
+                    </h3>
+                    <div className={styles.grid}>
+                      {tds.map((t) => (
+                        <SucursalCard key={t._id} s={t} />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </section>
+            );
+          })}
         </div>
       </section>
 

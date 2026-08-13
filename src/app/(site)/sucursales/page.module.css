@@ -206,6 +206,21 @@
   margin-left: auto;
   white-space: nowrap;
 }
+.subgrupoTitle {
+  margin: 1.75rem 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--azul-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline: 0.75rem;
+  padding-block: 0.35rem;
+  background: rgba(0, 174, 239, 0.1);
+  border-radius: 999px;
+}
 
 .grid {
   display: grid;
