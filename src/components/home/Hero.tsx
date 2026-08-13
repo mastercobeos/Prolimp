@@ -70,46 +70,63 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
         </div>
 
         <div className={styles.visual}>
-          <div
-            className={styles.imgWrap}
-            aria-roledescription={hasSlider ? "carousel" : undefined}
-          >
-            {imagenes.map((slide, i) => (
-              <Image
-                key={slide.url}
-                src={slide.url}
-                alt="Imagen hero Prolimp"
-                width={640}
-                height={720}
-                priority={i === 0}
-                className={clsx(styles.mainImg, i === index && styles.mainImgActive)}
-                aria-hidden={i !== index}
-              />
-            ))}
-            {hasSlider && (
-              <>
-                <button
-                  type="button"
-                  className={clsx(styles.arrow, styles.arrowPrev)}
-                  onClick={goPrev}
-                  aria-label="Imagen anterior"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  className={clsx(styles.arrow, styles.arrowNext)}
-                  onClick={goNext}
-                  aria-label="Imagen siguiente"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d="M9 6l6 6-6 6" />
-                  </svg>
-                </button>
-              </>
-            )}
+          <div className={styles.imgArea}>
+            <div
+              className={styles.imgWrap}
+              aria-roledescription={hasSlider ? "carousel" : undefined}
+            >
+              {imagenes.map((slide, i) => (
+                <Image
+                  key={slide.url}
+                  src={slide.url}
+                  alt="Imagen hero Prolimp"
+                  width={640}
+                  height={720}
+                  priority={i === 0}
+                  className={clsx(styles.mainImg, i === index && styles.mainImgActive)}
+                  aria-hidden={i !== index}
+                />
+              ))}
+              {hasSlider && (
+                <>
+                  <button
+                    type="button"
+                    className={clsx(styles.arrow, styles.arrowPrev)}
+                    onClick={goPrev}
+                    aria-label="Imagen anterior"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    className={clsx(styles.arrow, styles.arrowNext)}
+                    onClick={goNext}
+                    aria-label="Imagen siguiente"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M9 6l6 6-6 6" />
+                    </svg>
+                  </button>
+                </>
+              )}
+              {hasSlider && (
+                <div className={styles.dots} role="tablist" aria-label="Slider hero">
+                  {imagenes.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      role="tab"
+                      aria-selected={i === index}
+                      aria-label={`Ir a slide ${i + 1}`}
+                      className={clsx(styles.dotBtn, i === index && styles.dotBtnActive)}
+                      onClick={() => setIndex(i)}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
             <div className={styles.badge}>
               <span>Certificados</span>
               <strong>ISO 9000</strong>
@@ -118,21 +135,6 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
               <span>Registrados en</span>
               <strong>STPS y Sec. de Salud</strong>
             </div>
-            {hasSlider && (
-              <div className={styles.dots} role="tablist" aria-label="Slider hero">
-                {imagenes.map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    role="tab"
-                    aria-selected={i === index}
-                    aria-label={`Ir a slide ${i + 1}`}
-                    className={clsx(styles.dotBtn, i === index && styles.dotBtnActive)}
-                    onClick={() => setIndex(i)}
-                  />
-                ))}
-              </div>
-            )}
           </div>
           {(imagenes[index]?.caption || (imagenes[index]?.ctaLabel && imagenes[index]?.ctaHref)) && (
             <div className={styles.slideCaption}>
