@@ -10,6 +10,7 @@ import { empresa } from "./empresa";
 import { sistemasDilucion } from "./sistemasDilucion";
 import { suscripcion } from "./suscripcion";
 import { catalogo } from "./catalogo";
+import { tabla } from "./tabla";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   home,
@@ -23,4 +24,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   post,
   catalogo,
   suscripcion,
+  tabla,
 ];

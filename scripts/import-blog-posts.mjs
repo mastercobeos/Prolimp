@@ -335,10 +335,17 @@ async function elementToBlocks($, el) {
         break;
       }
       case "table": {
-        // Flatten: bullet list of non-empty cells + preserve images
-        const rows = $node.find("tr").toArray();
-        for (const row of rows) {
-          const cells = $(row).find("th,td").toArray();
+        // Preserva la estructura tabular: emite un bloque `tabla` con headers y filas.
+        // Imágenes dentro de celdas se extraen como bloques image aparte (raro pero
+        // pasa en algunos posts con logos incrustados).
+        const trs = $node.find("tr").toArray();
+        const parsedRows = [];
+        let headers = null;
+        for (const tr of trs) {
+          const $tr = $(tr);
+          const cells = $tr.find("th,td").toArray();
+          const rowCells = [];
+          let isHeaderRow = headers === null;
           for (const cell of cells) {
             const $cell = $(cell);
             const imgs = $cell.find("img").toArray();
@@ -348,15 +355,52 @@ async function elementToBlocks($, el) {
               const block = await uploadImageFromUrl(src, alt);
               if (block) blocks.push(block);
             }
+            if ($cell.get(0)?.tagName?.toLowerCase() !== "th") isHeaderRow = false;
             const md = [];
             const spans = spansFromInline($, cell, md);
-            const text = spans.map((s) => s.text).join("").trim();
-            if (text && !imgs.length) {
-              blocks.push(makeBlock("normal", spans, md, { listItem: "bullet", level: 1 }));
-            } else if (text && imgs.length) {
-              blocks.push(makeBlock("normal", spans, md));
+            rowCells.push(spans.map((s) => s.text).join("").trim());
+          }
+          if (rowCells.every((c) => c === "")) continue; // salta filas vacías
+          if (isHeaderRow && !headers) {
+            headers = rowCells;
+          } else {
+            parsedRows.push(rowCells);
+          }
+        }
+        // Detección de "tabla de layout": si todas las filas son 1 sola celda o
+        // hay solo 1 fila, probablemente el <table> era un wrapper de párrafos,
+        // no una tabla real. Emitir cada celda como bloque normal.
+        const allRows = headers ? [headers, ...parsedRows] : parsedRows;
+        const isLayoutTable =
+          allRows.length === 0 ||
+          allRows.every((r) => r.length <= 1) ||
+          (allRows.length === 1 && allRows[0].length <= 2);
+        if (isLayoutTable) {
+          for (const row of allRows) {
+            for (const cellText of row) {
+              if (!cellText) continue;
+              blocks.push(
+                makeBlock("normal", [textSpan(cellText)], []),
+              );
             }
           }
+          break;
+        }
+        // Fallback: si no había <th>, la primera fila es el header.
+        if (!headers && parsedRows.length > 1) {
+          headers = parsedRows.shift();
+        }
+        if (parsedRows.length > 0) {
+          blocks.push({
+            _type: "tabla",
+            _key: k(),
+            headers: headers ?? [],
+            rows: parsedRows.map((cells) => ({
+              _type: "fila",
+              _key: k(),
+              celdas: cells,
+            })),
+          });
         }
         break;
       }
@@ -393,18 +437,75 @@ async function elementToBlocks($, el) {
 }
 
 function cleanBlocks(blocks) {
-  // Merge consecutive empty blocks; drop leading/trailing empties
+  // Merge consecutive empty blocks; drop leading/trailing empties + basura de
+  // widgets de HubSpot (share buttons, "Follow us on X").
+  const BASURA = [
+    /^follow us on\b/i,
+    /^s(ha|í)guenos en\b/i,
+    /^comp(a|á)rtelo\b/i,
+    /^tags?:\s*$/i,
+  ];
   const out = [];
   for (const b of blocks) {
     if (b._type === "block") {
       const text = (b.children || []).map((s) => s.text).join("").trim();
       if (!text && !b.listItem) continue;
+      if (BASURA.some((re) => re.test(text))) continue;
       out.push(b);
     } else {
       out.push(b);
     }
   }
   return out;
+}
+
+// HubSpot embebe una grilla de tarjetas `.items-pasos__body` (número + producto
+// + descripción) que sin este pre-proceso se aplana a párrafos sueltos: "1",
+// "Alkaliprol", "Detergente alcalino", "2", etc. Colapsamos cada grupo consecutivo
+// en un <table> sintético que después se convierte a bloque `tabla` en Sanity.
+function preprocesarItemsPasos($, root) {
+  const bodies = root.find(".items-pasos__body").toArray();
+  if (bodies.length === 0) return;
+
+  const grupos = [];
+  let actual = null;
+  for (const el of bodies) {
+    const $el = $(el);
+    const card = $el.closest("[class*='col-']");
+    if (!card.length) continue;
+    const prev = card.prev();
+    // Un grupo son cards hermanas dentro del mismo contenedor .row/.d-flex.
+    if (actual && actual.parentHash === card.parent().get(0)) {
+      actual.cards.push(card);
+    } else {
+      if (actual) grupos.push(actual);
+      actual = { parentHash: card.parent().get(0), container: card.parent(), cards: [card], prevSibling: prev };
+    }
+  }
+  if (actual) grupos.push(actual);
+
+  for (const g of grupos) {
+    const filas = [];
+    for (const card of g.cards) {
+      const numero = card.find(".items-pasos__header-numero").text().trim() || card.find(".items-pasos__header span").first().text().trim();
+      const partes = card.find(".items-pasos__body > div, .items-pasos__body p").map((_, d) => $(d).text().trim()).get().filter(Boolean);
+      const producto = partes[0] || "";
+      const descripcion = partes.slice(1).join(" — ") || "";
+      if (!producto && !descripcion && !numero) continue;
+      filas.push([numero, producto, descripcion]);
+    }
+    if (filas.length < 2) continue;
+
+    const tableHtml = [
+      '<table>',
+      '<thead><tr><th>#</th><th>Producto</th><th>Descripción</th></tr></thead>',
+      '<tbody>',
+      ...filas.map((r) => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`),
+      '</tbody>',
+      '</table>',
+    ].join("");
+    g.container.replaceWith(tableHtml);
+  }
 }
 
 async function scrapePost(url, categories) {
@@ -418,6 +519,8 @@ async function scrapePost(url, categories) {
 
   const bodyEl = $("#hs_cos_wrapper_post_body");
   if (bodyEl.length === 0) throw new Error(`no body wrapper for ${url}`);
+
+  preprocesarItemsPasos($, bodyEl);
 
   const rawBlocks = await elementToBlocks($, bodyEl.get(0));
   const contenido = cleanBlocks(rawBlocks);

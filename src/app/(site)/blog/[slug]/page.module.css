@@ -101,6 +101,46 @@
   border-radius: var(--radius);
 }
 
+/* Tablas dentro del artículo. `.tablaScroll` permite scroll horizontal en
+   pantallas angostas sin romper el layout de la columna. */
+.tablaWrap {
+  margin: 2rem 0;
+}
+.tablaWrap figcaption {
+  font-weight: 700;
+  color: var(--azul-900);
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+.tablaScroll {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: white;
+  box-shadow: 0 2px 8px -4px rgba(12, 31, 110, 0.08);
+}
+.tabla {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.92rem;
+}
+.tabla thead th {
+  background: var(--azul-900);
+  color: white;
+  font-weight: 700;
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  white-space: nowrap;
+}
+.tabla tbody td {
+  padding: 0.65rem 0.9rem;
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+}
+.tabla tbody tr:nth-child(even) td {
+  background: rgba(0, 174, 239, 0.04);
+}
+
 .cta {
   margin-top: 3rem;
   padding: 2rem;

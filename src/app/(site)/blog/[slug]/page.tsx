@@ -115,6 +115,32 @@ const portableComponents: PortableTextComponents = {
         ))}
       </div>
     ),
+    tabla: ({ value }) => {
+      const v = value as { titulo?: string; headers?: string[]; rows?: { celdas?: string[] }[] };
+      const rows = v.rows ?? [];
+      const headers = v.headers ?? [];
+      return (
+        <figure className={styles.tablaWrap}>
+          {v.titulo && <figcaption>{v.titulo}</figcaption>}
+          <div className={styles.tablaScroll}>
+            <table className={styles.tabla}>
+              {headers.length > 0 && (
+                <thead>
+                  <tr>{headers.map((h, i) => <th key={i}>{h}</th>)}</tr>
+                </thead>
+              )}
+              <tbody>
+                {rows.map((r, i) => (
+                  <tr key={i}>
+                    {(r.celdas ?? []).map((c, j) => <td key={j}>{c}</td>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </figure>
+      );
+    },
   },
 };
 
