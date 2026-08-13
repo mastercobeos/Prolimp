@@ -40,7 +40,8 @@ export default async function Home() {
       <Marcas marcas={marcas} />
       <CtaBand
         titulo="Protegemos tu empresa y hogar de la invasión de plagas"
-        href="/contacto"
+        href="https://proxter.com.mx"
+        external
         variant="proxter"
         logo={{ src: "/img/redesign/proxter-logo-blanco.png", alt: "Proxter · Ecoservicio de control de plagas", width: 149, height: 115 }}
       />

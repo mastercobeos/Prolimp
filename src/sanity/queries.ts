@@ -8,7 +8,7 @@ export const homeQuery = groq`
     heroTituloParte1,
     heroTituloAcento,
     heroLede,
-    "heroImagenes": heroImagenes[]{${imgFields}, ctaLabel, ctaHref},
+    "heroImagenes": heroImagenes[]{${imgFields}, caption, ctaLabel, ctaHref},
     stats,
     diferenciadores[]{
       titulo,

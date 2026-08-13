@@ -299,6 +299,8 @@ function SucursalCard({ s }: { s: SucursalItem }) {
 export default async function SucursalesPage() {
   const [items, empresa] = await Promise.all([getSucursales(), getEmpresa()]);
   const sucursales = items.filter((s) => (s.tipo ?? "sucursal") === "sucursal");
+  const tiendas = items.filter((s) => s.tipo === "tienda");
+  const coberturas = items.filter((s) => s.tipo === "cobertura");
 
   // Group sucursales by estado
   const grupos = sucursales.reduce<Record<string, SucursalItem[]>>((acc, s) => {
@@ -354,8 +356,7 @@ export default async function SucursalesPage() {
                   <IconPin size={26} />
                 </span>
                 <div>
-                  <strong>{sucursales.length} sucursales</strong>
-                  <span>en {estados.length} estados de México</span>
+                  <strong>{sucursales.length} sucursales y {tiendas.length} tiendas</strong>
                 </div>
               </div>
               <ul className={styles.heroCardList}>
@@ -366,6 +367,18 @@ export default async function SucursalesPage() {
                   </li>
                 ))}
               </ul>
+              {coberturas.length > 0 && (
+                <p className={styles.heroCardNota}>
+                  Cobertura por rutas de entrega:{" "}
+                  {coberturas.map((c, i) => (
+                    <span key={c._id}>
+                      {i > 0 ? ", " : ""}
+                      {c.ciudad}
+                    </span>
+                  ))}
+                  .
+                </p>
+              )}
             </aside>
           </div>
         </div>

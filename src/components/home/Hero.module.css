@@ -321,30 +321,47 @@
 .arrowPrev { left: 0.75rem; }
 .arrowNext { right: 0.75rem; }
 
-/* Va debajo de la insignia "Certificados ISO 9000" (que ocupa del 8% al 18% de
-   la altura) y algo más a la derecha que ella, para que no se encimen. */
-.slideCta {
-  position: absolute;
-  top: 34%;
-  left: 4%;
-  z-index: 3;
-  display: inline-flex;
+/* Panel debajo del slider con caption + CTA (cambia por slide). */
+.slideCaption {
+  margin-top: 1.1rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.6rem 1.1rem;
-  border-radius: 999px;
-  background: white;
-  color: var(--azul-700) !important;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-decoration: none;
-  box-shadow: 0 8px 20px -4px rgba(12, 31, 110, 0.4);
-  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+  gap: 0.9rem;
+  text-align: center;
+  padding-inline: 0.5rem;
   animation: fadeIn 400ms var(--ease) both;
 }
-.slideCta:hover {
+.slideCaption p {
+  margin: 0;
+  color: var(--azul-700);
+  font-size: 1rem;
+  line-height: 1.45;
+  font-weight: 500;
+  max-width: 42ch;
+}
+.slideCaption p strong {
+  color: var(--azul-marino, var(--azul-700));
+  font-weight: 700;
+}
+.slideCaptionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  background: var(--celeste, #45c1e9);
+  color: white !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.35);
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.slideCaptionBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -4px rgba(12, 31, 110, 0.5);
+  box-shadow: 0 14px 30px -6px rgba(0, 0, 0, 0.45);
+  background: var(--celeste-600, #2fa8d1);
 }
 
 @media (prefers-reduced-motion: reduce) {

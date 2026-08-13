@@ -38,20 +38,6 @@ const confianza = [
   },
 ];
 
-const marcas = [
-  { src: "/img/redesign/marca-wiese.webp", alt: "Wiese", width: 600, height: 436 },
-  { src: "/img/redesign/marca-kimberly.webp", alt: "Kimberly-Clark Professional", width: 600, height: 230 },
-  { src: "/img/redesign/marca-castor.webp", alt: "El Castor", width: 600, height: 456 },
-  { src: "/img/redesign/marca-rubbermaid.webp", alt: "Rubbermaid", width: 600, height: 178 },
-  { src: "/img/redesign/marca-scf.webp", alt: "SCF", width: 600, height: 324 },
-  { src: "/img/redesign/marca-jvd.webp", alt: "JVD", width: 600, height: 379 },
-  { src: "/img/redesign/marca-cuplasa.webp", alt: "Cuplasa", width: 600, height: 340 },
-  { src: "/img/redesign/marca-libra.webp", alt: "Libra", width: 600, height: 600 },
-  { src: "/img/redesign/marca-sanchez.webp", alt: "Sánchez y Martín", width: 600, height: 173 },
-  { src: "/img/redesign/marca-corona.webp", alt: "La Corona", width: 600, height: 443 },
-  { src: "/img/redesign/marca-rml.webp", alt: "RML", width: 600, height: 600 },
-];
-
 const materiales = ["Manual de Procesos", "Fichas Técnicas", "Hojas de Seguridad", "Ayudas Visuales", "Constancia DC3"];
 
 function DocIcon() {
@@ -149,13 +135,15 @@ export default async function NosotrosPage() {
               procesos de limpieza.
             </p>
           </div>
-          <ul className={styles.marcasCard}>
-            {marcas.map((m) => (
-              <li key={m.alt}>
-                <Image src={m.src} alt={m.alt} width={m.width} height={m.height} />
-              </li>
-            ))}
-          </ul>
+          <div className={styles.marcasBanda}>
+            <Image
+              src="/img/categorias/marcas-banda-nofondo.webp"
+              alt="Marcas que distribuye Prolimp: Wiese, Kimberly-Clark Professional, El Castor, 3M, Rubbermaid, SCF, JVD, Cuplaza, Libra, Sánchez y Martín, La Corona, Cubasa, Altex, RML y TAC"
+              width={1168}
+              height={205}
+              sizes="(min-width: 1100px) 1040px, (min-width: 700px) 90vw, 92vw"
+            />
+          </div>
         </div>
       </section>
 

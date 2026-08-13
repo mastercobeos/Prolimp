@@ -12,6 +12,8 @@ export const sucursal = defineType({
       options: {
         list: [
           { title: "Sucursal propia", value: "sucursal" },
+          { title: "Tienda Prolimp", value: "tienda" },
+          { title: "Cobertura por ruta (sin sede física)", value: "cobertura" },
           { title: "Distribuidor autorizado", value: "distribuidor" },
         ],
         layout: "radio",
@@ -57,7 +59,14 @@ export const sucursal = defineType({
     select: { title: "ciudad", subtitle: "estado", principal: "esPrincipal", tipo: "tipo", nombre: "nombre" },
     prepare: ({ title, subtitle, principal, tipo, nombre }) => ({
       title: tipo === "distribuidor" && nombre ? `${nombre} — ${title}` : (principal ? `${title} · matriz` : title),
-      subtitle: tipo === "distribuidor" ? `Distribuidor · ${subtitle}` : subtitle,
+      subtitle:
+        tipo === "distribuidor"
+          ? `Distribuidor · ${subtitle}`
+          : tipo === "tienda"
+            ? `Tienda · ${subtitle}`
+            : tipo === "cobertura"
+              ? `Cobertura por ruta · ${subtitle}`
+              : subtitle,
     }),
   },
 });

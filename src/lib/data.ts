@@ -45,7 +45,7 @@ const staticFetch = <T>(query: string, params?: Record<string, unknown>) =>
   client.fetch<T>(query, params ?? {}, { next: { revalidate: 3600 } });
 
 // -------- home
-export type HeroSlide = { url: string; ctaLabel?: string; ctaHref?: string };
+export type HeroSlide = { url: string; caption?: string; ctaLabel?: string; ctaHref?: string };
 
 export async function getHomeContent() {
   const data = await cachedFetch<{
@@ -53,7 +53,7 @@ export async function getHomeContent() {
     heroTituloParte1?: string;
     heroTituloAcento?: string;
     heroLede?: string;
-    heroImagenes?: (SanityImageSource & { ctaLabel?: string; ctaHref?: string })[];
+    heroImagenes?: (SanityImageSource & { caption?: string; ctaLabel?: string; ctaHref?: string })[];
     stats?: { valor: string; etiqueta: string }[];
     diferenciadores?: { titulo: string; descripcion: string; icon?: SanityImageSource }[];
     ctaCierreTitulo?: string;
@@ -64,6 +64,7 @@ export async function getHomeContent() {
       const url = imgUrl(i, 1600);
       if (!url) return null;
       const slide: HeroSlide = { url };
+      if (i.caption) slide.caption = i.caption;
       if (i.ctaLabel) slide.ctaLabel = i.ctaLabel;
       if (i.ctaHref) slide.ctaHref = i.ctaHref;
       return slide;
@@ -88,7 +89,7 @@ export async function getHomeContent() {
       ? data.diferenciadores.map((d) => ({
           titulo: d.titulo,
           descripcion: d.descripcion,
-          icon: imgUrl(d.icon, 96) ?? "/img/nosotros/especializados-icon.webp",
+          icon: imgUrl(d.icon, 320) ?? "/img/nosotros/especializados-icon.webp",
         }))
       : fallback.diferenciadores.map((d) => ({ ...d, icon: d.icon })),
     ctaCierreTitulo: data?.ctaCierreTitulo ?? "¿Listo para elevar el estándar de limpieza de tu empresa?",
@@ -275,7 +276,7 @@ export async function getProductoBySlug(slug: string) {
 // -------- sucursales
 export type SucursalItem = {
   _id: string;
-  tipo?: "sucursal" | "distribuidor";
+  tipo?: "sucursal" | "tienda" | "distribuidor" | "cobertura";
   nombre?: string;
   ciudad: string;
   estado: string;

@@ -44,7 +44,7 @@ export function Diferenciadores({ items }: Props) {
           {items.map((d) => (
             <li key={d.titulo} className={styles.card}>
               <div className={styles.iconWrap}>
-                <Image src={d.icon} alt="" width={64} height={64} />
+                <Image src={d.icon} alt="" width={160} height={160} />
               </div>
               <h3>{d.titulo}</h3>
               <p>{d.descripcion}</p>

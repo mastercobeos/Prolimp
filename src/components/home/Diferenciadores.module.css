@@ -39,6 +39,7 @@
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 .card::before {
   content: "";
@@ -60,17 +61,17 @@
 .card:hover::before { transform: scaleX(1); }
 
 .iconWrap {
-  width: 72px;
-  height: 72px;
-  border-radius: var(--radius);
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-lg);
   background: linear-gradient(135deg, rgba(0, 174, 239, 0.12), rgba(2, 116, 197, 0.15));
   display: grid;
   place-items: center;
-  margin-bottom: 1.25rem;
+  margin: 0 auto 1.5rem;
 }
 .iconWrap img {
-  width: 44px;
-  height: 44px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
 }
 

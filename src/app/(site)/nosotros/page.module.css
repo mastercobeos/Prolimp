@@ -139,30 +139,15 @@
 .sectionHead p {
   max-width: 620px;
 }
-.marcasCard {
-  list-style: none;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  padding: clamp(1.5rem, 4vw, 3rem);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  align-items: center;
-}
-.marcasCard li {
+.marcasBanda {
   display: grid;
   place-items: center;
 }
-.marcasCard img {
-  max-height: 64px;
-  width: auto;
+.marcasBanda img {
+  width: 100%;
+  height: auto;
+  max-width: 1040px;
   object-fit: contain;
-  transition: transform var(--dur) var(--ease);
-}
-.marcasCard li:hover img {
-  transform: scale(1.06);
 }
 
 /* ---------- Capacitación ---------- */
@@ -252,9 +237,6 @@
   .confianzaGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .marcasCard {
-    grid-template-columns: repeat(3, 1fr);
-  }
   .materiales {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -268,9 +250,6 @@
   .stats strong {
     font-size: 2rem;
   }
-  .marcasCard {
-    grid-template-columns: repeat(4, 1fr);
-  }
   .capGrid {
     grid-template-columns: 1.1fr 0.9fr;
     gap: 3.5rem;
@@ -280,8 +259,5 @@
 @media (min-width: 1100px) {
   .confianzaGrid {
     grid-template-columns: repeat(4, 1fr);
-  }
-  .marcasCard {
-    grid-template-columns: repeat(6, 1fr);
   }
 }

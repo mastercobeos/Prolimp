@@ -43,10 +43,17 @@ export const home = defineType({
           fields: [
             { name: "alt", type: "string", title: "Texto alternativo" },
             {
+              name: "caption",
+              type: "text",
+              rows: 2,
+              title: "Texto debajo del slider (opcional)",
+              description: 'Ej: "Aproveche y adquiera una herramienta de limpieza profesional a un súper precio". Aparece bajo el slider junto al botón.',
+            },
+            {
               name: "ctaLabel",
               type: "string",
               title: "Texto botón (opcional)",
-              description: 'Ej: "Ver más". Si se llena, aparece un botón overlay arriba-izquierda.',
+              description: 'Ej: "Comprar ahora". Aparece debajo del slider (ya no encima de la imagen).',
             },
             {
               name: "ctaHref",

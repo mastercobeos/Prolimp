@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import styles from "./Hero.module.css";
 
-type Slide = { url: string; ctaLabel?: string; ctaHref?: string };
+type Slide = { url: string; caption?: string; ctaLabel?: string; ctaHref?: string };
 
 type Props = {
   eyebrow: string;
@@ -86,34 +86,6 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
                 aria-hidden={i !== index}
               />
             ))}
-            {imagenes[index]?.ctaLabel && imagenes[index]?.ctaHref && (
-              (() => {
-                const href = imagenes[index]!.ctaHref!;
-                const label = imagenes[index]!.ctaLabel!;
-                const external = /^https?:\/\//.test(href);
-                return external ? (
-                  <a
-                    key={`cta-${index}`}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.slideCta}
-                  >
-                    {label}
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <path d="M5 12h14M13 5l7 7-7 7" />
-                    </svg>
-                  </a>
-                ) : (
-                  <Link key={`cta-${index}`} href={href} className={styles.slideCta}>
-                    {label}
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <path d="M5 12h14M13 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                );
-              })()
-            )}
             {hasSlider && (
               <>
                 <button
@@ -138,30 +110,56 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
                 </button>
               </>
             )}
+            <div className={styles.badge}>
+              <span>Certificados</span>
+              <strong>ISO 9000</strong>
+            </div>
+            <div className={styles.badge2}>
+              <span>Registrados en</span>
+              <strong>STPS y Sec. de Salud</strong>
+            </div>
+            {hasSlider && (
+              <div className={styles.dots} role="tablist" aria-label="Slider hero">
+                {imagenes.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    role="tab"
+                    aria-selected={i === index}
+                    aria-label={`Ir a slide ${i + 1}`}
+                    className={clsx(styles.dotBtn, i === index && styles.dotBtnActive)}
+                    onClick={() => setIndex(i)}
+                  />
+                ))}
+              </div>
+            )}
           </div>
-          {hasSlider && (
-            <div className={styles.dots} role="tablist" aria-label="Slider hero">
-              {imagenes.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  role="tab"
-                  aria-selected={i === index}
-                  aria-label={`Ir a slide ${i + 1}`}
-                  className={clsx(styles.dotBtn, i === index && styles.dotBtnActive)}
-                  onClick={() => setIndex(i)}
-                />
-              ))}
+          {(imagenes[index]?.caption || (imagenes[index]?.ctaLabel && imagenes[index]?.ctaHref)) && (
+            <div className={styles.slideCaption}>
+              {imagenes[index]?.caption && <p>{imagenes[index]!.caption}</p>}
+              {imagenes[index]?.ctaLabel && imagenes[index]?.ctaHref && (
+                (() => {
+                  const href = imagenes[index]!.ctaHref!;
+                  const label = imagenes[index]!.ctaLabel!;
+                  const external = /^https?:\/\//.test(href);
+                  return external ? (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.slideCaptionBtn}
+                    >
+                      {label}
+                    </a>
+                  ) : (
+                    <Link href={href} className={styles.slideCaptionBtn}>
+                      {label}
+                    </Link>
+                  );
+                })()
+              )}
             </div>
           )}
-          <div className={styles.badge}>
-            <span>Certificados</span>
-            <strong>ISO 9000</strong>
-          </div>
-          <div className={styles.badge2}>
-            <span>Registrados en</span>
-            <strong>STPS y Sec. de Salud</strong>
-          </div>
         </div>
       </div>
     </section>
