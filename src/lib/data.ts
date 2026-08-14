@@ -15,6 +15,7 @@ import {
   marcasQuery,
   postsQuery,
   postBySlugQuery,
+  categoriasBlogQuery,
   sucursalesQuery,
   sistemasDilucionQuery,
   productoBySlugQuery,
@@ -298,6 +299,7 @@ export async function getSucursales(): Promise<SucursalItem[]> {
 }
 
 // -------- blog
+export type BlogCategoria = { nombre: string; slug: string };
 export type BlogListItem = {
   slug: string;
   title: string;
@@ -305,7 +307,7 @@ export type BlogListItem = {
   image?: string;
   date?: string;
   destacado?: boolean;
-  categoria?: string;
+  categorias: BlogCategoria[];
 };
 
 // -------- sistemas de dilución
@@ -317,6 +319,7 @@ export async function getSistemasDilucion() {
     intro?: unknown[];
     beneficios?: string[];
     secciones?: { titulo: string; contenido?: unknown[]; imagen?: SanityImageSource }[];
+    equipos?: { titulo: string; descripcion: string; imagen?: SanityImageSource }[];
     galeria?: SanityImageSource[];
   }>(sistemasDilucionQuery);
   if (!data) return null;
@@ -331,6 +334,11 @@ export async function getSistemasDilucion() {
       contenido: s.contenido ?? [],
       imagen: imgUrl(s.imagen, 1200),
     })),
+    equipos: (data.equipos ?? []).map((e) => ({
+      titulo: e.titulo,
+      descripcion: e.descripcion,
+      imagen: imgUrl(e.imagen, 800),
+    })),
     galeria: (data.galeria ?? []).map((g) => imgUrl(g, 1200)).filter(Boolean) as string[],
   };
 }
@@ -338,12 +346,14 @@ export async function getSistemasDilucion() {
 export async function getPosts(): Promise<BlogListItem[]> {
   const data = await cachedFetch<{
     _id: string; titulo: string; slug: string; excerpt: string;
-    fechaPublicacion?: string; destacado?: boolean; categoria?: string;
+    fechaPublicacion?: string; destacado?: boolean;
+    categorias?: BlogCategoria[];
     imagenPortada?: SanityImageSource & { ancho?: number; alto?: number };
   }[]>(postsQuery);
   if (!data?.length) {
     return fallbackPosts.map((p) => ({
       slug: p.slug, title: p.title, description: p.description, image: p.image, date: p.date,
+      categorias: [],
     }));
   }
   return data.map((p) => ({
@@ -355,8 +365,19 @@ export async function getPosts(): Promise<BlogListItem[]> {
     image: imgUrl(p.imagenPortada, Math.min(p.imagenPortada?.ancho ?? 720, 720)),
     date: p.fechaPublicacion,
     destacado: p.destacado,
-    categoria: p.categoria,
+    categorias: p.categorias ?? [],
   }));
+}
+
+export async function getCategoriasBlog() {
+  const data = await cachedFetch<{
+    _id: string;
+    nombre: string;
+    slug: string;
+    descripcion?: string;
+    postCount: number;
+  }[]>(categoriasBlogQuery);
+  return (data ?? []).filter((c) => c.postCount > 0);
 }
 
 export async function getPostBySlug(slug: string) {
@@ -366,7 +387,7 @@ export async function getPostBySlug(slug: string) {
     slug: string;
     excerpt: string;
     autor?: string;
-    categoria?: string;
+    categorias?: BlogCategoria[];
     fechaPublicacion?: string;
     contenido?: unknown[];
     imagenPortada?: SanityImageSource;

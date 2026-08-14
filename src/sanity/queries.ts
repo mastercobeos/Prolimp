@@ -32,6 +32,11 @@ export const sistemasDilucionQuery = groq`
       contenido,
       "imagen": imagen{${imgFields}}
     },
+    equipos[]{
+      titulo,
+      descripcion,
+      "imagen": imagen{${imgFields}}
+    },
     "galeria": galeria[]{${imgFields}}
   }
 `;
@@ -156,7 +161,8 @@ export const productoBySlugQuery = groq`
 
 export const postsQuery = groq`
   *[_type == "post"] | order(fechaPublicacion desc){
-    _id, titulo, "slug": slug.current, excerpt, autor, categoria,
+    _id, titulo, "slug": slug.current, excerpt, autor,
+    "categorias": categorias[]->{nombre, "slug": slug.current},
     fechaPublicacion, destacado,
     // El ancho real evita pedirle a Sanity más de lo que la portada tiene:
     // 32 de 49 son menores a 720px y se veían borrosas al agrandarlas.
@@ -169,7 +175,8 @@ export const postsQuery = groq`
 
 export const postBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug][0]{
-    _id, titulo, "slug": slug.current, excerpt, autor, categoria,
+    _id, titulo, "slug": slug.current, excerpt, autor,
+    "categorias": categorias[]->{nombre, "slug": slug.current},
     fechaPublicacion,
     // Las imágenes del cuerpo llevan su tamaño real para no pedirle a Sanity
     // más ancho del que tienen (eso las agrandaba y las reventaba).
@@ -183,6 +190,16 @@ export const postBySlugQuery = groq`
     },
     "imagenPortada": imagenPortada{${imgFields}},
     metaTitle, metaDescription, originalUrl
+  }
+`;
+
+export const categoriasBlogQuery = groq`
+  *[_type == "categoriaBlog"] | order(orden asc, nombre asc){
+    _id,
+    nombre,
+    "slug": slug.current,
+    descripcion,
+    "postCount": count(*[_type == "post" && references(^._id)])
   }
 `;
 

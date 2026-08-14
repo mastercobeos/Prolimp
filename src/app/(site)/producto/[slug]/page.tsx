@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
@@ -6,6 +5,7 @@ import type { Metadata } from "next";
 import { urlForImage } from "@/sanity/image";
 import { getProductoBySlug } from "@/lib/data";
 import { splitNombreProducto } from "@/lib/productName";
+import { ProductGallery } from "./ProductGallery";
 import styles from "./page.module.css";
 
 /* Los documentos migrados traen al final del cuerpo los links crudos de la página
@@ -44,7 +44,8 @@ export default async function ProductoPage({ params }: { params: Params }) {
   if (!p) return notFound();
 
   const heroSrc = p.imagenPrincipal ? urlForImage(p.imagenPrincipal).width(1200).auto("format").url() : undefined;
-  const gallery = (p.galeria ?? []).map((g) => urlForImage(g).width(800).auto("format").url());
+  const gallery = (p.galeria ?? []).map((g) => urlForImage(g).width(1200).auto("format").url());
+  const slides = [heroSrc, ...gallery].filter((s): s is string => Boolean(s));
   const { titulo: nombreTitulo, subtitulo: nombreSubtitulo } = splitNombreProducto(p.nombre);
   const descripcionLimpia = limpiarDescripcion((p.descripcion as unknown[]) ?? []);
 
@@ -102,21 +103,10 @@ export default async function ProductoPage({ params }: { params: Params }) {
 
         <div className={styles.grid}>
           <section className={styles.mediaCol}>
-            {heroSrc ? (
-              <div className={styles.imageCard}>
-                <Image src={heroSrc} alt={p.nombre} width={1200} height={1200} priority className={styles.heroImage} />
-              </div>
+            {slides.length > 0 ? (
+              <ProductGallery slides={slides} alt={p.nombre} />
             ) : (
               <div className={styles.heroPlaceholder}>Sin imagen</div>
-            )}
-            {gallery.length > 0 && (
-              <ul className={styles.thumbs}>
-                {gallery.map((src, i) => (
-                  <li key={i}>
-                    <Image src={src} alt={`${p.nombre} — imagen ${i + 2}`} width={160} height={160} className={styles.thumb} />
-                  </li>
-                ))}
-              </ul>
             )}
           </section>
 

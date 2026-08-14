@@ -11,6 +11,7 @@ import { sistemasDilucion } from "./sistemasDilucion";
 import { suscripcion } from "./suscripcion";
 import { catalogo } from "./catalogo";
 import { tabla } from "./tabla";
+import { categoriaBlog } from "./categoriaBlog";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   home,
@@ -22,6 +23,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   marca,
   sucursal,
   post,
+  categoriaBlog,
   catalogo,
   suscripcion,
   tabla,

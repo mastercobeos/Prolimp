@@ -67,29 +67,29 @@ const PROOMNI_BLOCKS = [
   },
 ];
 
-const OTROS_EQUIPOS = [
+const OTROS_EQUIPOS_FALLBACK = [
   {
     titulo: "Dilutor Dema",
-    img: "/img/redesign/dilutor-dema.jpg",
-    texto:
+    imagen: "/img/redesign/dilutor-dema.jpg",
+    descripcion:
       "Cuerpo de latón niquelado que se adhiere a cualquier grifo estándar y dispensa producto mezclado con agua del fregadero con sólo presionar o empujar un botón.",
   },
   {
     titulo: "Sprite Ware Wash DM-420",
-    img: "/img/redesign/sprite-pared.jpg",
-    texto:
+    imagen: "/img/redesign/sprite-pared.jpg",
+    descripcion:
       "Dosificador para máquina lavaloza, la dosificación de los productos se lleva a cabo con este equipo, que recibe las señales de lavado y enjuague, dosificando el producto adecuado en la cantidad programada.",
   },
   {
     titulo: "Autodose",
-    img: "/img/redesign/autodose-sala.jpg",
-    texto:
+    imagen: "/img/redesign/autodose-sala.jpg",
+    descripcion:
       "Dosificador para trampa de grasa. Dosifica de forma automática la cantidad de producto programada en los tiempos establecidos. Puede elegir hasta 24 periodos de dosificación por 24 horas. Elección del día, la hora y dosificaciones.",
   },
   {
     titulo: "Accupro",
-    img: "/img/redesign/accupro.jpg",
-    texto:
+    imagen: "/img/redesign/accupro.jpg",
+    descripcion:
       "Dilutor para 1 producto, proporciona de manera fácil y constante la solución con sólo pulsar un botón. Este equipo permite la dosificación exacta de detergente y desinfectante para los procesos de lavado y desinfección de frutas y verduras así como de loza.",
   },
 ];
@@ -126,6 +126,13 @@ export default async function SistemasDilucionPage() {
   const beneficios = (data?.beneficios?.length ? data.beneficios : HERO_BENEFITS).map((b) =>
     b.replace(/\.$/, "")
   );
+  const equipos = data?.equipos?.length
+    ? data.equipos.map((e) => ({
+        titulo: e.titulo,
+        descripcion: e.descripcion,
+        imagen: e.imagen ?? "/img/redesign/dilutor-dema.jpg",
+      }))
+    : OTROS_EQUIPOS_FALLBACK;
 
   return (
     <main className={styles.page}>
@@ -281,13 +288,13 @@ export default async function SistemasDilucionPage() {
             </p>
           </div>
           <ul className={styles.equiposGrid}>
-            {OTROS_EQUIPOS.map((e) => (
+            {equipos.map((e) => (
               <li key={e.titulo} className={styles.equipoCard}>
                 <div className={styles.equipoImgWrap}>
-                  <Image src={e.img} alt={e.titulo} width={400} height={300} className={styles.equipoImg} />
+                  <Image src={e.imagen} alt={e.titulo} width={400} height={300} className={styles.equipoImg} />
                 </div>
                 <h3>{e.titulo}</h3>
-                <p>{e.texto}</p>
+                <p>{e.descripcion}</p>
               </li>
             ))}
           </ul>

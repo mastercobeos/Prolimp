@@ -49,14 +49,14 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
           </h1>
           <p className={styles.lede}>{lede}</p>
           <div className={styles.actions}>
-            <Link href="/productos" className={styles.btnPrimary}>
-              Ver catálogo
+            <Link href="/contacto" className={styles.btnPrimary}>
+              Contactar Asesor
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </Link>
-            <Link href="/contacto" className={styles.btnGhost}>
-              Solicitar cotización
+            <Link href="/productos" className={styles.btnGhost}>
+              Ver catálogo
             </Link>
           </div>
           <ul className={styles.stats}>
@@ -87,6 +87,28 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
                   aria-hidden={i !== index}
                 />
               ))}
+              {imagenes[index]?.ctaHref && (
+                (() => {
+                  const href = imagenes[index]!.ctaHref!;
+                  const label = imagenes[index]!.ctaLabel || "Ver más";
+                  const external = /^https?:\/\//.test(href);
+                  return external ? (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.slideLinkOverlay}
+                      aria-label={label}
+                    />
+                  ) : (
+                    <Link
+                      href={href}
+                      className={styles.slideLinkOverlay}
+                      aria-label={label}
+                    />
+                  );
+                })()
+              )}
               {hasSlider && (
                 <>
                   <button
@@ -129,7 +151,7 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
             </div>
             <div className={styles.badge}>
               <span>Certificados</span>
-              <strong>ISO 9000</strong>
+              <strong>ISO 9001</strong>
             </div>
             <div className={styles.badge2}>
               <span>Registrados en</span>

@@ -97,10 +97,11 @@
 .sellos li {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background: white;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  overflow: hidden;
+  padding: 2rem 1rem 1rem;
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
 .sellos li:hover {
@@ -108,21 +109,20 @@
   box-shadow: var(--shadow-lg);
   border-color: var(--azul-500);
 }
-/* Altura fija en vez de aspect-ratio: los logos cuadrados imponen una altura
-   mínima mayor que la proporción y desnivelaban las cajas. El logo escala hasta
-   llenar la caja, así los cuatro sellos pesan visualmente parecido. */
+/* Mismo tratamiento visual que .iconWrap: caja 120x120 con gradiente suave,
+   logo contenido a 80x80 para pesar igual que los íconos de arriba. */
 .selloImg {
-  height: 180px;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(0, 174, 239, 0.12), rgba(2, 116, 197, 0.15));
   display: grid;
   place-items: center;
-  padding: 1rem 1.25rem;
-  background: var(--gris-50);
+  margin-bottom: 1rem;
 }
-/* min-height/min-width: 0 anula el tamaño mínimo automático del ítem de grid;
-   sin eso los logos cuadrados crecen hasta su alto intrínseco y se recortan. */
 .selloImg img {
-  width: 100%;
-  height: 100%;
+  width: 80px;
+  height: 80px;
   min-width: 0;
   min-height: 0;
   object-fit: contain;
@@ -130,15 +130,15 @@
 .sellos h3 {
   font-size: 1rem;
   color: var(--azul-900);
-  margin: 1rem 1rem 0.35rem;
+  margin-bottom: 0.35rem;
   text-align: center;
 }
 .sellos p {
   font-size: 0.85rem;
   line-height: 1.5;
   color: var(--fg-muted);
-  padding: 0 1rem 1.25rem;
   text-align: center;
+  margin: 0;
 }
 
 @media (max-width: 1024px) {

@@ -37,6 +37,29 @@ export const sistemasDilucion = defineType({
       ],
     }),
     defineField({
+      name: "equipos",
+      title: "Otros equipos de dosificación (tarjetas)",
+      description: "Tarjetas que aparecen en la sección 'Otros equipos de dosificación' al final de la página.",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "titulo", type: "string", validation: (r) => r.required() },
+            { name: "descripcion", type: "text", rows: 4, validation: (r) => r.required() },
+            {
+              name: "imagen",
+              type: "image",
+              options: { hotspot: true },
+              fields: [{ name: "alt", type: "string" }],
+              validation: (r) => r.required(),
+            },
+          ],
+          preview: { select: { title: "titulo", subtitle: "descripcion", media: "imagen" } },
+        },
+      ],
+    }),
+    defineField({
       name: "galeria",
       title: "Galería",
       type: "array",

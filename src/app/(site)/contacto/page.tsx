@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { ContactForm } from "./ContactForm";
 import { getEmpresa } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Contacto",
   description:
-    "Contáctanos para solicitar cotización, asesoría técnica o distribución de productos de limpieza Prolimp. WhatsApp, email o formulario.",
+    "Contáctanos para solicitar cotización, asesoría técnica o distribución de productos de limpieza Prolimp por WhatsApp, email o en nuestras sucursales.",
 };
 
 export default async function ContactoPage() {
@@ -64,21 +63,9 @@ export default async function ContactoPage() {
               </div>
               <div>
                 <strong>Sucursales</strong>
-                <span>6 ciudades de México</span>
                 <em>Encuentra la más cercana</em>
               </div>
             </Link>
-
-            <div className={styles.horario}>
-              <strong>Horario de atención</strong>
-              <p>Lunes a viernes: 9:00 – 18:00<br />Sábados: 9:00 – 14:00</p>
-            </div>
-          </div>
-
-          <div className={styles.formCard}>
-            <h2>Envíanos un mensaje</h2>
-            <p>Un asesor institucional te contactará en menos de 24 h hábiles.</p>
-            <ContactForm whatsapp={empresa.whatsapp} />
           </div>
         </div>
       </div>

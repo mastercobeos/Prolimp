@@ -29,6 +29,7 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem("sucursal").title("Sucursales").icon(() => "📍"),
       S.divider(),
       S.documentTypeListItem("post").title("Blog").icon(() => "📝"),
+      S.documentTypeListItem("categoriaBlog").title("Categorías del blog").icon(() => "🏷️"),
       S.divider(),
       S.documentTypeListItem("suscripcion").title("Suscripciones newsletter").icon(() => "📧"),
     ]);

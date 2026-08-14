@@ -3,11 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { getCategorias, getLineas, getMarcas } from "@/lib/data";
+import { ProductosSearch } from "./ProductosSearch";
 
 export const metadata: Metadata = {
   title: "Productos y catálogo",
   description:
-    "Catálogo completo Prolimp: químicos, higiénicos, dosificadores, jarciería, seguridad, plásticos, detergentes y más. 200+ productos de calidad certificada.",
+    "Catálogo completo Prolimp: químicos, higiénicos, dosificadores, jarciería, seguridad, plásticos, detergentes y más. Más de 2,000 productos de calidad certificada.",
 };
 
 export default async function ProductosPage() {
@@ -19,9 +20,15 @@ export default async function ProductosPage() {
           <span className={styles.eyebrow}>Catálogo</span>
           <h1>Todos nuestros productos</h1>
           <p>
-            Explora por categoría, línea o marca. 200+ productos para cubrir todas las necesidades
-            de limpieza profesional.
+            Explora por categoría, línea o marca. Más de 2,000 productos para cubrir todas las
+            necesidades de limpieza profesional.
           </p>
+        </div>
+      </section>
+
+      <section className={styles.searchSection}>
+        <div className="container container-wide">
+          <ProductosSearch />
         </div>
       </section>
 

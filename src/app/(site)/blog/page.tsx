@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getPosts } from "@/lib/data";
+import clsx from "clsx";
+import { getPosts, getCategoriasBlog } from "@/lib/data";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -23,23 +24,78 @@ const bgStyle = (post: { image?: string }, i: number) =>
     ? { backgroundImage: `url(${post.image})`, backgroundSize: "cover", backgroundPosition: "center" }
     : { background: gradients[i % gradients.length] };
 
-export default async function BlogPage() {
-  const posts = await getPosts();
-  const featured = posts.find((p) => p.destacado) ?? posts[0];
+type SearchParams = Promise<{ cat?: string }>;
+
+export default async function BlogPage({ searchParams }: { searchParams: SearchParams }) {
+  const [{ cat }, allPosts, categorias] = await Promise.all([
+    searchParams,
+    getPosts(),
+    getCategoriasBlog(),
+  ]);
+
+  const activeCat = cat && categorias.some((c) => c.slug === cat) ? cat : null;
+  const posts = activeCat
+    ? allPosts.filter((p) => p.categorias.some((c) => c.slug === activeCat))
+    : allPosts;
+  const featured = activeCat
+    ? posts[0]
+    : posts.find((p) => p.destacado) ?? posts[0];
   const rest = posts.filter((p) => p.slug !== featured?.slug);
+  const activeCatNombre = categorias.find((c) => c.slug === activeCat)?.nombre;
+
   return (
     <>
       <section className={styles.hero}>
         <div className="container container-wide">
           <span className={styles.eyebrow}>Blog Prolimp</span>
-          <h1>Conoce las ventajas de la limpieza correcta</h1>
-          <p>Guías, técnicas y buenas prácticas para elevar el estándar de limpieza de tu operación.</p>
+          <h1>
+            {activeCatNombre
+              ? `Categoría: ${activeCatNombre}`
+              : "Conoce las ventajas de la limpieza correcta"}
+          </h1>
+          <p>
+            {activeCatNombre
+              ? `Todos los artículos sobre ${activeCatNombre.toLowerCase()}.`
+              : "Guías, técnicas y buenas prácticas para elevar el estándar de limpieza de tu operación."}
+          </p>
         </div>
       </section>
 
+      {categorias.length > 0 && (
+        <section className={styles.filterBar}>
+          <div className="container container-wide">
+            <ul className={styles.chips}>
+              <li>
+                <Link
+                  href="/blog"
+                  className={clsx(styles.chip, !activeCat && styles.chipActive)}
+                >
+                  Todas
+                </Link>
+              </li>
+              {categorias.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    href={`/blog?cat=${c.slug}`}
+                    className={clsx(styles.chip, activeCat === c.slug && styles.chipActive)}
+                  >
+                    {c.nombre}
+                    <span className={styles.count}>{c.postCount}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       <section className={`section ${styles.list}`}>
         <div className="container container-wide">
-          {featured && (
+          {posts.length === 0 && (
+            <p className={styles.empty}>Aún no hay artículos en esta categoría.</p>
+          )}
+
+          {featured && !activeCat && (
             <Link href={`/blog/${featured.slug}`} className={styles.featured}>
               <div className={styles.featuredImg} style={bgStyle(featured, 0)}>
                 <span className={styles.badge}>Destacado</span>
@@ -54,13 +110,16 @@ export default async function BlogPage() {
           )}
 
           <ul className={styles.grid}>
-            {rest.map((post, i) => (
+            {(activeCat ? posts : rest).map((post, i) => (
               <li key={post.slug}>
                 <Link href={`/blog/${post.slug}`} className={styles.card}>
                   <div className={styles.cardImg} style={bgStyle(post, i + 1)}>
                     {!post.image && <span className={styles.number}>{String(i + 2).padStart(2, "0")}</span>}
                   </div>
                   <div className={styles.cardBody}>
+                    {post.categorias[0] && (
+                      <span className={styles.tag}>{post.categorias[0].nombre}</span>
+                    )}
                     <h3>{post.title}</h3>
                     <p>{post.description}</p>
                     <span className={styles.readMore}>Leer más →</span>

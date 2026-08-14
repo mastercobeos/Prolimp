@@ -16,7 +16,7 @@ export default async function DescargaCatalogoPage() {
         <span className={styles.eyebrow}>Recurso descargable</span>
         <h1>Catálogo completo Prolimp</h1>
         <p className={styles.lead}>
-          Más de 280 productos organizados por categoría: químicos de fabricación propia, papel higiénico,
+          Más de 2,000 productos organizados por categoría: químicos de fabricación propia, papel higiénico,
           jarcería, dosificadores, seguridad y más. Incluye SKU, presentaciones y ficha técnica de cada línea.
         </p>
       </section>
