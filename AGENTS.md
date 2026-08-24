@@ -64,6 +64,9 @@ Estos son bugs reales que ocurrieron en este proyecto. Léelos antes de tocar c�
 - **Backdrop-filter sobre overlay dim** puede crear halo rectangular visible.
   Cuando el overlay tiene `background: rgba(...)` semi-transparente Y el pill encima tiene `backdrop-filter: brightness(1.10)`, el composite crea una "isla" más clara. Solución: overlay 100% transparente o quitar el brightness del pill.
 
+- **`aspect-ratio` en el wrapper + `img { height: 100% }` revienta en Safari.**
+  WebKit entra en un ciclo de layout y las tarjetas crecen hasta llenar la pantalla (grabado por el cliente en Mac, 2026-08-24; en Chrome no se ve). Regla: la `<img>` se dimensiona por ancho — `width: 100%; height: auto; aspect-ratio: <mismo ratio>; object-fit: cover` — y el wrapper lleva `min-height: 0; min-width: 0`. Aplicado en todas las parrillas (Lineas, Categorias, Marcas, DestacadosSlider, SectorLanding, marca/[slug], productos/*). Las galerías con `position: absolute` / `fill` no tienen el problema.
+
 ## Catálogos PDF
 
 - **Los PDFs viven en Sanity, no en el repo.** Documento `catalogo`: el campo `slug` decide qué

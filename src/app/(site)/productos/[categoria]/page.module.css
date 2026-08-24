@@ -41,7 +41,7 @@
   overflow: hidden;
   background: linear-gradient(135deg, var(--azul-500), var(--cyan-400));
 }
-.heroImg img { width: 100%; height: 100%; object-fit: cover; }
+.heroImg img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
 
 .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .btnPrimary, .btnGhost {
@@ -104,7 +104,7 @@
 }
 .lineaCard:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .lineaImg { aspect-ratio: 4 / 3; overflow: hidden; }
-.lineaImg img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
+.lineaImg img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
 .lineaCard:hover .lineaImg img { transform: scale(1.05); }
 .lineaBody { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; }
 .lineaBody h3 { color: var(--azul-900); font-size: 1.1rem; margin-bottom: 0.5rem; }
@@ -175,7 +175,7 @@
   aspect-ratio: 1; background: var(--gris-100);
   display: grid; place-items: center; padding: 0.75rem;
 }
-.productImg img { width: 100%; height: 100%; object-fit: contain; }
+.productImg img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
 .imgPh { color: var(--fg-muted); font-size: 0.85rem; }
 .productBody { padding: 0.85rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
 .productMarca {

@@ -262,7 +262,7 @@
   place-items: center;
   padding: 0.75rem;
 }
-.productImg img { width: 100%; height: 100%; object-fit: contain; }
+.productImg img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
 /* Texto centrado, como en las láminas de sector del mockup. */
 .productBody {
   padding: 0.75rem 1rem 1.15rem;
