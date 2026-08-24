@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/sucursales", priority: 0.7, changeFrequency: "monthly" },
     { path: "/contacto", priority: 0.7, changeFrequency: "monthly" },
     { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
-    { path: "/descarga-catalogo", priority: 0.6, changeFrequency: "monthly" },
+    { path: "/catalogo-prolimp", priority: 0.6, changeFrequency: "monthly" },
     { path: "/sistemas-dilucion", priority: 0.7, changeFrequency: "monthly" },
     // Landings sectoriales
     { path: "/industria-alimentaria", priority: 0.8, changeFrequency: "monthly" },

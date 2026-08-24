@@ -92,7 +92,7 @@ export function Footer({ categorias, lineas, empresa }: Props) {
                 <a href={`mailto:${empresa.email}`}>{empresa.email}</a>
               </li>
               <li>
-                <Link href="/descarga-catalogo">Descargar catálogo</Link>
+                <Link href="/catalogo-prolimp">Descargar catálogo</Link>
               </li>
               <li>
                 <Link href="/aviso-de-privacidad">Aviso de privacidad</Link>
