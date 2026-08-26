@@ -143,6 +143,18 @@ export const marcaBySlugQuery = groq`
   }
 `;
 
+export const productosPorSlugsMarcaQuery = groq`
+  *[_type == "producto" && activo == true && slug.current in $slugs]{
+    _id, nombre, "slug": slug.current, sku, descripcionCorta,
+    "imagenPrincipal": imagenPrincipal{${imgFields}},
+    "categoria": categoria->{nombre, "slug": slug.current}
+  }
+`;
+
+export const productosCountPorSlugsQuery = groq`
+  count(*[_type == "producto" && activo == true && slug.current in $slugs])
+`;
+
 export const productoBySlugQuery = groq`
   *[_type == "producto" && slug.current == $slug && activo == true][0]{
     _id, nombre, "slug": slug.current, sku,

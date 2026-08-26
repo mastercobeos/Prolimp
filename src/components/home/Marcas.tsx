@@ -17,7 +17,7 @@ export function Marcas({ marcas }: Props) {
         <ul className={styles.grid}>
           {marcas.map((m) => (
             <li key={m.slug}>
-              <Link href={`/productos/marcas/${m.slug}`} className={styles.card}>
+              <Link href={`/marca/${m.slug}`} className={styles.card}>
                 <div className={styles.imgWrap}>
                   <Image src={m.image} alt={m.nombre} width={700} height={700} />
                 </div>

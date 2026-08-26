@@ -22,7 +22,10 @@ import {
   productosDestacadosQuery,
   marcaBySlugQuery,
   productosByCategoriaYSubcatQuery,
+  productosPorSlugsMarcaQuery,
+  productosCountPorSlugsQuery,
 } from "@/sanity/queries";
+import { PLEC_PRODUCTOS_SLUGS } from "./plecProductos";
 import type { SanityImageSource } from "@sanity/image-url";
 import * as fallback from "./content";
 import { allPosts as fallbackPosts } from "./blog";
@@ -190,33 +193,46 @@ export async function getCategoriaBySlug(slug: string) {
 export async function getMarcas() {
   const data = await cachedFetch<{ _id: string; nombre: string; slug: string; logo?: SanityImageSource; propia?: boolean; productos?: number }[]>(marcasQuery);
   if (!data?.length) return fallback.marcas;
+  // PLEC no tiene productos con marca asignada en Sanity: contamos los de su landing.
+  const plecCount = data.some((m) => m.slug === "plec" && !m.productos)
+    ? await cachedFetch<number>(productosCountPorSlugsQuery, { slugs: PLEC_PRODUCTOS_SLUGS })
+    : 0;
   return data.map((m) => ({
     slug: m.slug,
     nombre: m.nombre,
     image: imgUrl(m.logo, 700) ?? "/img/marcas/prolimp.webp",
-    productos: m.productos ?? 0,
+    productos: m.productos || (m.slug === "plec" ? plecCount : 0),
   }));
 }
 
 // -------- marca por slug (para landing dedicada)
+type MarcaProducto = {
+  _id: string;
+  nombre: string;
+  slug: string;
+  sku?: string;
+  descripcionCorta?: string;
+  imagenPrincipal?: SanityImageSource;
+  categoria?: { nombre: string; slug: string };
+};
+
 export async function getMarcaBySlug(slug: string) {
-  return cachedFetch<{
+  const marca = await cachedFetch<{
     _id: string;
     nombre: string;
     slug: string;
     propia?: boolean;
     descripcion?: string;
     logo?: SanityImageSource;
-    productos?: {
-      _id: string;
-      nombre: string;
-      slug: string;
-      sku?: string;
-      descripcionCorta?: string;
-      imagenPrincipal?: SanityImageSource;
-      categoria?: { nombre: string; slug: string };
-    }[];
+    productos?: MarcaProducto[];
   } | null>(marcaBySlugQuery, { slug });
+  // PLEC: mismos productos que la landing /plec (no hay productos con marca PLEC en Sanity).
+  if (marca && slug === "plec" && !marca.productos?.length) {
+    const fetched = await cachedFetch<MarcaProducto[]>(productosPorSlugsMarcaQuery, { slugs: PLEC_PRODUCTOS_SLUGS });
+    const orden = PLEC_PRODUCTOS_SLUGS;
+    marca.productos = [...(fetched ?? [])].sort((a, b) => orden.indexOf(a.slug) - orden.indexOf(b.slug));
+  }
+  return marca;
 }
 
 // -------- productos por categoría + subcategoría (aplicación tag)

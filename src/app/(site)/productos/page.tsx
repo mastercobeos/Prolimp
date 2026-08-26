@@ -85,7 +85,7 @@ export default async function ProductosPage() {
           <ul className={styles.marcasGrid}>
             {marcas.map((m) => (
               <li key={m.slug}>
-                <Link href={`/productos/marcas/${m.slug}`} className={styles.marcaCard}>
+                <Link href={`/marca/${m.slug}`} className={styles.marcaCard}>
                   <Image src={m.image} alt={m.nombre} width={140} height={140} />
                   <strong>{m.nombre}</strong>
                   <span>{m.productos} productos</span>

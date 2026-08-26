@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectorLanding } from "@/components/landings/SectorLanding";
+import { PLEC_PRODUCTOS_SLUGS } from "@/lib/plecProductos";
 
 export const metadata: Metadata = {
   title: "Línea PLEC — Productos de Limpieza Económica",
@@ -23,16 +24,7 @@ export default function PlecPage() {
       eyebrowSeccion="Por qué PLEC"
       beneficiosTitulo="Productos diseñados para cuidar tu presupuesto"
       productosTitulo="Algunos productos ideales para ahorrar"
-      productosSlugs={[
-        "fast-clean-limpiador-multiusos-aroma-mar-fresco",
-        "fast-clean-limpiador-multiusos-aroma-lima-limon",
-        "fast-clean-limpiador-multiusos-con-aroma",
-        "ecox-detergente-liquido",
-        "tapete-liso-para-mingitorio",
-        "sarricida-desincrustante-sarriprol",
-        "toalla-interdoblada-gcpaper-100-hjs",
-        "pinolimp-limpiador-multiusos-base-aceite-de-pino",
-      ]}
+      productosSlugs={PLEC_PRODUCTOS_SLUGS}
       ctaTitulo="¿Buscas ahorrar en tu operación diaria?"
       ctaLede="Te ayudamos a elegir productos PLEC según el consumo, tipo de espacio y necesidades de limpieza de tu empresa."
       gradienteHero="linear-gradient(135deg, rgba(0,174,239,0.18), rgba(2,116,197,0.15) 60%, rgba(12,31,110,0.12))"
