@@ -90,6 +90,19 @@ Estos son bugs reales que ocurrieron en este proyecto. Léelos antes de tocar c�
   entre rutas; con un archivo rompe la descarga. `CtaBand` acepta la prop `download` y cambia
   a `<a>` internamente.
 
+## Redirects del WordPress viejo
+
+- Viven en **`legacy-redirects.ts`** (raíz) y se esparcen en `redirects()` de `next.config.ts`.
+  Cubren `/product/*` → `/producto/*`, `/product-category/*` → `/productos/*` o `/marca/*`, y
+  `/descargas` → `/catalogo-prolimp`. Primero van los explícitos (slug cambiado o producto
+  descontinuado → su línea) y al final los genéricos; el orden importa, Next usa el primero que matchea.
+
+- **Un `source` con un carácter no ASCII (`″`, acentos) NUNCA matchea**, aunque el path llegue
+  percent-encoded o no. Para esos slugs usa un parámetro regex en su lugar:
+  `1:inch([^/]{1,12})x-1-50-m` y un `destination` fijo. Verificar con `curl -o /dev/null -w "%{http_code} %{redirect_url}"`.
+
+- El WP viejo escribía la categoría como `jarcieria`; el cliente y Google usan `jarceria`. Hay regla para ambas.
+
 ## Windows dev environment
 
 - **PowerShell no soporta env vars inline al estilo bash.**

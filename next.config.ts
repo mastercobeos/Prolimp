@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { legacyRedirects } from "./legacy-redirects";
 
 const nextConfig: NextConfig = {
   images: {
@@ -22,6 +23,8 @@ const nextConfig: NextConfig = {
       // Su página de línea quedaría vacía (sus productos viven en Aseo General,
       // Baños, etc.), así que se manda a la landing que sí tiene contenido.
       { source: "/productos/quimicos/plec", destination: "/plec", permanent: false },
+      // URLs del WordPress viejo (/product, /product-category, /descargas).
+      ...legacyRedirects,
     ];
   },
 };
