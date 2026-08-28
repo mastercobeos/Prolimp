@@ -23,10 +23,6 @@
   align-items: center;
 }
 
-.content {
-  animation: fadeInUp 0.7s var(--ease) both;
-}
-
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -237,7 +233,6 @@
 .visual {
   position: relative;
   min-width: 0;
-  animation: fadeIn 0.9s var(--ease) 0.2s both;
 }
 /* Contenedor sin overflow: mismo tamaño que la imagen (aspect-ratio 4/5) pero
    permite que las badges sobresalgan por los costados sin ser clippeadas. */

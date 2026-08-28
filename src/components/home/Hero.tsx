@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
@@ -18,6 +17,20 @@ type Props = {
 };
 
 const AUTOPLAY_MS = 5000;
+
+/* The hero image renders at most 480 CSS px wide on tablets/phones and ~45vw on
+   desktop; Sanity resizes on the fly via `w=`, so the browser can pick the
+   closest width for its DPR instead of always pulling the 1600 px version. */
+const HERO_IMG_WIDTHS = [480, 640, 960, 1280, 1600];
+const HERO_IMG_SIZES = "(max-width: 1024px) min(100vw, 480px), 45vw";
+
+function sanitySrcSet(url: string): string {
+  return HERO_IMG_WIDTHS.map((w) => {
+    const u = new URL(url);
+    u.searchParams.set("w", String(w));
+    return `${u.toString()} ${w}w`;
+  }).join(", ");
+}
 
 export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: Props) {
   const [index, setIndex] = useState(0);
@@ -76,13 +89,18 @@ export function Hero({ eyebrow, titulo1, tituloAcento, lede, imagenes, stats }: 
               aria-roledescription={hasSlider ? "carousel" : undefined}
             >
               {imagenes.map((slide, i) => (
-                <Image
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
                   key={slide.url}
                   src={slide.url}
+                  srcSet={sanitySrcSet(slide.url)}
+                  sizes={HERO_IMG_SIZES}
                   alt="Imagen hero Prolimp"
                   width={640}
                   height={720}
-                  priority={i === 0}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  fetchPriority={i === 0 ? "high" : undefined}
+                  decoding="async"
                   className={clsx(styles.mainImg, i === index && styles.mainImgActive)}
                   aria-hidden={i !== index}
                 />

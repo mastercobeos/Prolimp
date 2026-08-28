@@ -2,7 +2,7 @@
   position: relative;
   background:
     linear-gradient(90deg, rgba(238, 244, 251, 0.92) 0%, rgba(238, 244, 251, 0.75) 100%),
-    url("/img/redesign/mexico-industrial-bg.jpg") center / cover no-repeat;
+    url("/img/redesign/mexico-industrial-bg.webp") center / cover no-repeat;
   overflow: hidden;
 }
 
