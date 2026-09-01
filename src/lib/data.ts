@@ -236,7 +236,7 @@ export async function getMarcaBySlug(slug: string) {
 }
 
 // -------- productos por categoría + subcategoría (aplicación tag)
-export async function getProductosBySubcategoria(categoriaSlug: string, subcatNombre: string) {
+export async function getProductosBySubcategoria(categoriaSlug: string, subcatSlug: string, subcatNombre: string) {
   return cachedFetch<{
     _id: string;
     nombre: string;
@@ -246,7 +246,7 @@ export async function getProductosBySubcategoria(categoriaSlug: string, subcatNo
     linkExterno?: string;
     imagenPrincipal?: SanityImageSource;
     marca?: { nombre: string; slug: string };
-  }[]>(productosByCategoriaYSubcatQuery, { categoriaSlug, subcatNombre });
+  }[]>(productosByCategoriaYSubcatQuery, { categoriaSlug, subcatSlug, subcatNombre });
 }
 
 // -------- productos destacados (para slider en home)

@@ -121,10 +121,12 @@ export const productosDestacadosQuery = groq`
   }
 `;
 
+// Un producto pertenece a la sub-categoría por referencia (campo subcategoria)
+// o por tag de texto en aplicaciones (mecanismo anterior, se mantiene por compatibilidad).
 export const productosByCategoriaYSubcatQuery = groq`
   *[_type == "producto" && activo == true
     && categoria->slug.current == $categoriaSlug
-    && $subcatNombre in aplicaciones] | order(nombre asc) {
+    && (subcategoria->slug.current == $subcatSlug || $subcatNombre in aplicaciones)] | order(nombre asc) {
     _id, nombre, "slug": slug.current, sku, descripcionCorta, linkExterno,
     "imagenPrincipal": imagenPrincipal{${imgFields}},
     "marca": marca->{nombre, "slug": slug.current}

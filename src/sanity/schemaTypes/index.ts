@@ -1,5 +1,6 @@
 import type { SchemaTypeDefinition } from "sanity";
 import { categoria } from "./categoria";
+import { subcategoria } from "./subcategoria";
 import { marca } from "./marca";
 import { linea } from "./linea";
 import { producto } from "./producto";
@@ -19,6 +20,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   sistemasDilucion,
   producto,
   categoria,
+  subcategoria,
   linea,
   marca,
   sucursal,

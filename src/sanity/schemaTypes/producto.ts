@@ -109,6 +109,22 @@ export const producto = defineType({
       validation: (r) => r.required(),
     }),
     defineField({
+      name: "subcategoria",
+      title: "Subcategoría",
+      type: "reference",
+      to: [{ type: "subcategoria" }],
+      group: "relaciones",
+      description:
+        "Opcional. Primero selecciona la categoría: solo aparecen las subcategorías de esa categoría.",
+      options: {
+        filter: ({ document }) => {
+          const catRef = (document?.categoria as { _ref?: string } | undefined)?._ref;
+          if (!catRef) return { filter: "!defined(_id)" };
+          return { filter: "categoria._ref == $catRef", params: { catRef } };
+        },
+      },
+    }),
+    defineField({
       name: "marca",
       type: "reference",
       to: [{ type: "marca" }],

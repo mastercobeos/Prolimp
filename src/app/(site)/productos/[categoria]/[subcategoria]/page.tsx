@@ -33,7 +33,7 @@ export default async function SubcategoriaPage({ params }: { params: Promise<Par
   const cat = cats.find((c) => c.slug === categoria);
   if (!cat || !sub) return notFound();
 
-  const productos = await getProductosBySubcategoria(categoria, sub.nombre);
+  const productos = await getProductosBySubcategoria(categoria, sub.slug, sub.nombre);
   const subcats = getSubcategorias(categoria);
 
   return (
