@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   description: "Desinfectantes de amplio espectro, virucidas y sanitizantes para hospitales, clínicas, laboratorios y consultorios. Línea Higiene de Prolimp.",
 };
 
-export const revalidate = 60;
-
 export default function HospitalesPage() {
   return (
     <SectorLanding

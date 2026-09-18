@@ -26,7 +26,11 @@ function limpiarDescripcion(blocks: unknown[]): unknown[] {
 
 type Params = Promise<{ slug: string }>;
 
-export const revalidate = 60;
+// Sin prerender en build (son miles de fichas): cada una se genera en su primera
+// visita y queda estática hasta que el webhook o SanityLive la invaliden.
+export async function generateStaticParams() {
+  return [];
+}
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;

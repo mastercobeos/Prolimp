@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   description: "SIBA Pro es el sistema de higiene profesional para empresas medianas y grandes. Dispensadores premium, suministro programado y mantenimiento con SLA.",
 };
 
-export const revalidate = 60;
-
 export default function SibaProPage() {
   return (
     <SectorLanding

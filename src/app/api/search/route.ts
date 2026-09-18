@@ -3,7 +3,6 @@ import { client } from "@/sanity/client";
 import { groq } from "next-sanity";
 
 export const runtime = "nodejs";
-export const revalidate = 60;
 
 const query = groq`
   *[_type == "producto" && activo == true && (
@@ -27,6 +26,7 @@ export async function GET(req: Request) {
   const q = (url.searchParams.get("q") || "").trim();
   if (q.length < 2) return NextResponse.json({ results: [] });
   const term = `${q}*`;
-  const results = await client.fetch(query, { q: term });
+  // Sin Data Cache: cada término distinto escribiría una entrada. El CDN de Sanity ya cachea.
+  const results = await client.fetch(query, { q: term }, { cache: "no-store" });
   return NextResponse.json({ results });
 }

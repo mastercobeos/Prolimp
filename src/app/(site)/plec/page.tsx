@@ -7,8 +7,6 @@ export const metadata: Metadata = {
   description: "PLEC es la línea Prolimp de productos económicos de limpieza para uso general, ideal para escuelas, oficinas, restaurantes y comercios que necesitan calidad al mejor precio.",
 };
 
-export const revalidate = 60;
-
 export default function PlecPage() {
   return (
     <SectorLanding

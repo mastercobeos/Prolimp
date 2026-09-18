@@ -42,11 +42,22 @@ export async function POST(req: NextRequest) {
   return Response.json({ revalidated: true, paths });
 }
 
+type RevalidateTarget = { path: string; type: "page" | "layout" };
+
+// Páginas que listan productos sin recibir su slug en el webhook (landings de
+// sector, marcas y subcategorías). No usan revalidate por reloj: se invalidan acá.
+const PRODUCT_LISTINGS: RevalidateTarget[] = [
+  { path: "/plec", type: "page" },
+  { path: "/hospitales", type: "page" },
+  { path: "/industria-alimentaria", type: "page" },
+  { path: "/industria-lactea", type: "page" },
+  { path: "/siba-pro", type: "page" },
+  { path: "/(site)/marca/[slug]", type: "page" },
+  { path: "/(site)/productos/[categoria]/[subcategoria]", type: "page" },
+];
+
 // Mapeo _type → rutas a invalidar. Incluye listings + detail.
-function pathsFor({ _type, slug, categoriaSlug, lineaSlug }: WebhookBody): {
-  path: string;
-  type: "page" | "layout";
-}[] {
+function pathsFor({ _type, slug, categoriaSlug, lineaSlug }: WebhookBody): RevalidateTarget[] {
   switch (_type) {
     case "home":
       return [{ path: "/", type: "page" }];
@@ -62,6 +73,7 @@ function pathsFor({ _type, slug, categoriaSlug, lineaSlug }: WebhookBody): {
         ...(slug ? [{ path: `/producto/${slug}`, type: "page" as const }] : []),
         ...(categoriaSlug ? [{ path: `/productos/${categoriaSlug}`, type: "page" as const }] : []),
         ...(lineaSlug ? [{ path: `/productos/quimicos/${lineaSlug}`, type: "page" as const }] : []),
+        ...PRODUCT_LISTINGS,
       ];
 
     case "categoria":
@@ -69,6 +81,7 @@ function pathsFor({ _type, slug, categoriaSlug, lineaSlug }: WebhookBody): {
         { path: "/", type: "page" },
         { path: "/productos", type: "page" },
         ...(slug ? [{ path: `/productos/${slug}`, type: "page" as const }] : []),
+        { path: "/(site)/productos/[categoria]/[subcategoria]", type: "page" },
       ];
 
     case "linea":

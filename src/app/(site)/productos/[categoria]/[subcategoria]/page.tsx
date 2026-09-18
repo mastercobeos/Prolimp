@@ -9,8 +9,6 @@ import styles from "../page.module.css";
 
 type Params = { categoria: string; subcategoria: string };
 
-export const revalidate = 60;
-
 export async function generateStaticParams() {
   return getAllSubcategoriaParams();
 }

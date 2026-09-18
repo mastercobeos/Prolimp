@@ -8,8 +8,6 @@ import styles from "./page.module.css";
 
 type Params = Promise<{ slug: string }>;
 
-export const revalidate = 60;
-
 export async function generateStaticParams() {
   const slugs = await getAllMarcaSlugs();
   return slugs.map(({ slug }) => ({ slug }));

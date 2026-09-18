@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   description: "Detergentes alcalinos y ácidos para tanques, tuberías CIP y sala de ordeño. Especializados para queserías, procesadoras de leche y establos.",
 };
 
-export const revalidate = 60;
-
 export default function IndustriaLacteaPage() {
   return (
     <SectorLanding

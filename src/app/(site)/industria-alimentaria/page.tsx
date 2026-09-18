@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   description: "Químicos y sistemas de limpieza para plantas de alimentos, procesadoras y empaque. Fórmulas Prolimp que cumplen con normativas de sanidad y BPM.",
 };
 
-export const revalidate = 60;
-
 export default function IndustriaAlimentariaPage() {
   return (
     <SectorLanding

@@ -11,8 +11,6 @@ export const metadata: Metadata = {
     "Sistemas de dosificación y de dilución de limpiadores químicos Prolimp. Reduce costos, prolonga la vida útil de tus concentrados y optimiza el uso de químicos.",
 };
 
-export const revalidate = 60;
-
 const HERO_LEDE =
   "Dosifican de manera automática una gran variedad de soluciones. El equipo de dosificación es automatizado y proporciona dosis exactas reduciendo costos de consumo de agua, energía y producto químico. Además de asegurar el correcto uso del producto químico, no exponer al usuario.";
 
