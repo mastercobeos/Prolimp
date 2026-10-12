@@ -3,33 +3,31 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./CookieBanner.module.css";
-
-const KEY = "prolimp-cookies-consent";
+import { readConsent, saveConsent } from "./cookieConsent";
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const saved = typeof window !== "undefined" ? localStorage.getItem(KEY) : "1";
-    if (!saved) {
+    if (!readConsent()) {
       const t = setTimeout(() => setVisible(true), 800);
       return () => clearTimeout(t);
     }
   }, []);
 
   const accept = () => {
-    localStorage.setItem(KEY, "accepted");
+    saveConsent("accepted");
     setVisible(false);
   };
   const reject = () => {
-    localStorage.setItem(KEY, "rejected");
+    saveConsent("rejected");
     setVisible(false);
   };
 
   if (!visible) return null;
 
   return (
-    <div className={styles.banner} role="dialog" aria-labelledby="cookie-title">
+    <div className={styles.banner} role="dialog" aria-labelledby="cookie-title" data-cookie-banner>
       <div className={styles.inner}>
         <div className={styles.text}>
           <p id="cookie-title" className={styles.title}>
