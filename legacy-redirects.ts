@@ -10,6 +10,7 @@ const p = (source: string, destination: string): Redirect => ({ source, destinat
 export const legacyRedirects: Redirect[] = [
   // Página de descargas del sitio viejo → landing del catálogo.
   p("/descargas", "/catalogo-prolimp"),
+  p("/prolimp/catalogo-de-productos", "/catalogo-prolimp"),
 
   // Productos con slug distinto o descontinuados.
   p("/product/anticochs-gel-quita-cochambre-en-gel", "/producto/quita-cochambre-en-gel-anticochs"),
