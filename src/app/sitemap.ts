@@ -42,6 +42,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/siba", priority: 0.7, changeFrequency: "monthly" },
     // Legal
     { path: "/aviso-de-privacidad", priority: 0.3, changeFrequency: "yearly" },
+    { path: "/aviso-de-privacidad/prolimp", priority: 0.3, changeFrequency: "yearly" },
+    { path: "/aviso-de-privacidad/prolimpieza", priority: 0.3, changeFrequency: "yearly" },
     { path: "/terminos-y-condiciones", priority: 0.3, changeFrequency: "yearly" },
   ];
 

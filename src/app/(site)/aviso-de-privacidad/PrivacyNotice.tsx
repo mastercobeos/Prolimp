@@ -14,7 +14,7 @@ export default function PrivacyNotice({ legalName, address }: Props) {
   return (
     <>
       <section className={styles.section}>
-        <h3>1. Identidad y domicilio del responsable</h3>
+        <h2>1. Identidad y domicilio del responsable</h2>
         <p>
           <strong>{legalName}</strong> (en adelante “{empresa.nombre}”), con
           domicilio en {address}, es responsable del tratamiento de tus datos
@@ -24,7 +24,7 @@ export default function PrivacyNotice({ legalName, address }: Props) {
       </section>
 
       <section className={styles.section}>
-        <h3>2. Datos personales que recabamos</h3>
+        <h2>2. Datos personales que recabamos</h2>
         <p>Para las finalidades descritas en este aviso podemos recabar los siguientes datos:</p>
         <ul>
           <li>Nombre completo</li>
@@ -40,7 +40,7 @@ export default function PrivacyNotice({ legalName, address }: Props) {
       </section>
 
       <section className={styles.section}>
-        <h3>3. Finalidades del tratamiento</h3>
+        <h2>3. Finalidades del tratamiento</h2>
         <p>
           <strong>Finalidades primarias</strong> (necesarias para la relación con{" "}
           {empresa.nombre}):
@@ -66,7 +66,7 @@ export default function PrivacyNotice({ legalName, address }: Props) {
       </section>
 
       <section className={styles.section}>
-        <h3>4. Transferencia de datos</h3>
+        <h2>4. Transferencia de datos</h2>
         <p>
           {empresa.nombre} no transfiere tus datos personales a terceros salvo
           cuando sea estrictamente necesario para cumplir con la relación
@@ -77,7 +77,7 @@ export default function PrivacyNotice({ legalName, address }: Props) {
       </section>
 
       <section className={styles.section}>
-        <h3>5. Derechos ARCO</h3>
+        <h2>5. Derechos ARCO</h2>
         <p>
           Como titular de tus datos, tienes derecho a <strong>Acceder</strong>,{" "}
           <strong>Rectificar</strong>, <strong>Cancelar</strong> u{" "}
@@ -98,7 +98,7 @@ export default function PrivacyNotice({ legalName, address }: Props) {
       </section>
 
       <section className={styles.section}>
-        <h3>6. Uso de cookies y tecnologías de rastreo</h3>
+        <h2>6. Uso de cookies y tecnologías de rastreo</h2>
         <p>
           Nuestro sitio web utiliza cookies y tecnologías similares para mejorar
           tu experiencia de navegación, medir el tráfico y personalizar el
@@ -109,7 +109,7 @@ export default function PrivacyNotice({ legalName, address }: Props) {
       </section>
 
       <section className={styles.section}>
-        <h3>7. Modificaciones al aviso de privacidad</h3>
+        <h2>7. Modificaciones al aviso de privacidad</h2>
         <p>
           {empresa.nombre} se reserva el derecho de actualizar o modificar este
           aviso de privacidad en cualquier momento. Los cambios se publicarán en
@@ -119,7 +119,7 @@ export default function PrivacyNotice({ legalName, address }: Props) {
       </section>
 
       <section className={styles.section}>
-        <h3>8. Autoridad</h3>
+        <h2>8. Autoridad</h2>
         <p>
           Si consideras que tu derecho a la protección de datos personales ha sido
           vulnerado, puedes acudir al Instituto Nacional de Transparencia, Acceso

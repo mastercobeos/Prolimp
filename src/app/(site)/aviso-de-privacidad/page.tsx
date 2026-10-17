@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import PrivacyNotice from "./PrivacyNotice";
+import Link from "next/link";
+import { LAST_UPDATED, NOTICES } from "./notices";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -7,13 +8,6 @@ export const metadata: Metadata = {
   description: "Avisos de privacidad de Prolimp del Centro y Prolimpieza conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.",
   robots: { index: true, follow: true },
 };
-
-const LAST_UPDATED = "16 de octubre de 2026";
-
-const NOTICES = [
-  { name: "Prolimp", legalName: "Prolimp del Centro, S.A. de C.V.", address: "Orizaba, Veracruz, México" },
-  { name: "Prolimpieza", legalName: "Prolimpieza, S.A. de C.V.", address: "Querétaro, Qro. México" },
-];
 
 export default function AvisoPrivacidadPage() {
   return (
@@ -26,15 +20,10 @@ export default function AvisoPrivacidadPage() {
         </header>
 
         {NOTICES.map((n) => (
-          <details key={n.name} className={styles.notice}>
-            <summary className={styles.summary}>
-              <h2>{n.name}</h2>
-              <span className={styles.summaryHint}>Aviso de privacidad</span>
-            </summary>
-            <div className={styles.noticeBody}>
-              <PrivacyNotice legalName={n.legalName} address={n.address} />
-            </div>
-          </details>
+          <Link key={n.slug} href={`/aviso-de-privacidad/${n.slug}`} className={styles.notice}>
+            <h2>{n.name}</h2>
+            <span className={styles.noticeHint}>Aviso de privacidad</span>
+          </Link>
         ))}
       </article>
     </main>
