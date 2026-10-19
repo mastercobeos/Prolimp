@@ -30,7 +30,7 @@ export default function PrivacyNotice({ legalName, address }: Props) {
           <li>Nombre completo</li>
           <li>Correo electrónico</li>
           <li>Número telefónico y/o WhatsApp</li>
-          <li>Nombre de tu empresa (opcional)</li>
+          <li>Nombre de tu empresa</li>
           <li>Dirección física (para envíos y facturación)</li>
           <li>RFC (para facturación)</li>
         </ul>
