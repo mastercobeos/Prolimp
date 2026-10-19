@@ -59,6 +59,7 @@ export function Footer({ categorias, lineas, empresa }: Props) {
               <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/contacto">Contacto</Link></li>
               <li><Link href="/aviso-de-privacidad">Aviso de privacidad</Link></li>
+              <li><a href="https://intranet.prolimp.com/wp-login.php?redirect_to=https%3A%2F%2Fintranet.prolimp.com%2F&reauth=1" target="_blank" rel="noopener noreferrer">Intranet</a></li>
             </ul>
           </div>
 
