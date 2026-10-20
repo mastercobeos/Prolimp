@@ -22,6 +22,7 @@ export default function PlecPage() {
       eyebrowSeccion="Por qué PLEC"
       beneficiosTitulo="Productos diseñados para cuidar tu presupuesto"
       productosTitulo="Algunos productos ideales para ahorrar"
+      productosMarcaSlug="plec"
       productosSlugs={PLEC_PRODUCTOS_SLUGS}
       ctaTitulo="¿Buscas ahorrar en tu operación diaria?"
       ctaLede="Te ayudamos a elegir productos PLEC según el consumo, tipo de espacio y necesidades de limpieza de tu empresa."

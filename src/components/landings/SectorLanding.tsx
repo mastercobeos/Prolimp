@@ -25,6 +25,9 @@ export type SectorLandingProps = {
   beneficiosTitulo?: string;
   productosLineaSlug?: string;
   productosCategoriaSlug?: string;
+  /** Productos con esta marca asignada en Sanity. Si la marca no tiene ninguno,
+   *  cae a `productosSlugs`. */
+  productosMarcaSlug?: string;
   productosSlugs?: string[];
   productosTitulo?: string;
   /** Destino del "Ver más" que el mockup pone junto al título de productos. */
@@ -62,6 +65,15 @@ const productosPorLineaQuery = groq`
 const productosPorCategoriaQuery = groq`
   *[_type == "producto" && activo == true && categoria->slug.current == $slug && defined(imagenPrincipal)]
    | order(nombre asc) [0...$limit] {
+    _id, nombre, "slug": slug.current, descripcionCorta,
+    "imagenPrincipal": imagenPrincipal{ _type, asset, alt, hotspot, crop },
+    "marca": marca->nombre
+  }
+`;
+
+const productosPorMarcaQuery = groq`
+  *[_type == "producto" && activo == true && marca->slug.current == $slug && defined(imagenPrincipal)]
+   | order(nombre asc) {
     _id, nombre, "slug": slug.current, descripcionCorta,
     "imagenPrincipal": imagenPrincipal{ _type, asset, alt, hotspot, crop },
     "marca": marca->nombre
@@ -187,7 +199,12 @@ function BenefitIcon({ name }: { name: string }) {
 
 export async function SectorLanding(props: SectorLandingProps) {
   let productos: Producto[] = [];
-  if (props.productosSlugs?.length) {
+  if (props.productosMarcaSlug) {
+    productos = (await client.fetch<Producto[]>(productosPorMarcaQuery, { slug: props.productosMarcaSlug })) ?? [];
+  }
+  if (productos.length) {
+    // ya resuelto por marca
+  } else if (props.productosSlugs?.length) {
     const fetched = await client.fetch<Producto[]>(productosPorSlugsQuery, { slugs: props.productosSlugs });
     const orden = props.productosSlugs;
     productos = [...(fetched ?? [])].sort((a, b) => orden.indexOf(a.slug) - orden.indexOf(b.slug));
