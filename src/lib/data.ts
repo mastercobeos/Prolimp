@@ -45,8 +45,9 @@ const cachedFetch = async <T>(query: string, params?: Record<string, unknown>): 
 };
 
 // Bypass Live para queries usadas en generateStaticParams (build-time, sin request).
+// Sin reloj: el webhook de Sanity (/api/revalidate) invalida al publicar.
 const staticFetch = <T>(query: string, params?: Record<string, unknown>) =>
-  client.fetch<T>(query, params ?? {}, { next: { revalidate: 3600 } });
+  client.fetch<T>(query, params ?? {}, { cache: "force-cache" });
 
 // -------- home
 export type HeroSlide = { url: string; caption?: string; ctaLabel?: string; ctaHref?: string };

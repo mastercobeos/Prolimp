@@ -39,7 +39,7 @@ type CatalogoDoc = {
 const getCatalogos = cache(async (): Promise<Record<string, Catalogo>> => {
   let docs: CatalogoDoc[] = [];
   try {
-    docs = await client.fetch<CatalogoDoc[]>(catalogosQuery, {}, { next: { revalidate: 3600 } });
+    docs = await client.fetch<CatalogoDoc[]>(catalogosQuery, {}, { cache: "force-cache" });
   } catch {
     return {};
   }
