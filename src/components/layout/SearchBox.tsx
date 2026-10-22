@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import Image from "next/image";
 import styles from "./SearchBox.module.css";
 

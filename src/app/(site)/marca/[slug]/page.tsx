@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import { notFound } from "next/navigation";
 import { urlForImage } from "@/sanity/image";
 import { getMarcaBySlug, getAllMarcaSlugs } from "@/lib/data";

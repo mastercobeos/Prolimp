@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import styles from "./CtaCierre.module.css";
 
 type Props = {

@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import styles from "./DestacadosSlider.module.css";
 
 type Producto = {

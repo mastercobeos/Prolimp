@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import { LAST_UPDATED, NOTICES } from "./notices";
 import styles from "./page.module.css";
 

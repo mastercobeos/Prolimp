@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import clsx from "clsx";
 import { urlForImage } from "@/sanity/image";
 import { client } from "@/sanity/client";

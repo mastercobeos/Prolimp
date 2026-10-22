@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import styles from "./Marcas.module.css";
 
 type Marca = { slug: string; nombre: string; image: string; productos: number };

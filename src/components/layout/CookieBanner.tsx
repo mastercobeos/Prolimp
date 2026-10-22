@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import styles from "./CookieBanner.module.css";
 import { readConsent, saveConsent } from "./cookieConsent";
 

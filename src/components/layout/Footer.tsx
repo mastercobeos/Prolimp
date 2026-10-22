@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import { lineaHref } from "@/lib/lineaHref";
 import Image from "next/image";
 import styles from "./Footer.module.css";

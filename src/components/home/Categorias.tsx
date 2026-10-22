@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import styles from "./Categorias.module.css";
 
 type Categoria = { slug: string; nombre: string; descripcion: string; image: string; destacada?: boolean };

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import clsx from "clsx";
 import { getPosts, getCategoriasBlog } from "@/lib/data";
 import styles from "./page.module.css";

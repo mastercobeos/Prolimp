@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import styles from "./Hero.module.css";

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/Link";
 import styles from "./page.module.css";
 import { getCategorias, getLineas, getMarcas } from "@/lib/data";
 import { ProductosSearch } from "./ProductosSearch";
