@@ -1,13 +1,27 @@
 import type { Metadata } from "next";
 import Link from "@/components/shared/Link";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import styles from "./page.module.css";
 import { getAllPostSlugs, getPostBySlug, getPosts } from "@/lib/data";
 import { urlForImage } from "@/sanity/image";
 
 type Params = { slug: string };
+
+// El WordPress viejo publicaba slugs con acentos ("/blog/cómo-…"); en Sanity
+// quedaron sin acento. Los que además cambiaron de texto van en este mapa.
+const SLUGS_VIEJOS: Record<string, string> = {
+  "como-limpiar-plancha-decocina": "como-limpiar-plancha-de-cocina",
+};
+
+function slugSinAcentos(slug: string) {
+  let s = slug;
+  try {
+    s = decodeURIComponent(slug);
+  } catch {}
+  return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+}
 
 export async function generateStaticParams() {
   const slugs = await getAllPostSlugs();
@@ -150,7 +164,12 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
     getPostBySlug(slug),
     getPosts(),
   ]);
-  if (!post) notFound();
+  if (!post) {
+    const plain = slugSinAcentos(slug);
+    const destino = SLUGS_VIEJOS[plain] ?? plain;
+    if (destino !== slug && (await getPostBySlug(destino))) permanentRedirect(`/blog/${destino}`);
+    notFound();
+  }
 
   const others = allPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
   const wordCount = JSON.stringify(post.contenido ?? []).split(/\s+/).length;

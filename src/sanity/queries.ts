@@ -37,7 +37,7 @@ export const sistemasDilucionQuery = groq`
       descripcion,
       "imagen": imagen{${imgFields}}
     },
-    "galeria": galeria[]{${imgFields}}
+    "galeria": galeria[defined(asset)]{${imgFields}}
   }
 `;
 
@@ -162,7 +162,7 @@ export const productoBySlugQuery = groq`
     _id, nombre, "slug": slug.current, sku,
     descripcionCorta, descripcion, aplicaciones, beneficios, presentaciones,
     "imagenPrincipal": imagenPrincipal{${imgFields}},
-    "galeria": galeria[]{${imgFields}},
+    "galeria": galeria[defined(asset)]{${imgFields}},
     "fichaTecnica": fichaTecnica.asset->{url, originalFilename},
     "hojaSeguridad": hojaSeguridad.asset->{url, originalFilename},
     "categoria": categoria->{nombre, "slug": slug.current},

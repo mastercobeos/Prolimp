@@ -288,7 +288,17 @@ export async function getProductoBySlug(slug: string) {
     linkExterno?: string;
     metaTitle?: string;
     metaDescription?: string;
-  } | null>(productoBySlugQuery, { slug });
+  } | null>(productoBySlugQuery, { slug: decodeSlug(slug) });
+}
+
+// Next entrega el segmento con percent-encoding: un slug con acento
+// ("…-generación") llega como "…-generaci%C3%B3n" y no coincide en Sanity.
+function decodeSlug(slug: string) {
+  try {
+    return decodeURIComponent(slug);
+  } catch {
+    return slug;
+  }
 }
 
 // -------- sucursales

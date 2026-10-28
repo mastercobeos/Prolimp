@@ -39,7 +39,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/industria-lactea", priority: 0.8, changeFrequency: "monthly" },
     { path: "/hospitales", priority: 0.8, changeFrequency: "monthly" },
     { path: "/plec", priority: 0.7, changeFrequency: "monthly" },
-    { path: "/siba", priority: 0.7, changeFrequency: "monthly" },
     // Legal
     { path: "/aviso-de-privacidad", priority: 0.3, changeFrequency: "yearly" },
     { path: "/aviso-de-privacidad/prolimp", priority: 0.3, changeFrequency: "yearly" },
@@ -49,14 +48,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Dinámicas
   cats.forEach((c) => entries.push({ path: `/productos/${c.slug}`, priority: 0.8, changeFrequency: "weekly" }));
-  lineas.forEach((l) => entries.push({ path: `/productos/quimicos/${l.slug}`, priority: 0.7, changeFrequency: "weekly" }));
+  // PLEC (marca, no línea) y SIBA (sitio externo) redirigen: no van al sitemap.
+  lineas.filter((l) => l.slug !== "plec").forEach((l) => entries.push({ path: `/productos/quimicos/${l.slug}`, priority: 0.7, changeFrequency: "weekly" }));
   marcas.forEach((m) => entries.push({ path: `/marca/${m.slug}`, priority: 0.6, changeFrequency: "monthly" }));
   productos.forEach((p) => entries.push({ path: `/producto/${p.slug}`, priority: 0.6, changeFrequency: "monthly" }));
   posts.forEach((p) => entries.push({ path: `/blog/${p.slug}`, priority: 0.5, changeFrequency: "monthly" }));
 
   const now = new Date();
   return entries.map((e) => ({
-    url: `${site}${e.path}`,
+    url: encodeURI(`${site}${e.path}`),
     lastModified: now,
     changeFrequency: e.changeFrequency,
     priority: e.priority,
